@@ -24,11 +24,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.35" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.33" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../lib TSW/tomcat-jdbc.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/Lib_TSW/json-20210307.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -37,7 +37,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../lib TSW/mysql-connector-java-8.0.15.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/Lib_TSW/jstl-1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -46,7 +46,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../lib TSW/jstl-1.2.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/Lib_TSW/mysql-connector-java-8.0.15.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -55,7 +55,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../lib TSW/json-20210307.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/Lib_TSW/tomcat-jdbc.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
