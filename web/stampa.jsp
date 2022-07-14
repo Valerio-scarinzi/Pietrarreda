@@ -13,9 +13,9 @@
 <body>
 
 <% Utente utente = (Utente) request.getAttribute("utente"); %>
-<%=System.out.println(utente.getNome()) %>
-<%=System.out.println(utente.getCognome()) %>
-<%=System.out.println(utente.getUsername()) %>
+<%=request.getParameter(utente.getNome())%>
+<%System.out.println(utente.getCognome()); %>
+<%System.out.println(utente.getUsername()); %>
 
 
 

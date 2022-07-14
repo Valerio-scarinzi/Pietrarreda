@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UtenteDao {
+public class UtenteDao { // Dao fa le query al database data access object
 
   public Utente doRetrieveById(int id) {
     try (Connection con = ConPool.getConnection()) {
