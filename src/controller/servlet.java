@@ -23,7 +23,6 @@ public class servlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
     String nome = (String) req.getAttribute("nome");
     String cognome = (String) req.getAttribute("cognome");
     String username = (String) req.getAttribute("username");

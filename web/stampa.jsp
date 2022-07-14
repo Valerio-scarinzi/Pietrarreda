@@ -13,7 +13,7 @@
 <body>
 
 <% Utente utente = (Utente) request.getAttribute("utente"); %>
-<%=(utente.getNome()); %>
+<%=request.getParameter(utente.getNome())%>
 <%System.out.println(utente.getCognome()); %>
 <%System.out.println(utente.getUsername()); %>
 

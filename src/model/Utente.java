@@ -13,7 +13,7 @@ public class Utente {
 
   //costruttore vuoto
     public Utente(){};
-  //prova
+  //Costruttore pieno
   public Utente( String nome, String cognome, String username){
     this.id = id;
     this.nome = nome;
