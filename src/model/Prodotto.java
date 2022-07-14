@@ -6,7 +6,7 @@ public class Prodotto {
     private  int quantprodotto; //quantita' del prodotto
     private String desc; //descrizione del prodotto
     private double prezzo; // prezzo del prodotto
-    private int disponibilita; //disponibilità del prodotto (non ho capito a che serve) 
+    private int disponibilita; //disponibilità del prodotto (non ho capito a che serve)
 
     public int getDisponibilita() {
         return disponibilita;
@@ -70,11 +70,12 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public Prodotto(int id, String nome, String desc, double price) {
+    public Prodotto(int id, String nome, String desc, double price,int disp) {
         this.idprod = Integer.toString(id);
         this.nome = nome;
         this.desc = desc;
         this.prezzo = price;
+        this.disponibilita=disp;
 
     }
 
