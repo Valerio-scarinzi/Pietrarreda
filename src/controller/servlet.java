@@ -27,13 +27,13 @@ public class servlet extends HttpServlet {
     String nome = (String) req.getAttribute("nome");
     String cognome = (String) req.getAttribute("cognome");
     String username = (String) req.getAttribute("username");
-    String passsword = (String) req.getAttribute("password");
+    String password = (String) req.getAttribute("password");
     String email = (String) req.getAttribute("email");
 
 
 
 
-    Utente utente = new Utente(nome,cognome,username,passsword,email);
+    Utente utente = new Utente(nome,cognome,username,password,email);
 
     UtenteDao utenteDao = new UtenteDao();
 
@@ -47,8 +47,6 @@ public class servlet extends HttpServlet {
 
     req.setAttribute("utente",utente); //manda questo utente come oggetto al server tramite richiesta (metti utente sul server)
 
-
-    RequestDispatcher dispatcher = req.getRequestDispatcher("/stampa.jsp"); //Dispatcher prende richiesta da URL,
 
     dispatcher.forward(req,resp);
 
