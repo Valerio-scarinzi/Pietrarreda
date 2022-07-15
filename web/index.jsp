@@ -12,27 +12,8 @@
   </head>
   <body>
 
+  <jsp:forward page="/WEB-INF/result/login.jsp"></jsp:forward>
 
-  <form method="get" action="Servlet">
-
-    nome
-    <input name="nome" type="text"><br>
-    cognome
-    <input name="cognome" type="text"><br>
-    username
-    <input name="username" type="text"><br>
-    passwordhash
-    <input name="password" type="text"><br>
-    email
-    <input name="email" type="text"><br>
-    admin
-    <input name="admin" type="text"><br>
-    indirizzo
-    <input name="indirizzo" type="text"><br>
-
-    <input type="submit">
-
-  </form>
 
 
 

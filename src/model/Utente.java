@@ -14,11 +14,13 @@ public class Utente {
   //costruttore vuoto
     public Utente(){};
   //prova
-  public Utente( String nome, String cognome, String username){
-    this.id = id;
+  public Utente( String nome, String cognome, String username,String password,String email){
+
     this.nome = nome;
     this.cognome = cognome;
     this.username = username;
+    this.password = password;
+    this.email = email;
 
 
   }

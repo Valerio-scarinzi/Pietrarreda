@@ -1,16 +1,13 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UtenteDao {
 
   public Utente doRetrieveById(int id) {
     try (Connection con = ConPool.getConnection()) {
       PreparedStatement ps =
-          con.prepareStatement("SELECT utente, nome, cognome,username,passwordhash,email,admin,indirizzo FROM customer WHERE customerid=?");
+          con.prepareStatement("SELECT utente, nome, cognome,username,passwordhash,email,admin,indirizzo FROM utente WHERE id_user=?");
       ps.setInt(1, id);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -31,6 +28,34 @@ public class UtenteDao {
       throw new RuntimeException(e);
     }
   }
+
+  public void doSave(Utente customer) {
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps = con.prepareStatement(
+          "INSERT INTO utente (nome, cognome,username,passwordhash,email) VALUES(?,?,?,?,?)",
+          Statement.RETURN_GENERATED_KEYS);
+      ps.setString(1, customer.getNome());
+      ps.setString(2, customer.getCognome());
+      ps.setString(3, customer.getUsername());
+      ps.setString(4, customer.getPassword());
+      ps.setString(5, customer.getEmail());
+
+      if (ps.executeUpdate() != 1) {
+        throw new RuntimeException("INSERT error.");
+      }
+
+      ResultSet rs = ps.getGeneratedKeys();
+      rs.next();
+      int id = rs.getInt(1);
+      customer.setId(id);
+      con.close();
+
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+
+  }
+
 
 
 }
