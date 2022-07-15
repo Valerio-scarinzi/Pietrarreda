@@ -1,0 +1,64 @@
+
+/*css footer*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    ;
+}
+
+.FooterContainer{
+    background-color: #363636;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer{
+    width: 80%;
+    height:40vh;
+    background-color: #363636;
+    color:#ffffffff;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.footer-heading {
+    display: flex;
+    flex-direction: column;
+    margin-right: 4rem;
+}
+.footer-heading h2 {
+    margin-bottom: 2rem;
+}
+
+.footer-heading a{
+    color: #fff;
+    font-family: sans-serif;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.footer-heading a:hover{
+    color: darkgoldenrod;
+    transition: 0.3s ease-out;
+}
+  /*fine footer*/
+
+  /*inizio responsive footer*/
+@media screen and (max-width: 1150px) {
+    .footer {
+        height: 50vh;
+    }
+}
+
+@media screen and (max-width: 1150px){
+    .footer{
+        padding-top: 2rem;
+    }
+}
+/*N.B DA CONTINUARE*/
+
