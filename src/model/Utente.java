@@ -15,7 +15,7 @@ public class Utente {
     public Utente(){};
 
   //prova
-  public Utente( String nome, String cognome, String username,String password,String email){
+  public Utente( String nome, String cognome, String username,String password,String email){}
 
 
   //Costruttore pieno

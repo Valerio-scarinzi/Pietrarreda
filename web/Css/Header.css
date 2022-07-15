@@ -1,0 +1,16 @@
+.head
+{
+    background-color: red;
+    border: #897fff solid;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.divLogo
+{
+    background-color: green;
+    border: #ffe61b solid;
+}
+.imgLogo{
+    position: relative;
+}
