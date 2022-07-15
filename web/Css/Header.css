@@ -1,16 +1,38 @@
-.head
+
+
+.divHeader
 {
-    background-color: red;
-    border: #897fff solid;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-.divLogo
-{
-    background-color: green;
-    border: #ffe61b solid;
+    max-width: 100%;
+    padding: 10px 10px 16px;
+    margin: 10px 10px;
+    overflow: hidden;
+    position: relative;
+    top:0px;
+    background-color: #ffe61b;
+    border: #1a1a1a solid;
 }
 .imgLogo{
-    position: relative;
+    height: 90px;
+    width: 90px;
+    float: left;
+    position: center;
+}
+.head_CatUl
+{
+    display:inline-list-item;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.head_Category li{
+    float:left;
+}
+.head_Category li a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border: red;
+}
+.head_Search{
+    float:right;
 }

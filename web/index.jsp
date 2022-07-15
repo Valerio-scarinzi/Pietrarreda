@@ -9,26 +9,8 @@
 <html>
   <head>
     <title>HomePage Pietrarreda</title>
-    <style>
-      h1 {text-align: center;}
-      h2{text-align: center;}
-      form {text-align: center;}
-    </style>
   </head>
   <body>
   <%@include file="WEB-INF/Jsp/header.jsp"%>
-  <h1 >Pietrarreda</h1><br>
-  <h2 >Ciao benvenuto nel sito!<br> immetti i tuoi dati</h2>
-  <hr>
-
-
-
-
-
-
-
-
-
-
   </body>
 </html>
