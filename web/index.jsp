@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>HomePage Pietrarreda</title>
+    <title>Pietrarreda.com - Website </title>
   </head>
   <body>
   <%@include file="WEB-INF/Jsp/header.jsp"%>
+  <%@include file="WEB-INF/Jsp/footer.jsp"%>
   </body>
 </html>

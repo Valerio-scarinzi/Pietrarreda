@@ -12,7 +12,10 @@
 <body>
 
 <header>
-    <div class="divHeader" href="#" ><img class="imgLogo" src="${pageContext.request.contextPath}\Immagini\Logo_Pietrarreda.png" alt="Logo.png">
+    <div class="divHeader">
+        <a href="#">
+        <img class="imgLogo" src="${pageContext.request.contextPath}\Immagini\Logo_Pietrarreda.png" alt="Logo.png">
+        </a>
 <nav class="head_Category">
     <ul class="head_CatUl">
         <li><a href="#">Categoria</a> </li>
@@ -20,15 +23,13 @@
         <li><a href="#">Contatti</a> </li>
         <li><a href="#">Login</a> </li>
         <li><a href="#">Registrazione</a> </li>
-        <li><a href="#"><img style="width: 20px" height="20px"   src="${pageContext.request.contextPath}\Immagini\carrello.png" alt="carrello.png"></a> </li>
+        <li><a href="#"><img src="${pageContext.request.contextPath}\Immagini\carrello.png" alt="carrello.png" class="carrello_icon"></a> </li>
     </ul>
     <div class="head_Search">
-    <input type="text" placeholder="Cerca">
-    <i class="fa fa-search" aria aria-hidden="true"></i>
+    <input type="text" placeholder="Cerca" id="header_cerca">
     </div>
 </nav>
     </div>
-
     </div>
 </header>
 </body>

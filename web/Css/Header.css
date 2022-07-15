@@ -1,5 +1,5 @@
 
-
+/*css navbar*/
 .divHeader
 {
     max-width: 100%;
@@ -12,10 +12,9 @@
     border: #1a1a1a solid;
 }
 .imgLogo{
-    height: 90px;
-    width: 90px;
+    height: 100px;
+    width: 100px;
     float: left;
-    position: center;
 }
 .head_CatUl
 {
@@ -27,12 +26,32 @@
 .head_Category li{
     float:left;
 }
-.head_Category li a {
+.head_Category a {
     text-decoration: none;
     display: block;
     padding: 10px;
     border: red;
+    font-family: sans-serif;
+}
+.head_Category a:hover{
+    color:red;
+    transition: 0.3s ease-out;
+}
+.carrello_icon{
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+}
+.carrello_icon:hover{
+    background-color: rgba(253, 255, 226, 0.51);
+    transition: 0.3s ease-out;
 }
 .head_Search{
     float:right;
+    display: block;
 }
+/*fine css navbar statica*/
+
+
+
+/*responsive css navbar*/

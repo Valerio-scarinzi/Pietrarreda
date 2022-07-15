@@ -8,14 +8,7 @@ public class Prodotto {
     private double prezzo; // prezzo del prodotto
     private int disponibilita; //disponibilità del prodotto (non ho capito a che serve)
 
-    public int getDisponibilita() {
-        return disponibilita;
-    }
-
-    public void setDisponibilita(int disponibilita) {
-        this.disponibilita = disponibilita;
-    }
-
+    //inizio costruttori
     public Prodotto(String name){
         nome=name;
     }
@@ -28,6 +21,15 @@ public class Prodotto {
         idprod = Integer.toString(id);
         quantprodotto = qty;
         nome = name;
+    }
+
+    //inizio getter and setter
+    public int getDisponibilita() {
+        return disponibilita;
+    }
+
+    public void setDisponibilita(int disponibilita) {
+        this.disponibilita = disponibilita;
     }
 
     public String getIdprod() {
