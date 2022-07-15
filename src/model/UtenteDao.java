@@ -2,7 +2,7 @@ package model;
 
 import java.sql.*;
 
-public class UtenteDao {
+public class UtenteDao { // Dao fa le query al database data access object
 
   public Utente doRetrieveById(int id) {
     try (Connection con = ConPool.getConnection()) {
