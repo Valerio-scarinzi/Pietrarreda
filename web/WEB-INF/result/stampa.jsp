@@ -12,10 +12,9 @@
 </head>
 <body>
 
-<% Utente utente = (Utente) request.getAttribute("utente"); %>
-<%=System.out.println(utente.getNome()) %>
-<%=System.out.println(utente.getCognome()) %>
-<%=System.out.println(utente.getUsername()) %>
+<%=request.getAttribute("nome") %>
+<%=request.getAttribute("cognome") %>
+<%=request.getAttribute("username") %>
 
 
 

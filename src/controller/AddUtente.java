@@ -1,7 +1,7 @@
 package controller;
 
 import model.Utente;
-import model.UtenteDao;
+import model.UtenteDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,43 +10,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-@WebServlet("/Servlet") // vedi index form action
-public class servlet extends HttpServlet {
+@WebServlet("/AddServlet")
+public class AddUtente extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    doGet(req,resp);
-
-
-
+    doGet(req, resp);
   }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    String nome = (String) req.getAttribute("nome");
+
+    /*String nome = (String) req.getAttribute("nome");
     String cognome = (String) req.getAttribute("cognome");
     String username = (String) req.getAttribute("username");
-    String password = (String) req.getAttribute("password");
-    String email = (String) req.getAttribute("email");
+
+    Utente utente = new Utente(nome,cognome,username);*/
+
+    UtenteDAO utenteDAO = new UtenteDAO();
+    ArrayList<Utente> list=utenteDAO.doRetrieveAll();
+    Utente utente = list.get(1);
+
+    String nome = utente.getNome();
+    String cognome = utente.getCognome();
+    String username = utente.getUsername();
+
+    req.setAttribute("nome",nome);
+    req.setAttribute("cognome",cognome);
+    req.setAttribute("username",username);
 
 
-
-
-    Utente utente = new Utente(nome,cognome,username,password,email);
-
-    UtenteDao utenteDao = new UtenteDao();
-
-    utenteDao.doSave(utente);
-
-
-
-
-
-    RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/results/login.jsp/");
-
-    req.setAttribute("utente",utente); //manda questo utente come oggetto al server tramite richiesta (metti utente sul server)
-
+    RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/result/stampa.jsp");
 
     dispatcher.forward(req,resp);
 
