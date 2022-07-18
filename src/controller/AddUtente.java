@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/AddServlet")
-public class AddUtente extends HttpServlet {
+public class AddUtente extends HttpServlet { //aggiunta utente al DB
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,12 +23,6 @@ public class AddUtente extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    /*String nome = (String) req.getAttribute("nome");
-    String cognome = (String) req.getAttribute("cognome");
-    String username = (String) req.getAttribute("username");
-
-    Utente utente = new Utente(nome,cognome,username);*/
 
     UtenteDAO utenteDAO = new UtenteDAO();
     ArrayList<Utente> list=utenteDAO.doRetrieveAll();

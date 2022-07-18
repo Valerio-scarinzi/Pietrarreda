@@ -11,13 +11,13 @@
     <title>Pietrarreda.com - Website </title>
   </head>
   <body>
-  <%@include file="WEB-INF/Jsp/header.jsp"%>
+  <%@include file="WEB-INF/result/header.jsp"%>
 
+  <form action="AddServlet" method="post">
+    <input type="submit">
+  </form>
 
-<form action="AddServlet" method="post">
-  <input type="submit">
-</form>
+  <%@include file="WEB-INF/result/footer.jsp"%>
 
-  <%@include file="WEB-INF/Jsp/footer.jsp"%>
   </body>
 </html>
