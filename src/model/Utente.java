@@ -49,6 +49,17 @@ public class Utente {
     this.password=password;
   }
 
+  @Override
+  public String toString() {
+    return "Utente{" +
+            "id=" + id +
+            ", nome='" + nome + '\'' +
+            ", cognome='" + cognome + '\'' +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", email='" + email + '\'' +
+            '}';
+  }
 
   public int getId() {
     return id;

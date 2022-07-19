@@ -12,7 +12,7 @@
 </style>
 <body>
 <nav class="navBar">
-    <div class="brand-img"><a href="#"><img src="/Immagini/Logo-Pietrarreda.png" alt="Logo.png"> </a></div>
+    <div class="brand-img"><a href="index.jsp"><img src="/Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.jpg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
         <a href="#" class="toggle-button">
             <span class="bar"></span>

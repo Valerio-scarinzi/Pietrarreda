@@ -13,10 +13,6 @@
   <body>
   <%@include file="WEB-INF/result/header.jsp"%>
 
-  <form action="AddServlet" method="post">
-    <input type="submit">
-  </form>
-
   <%@include file="WEB-INF/result/footer.jsp"%>
 
   </body>
