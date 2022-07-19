@@ -22,6 +22,8 @@ public class RegistrazioneServlet extends HttpServlet {
 
         Utente utente=new Utente(nome,cognome,username,password,email);
 
+        System.out.println(utente.toString());
+
         UtenteDAO utenteDAO=new UtenteDAO();
         utenteDAO.doSave(utente);
 
@@ -35,9 +37,10 @@ public class RegistrazioneServlet extends HttpServlet {
 
 
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
+        doGet(req,resp);
     }
 
 }

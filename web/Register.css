@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.Reg_panel{
+    max-width: 700px;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 15px;
+}
+
+
+.Reg_panel input{
+    horiz-align: center;
+}

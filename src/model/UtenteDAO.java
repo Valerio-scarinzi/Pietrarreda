@@ -24,6 +24,8 @@ public class UtenteDAO {
         p.setNome(rs.getString(2));
         p.setCognome(rs.getString(3));
         p.setUsername(rs.getString(4));
+        p.setEmail(rs.getString(6));
+        p.setPassword(rs.getString(5));
 
         customerList.add(p);
 
@@ -39,9 +41,8 @@ public class UtenteDAO {
 
   public void doSave(Utente customer) {
     try (Connection con = ConPool.getConnection()) {
-      PreparedStatement ps = con.prepareStatement(
-              "INSERT INTO Utente (default ,nome, cognome,username,passwordhash,email) VALUES(?,?,?,?,?)",
-              Statement.RETURN_GENERATED_KEYS);
+      PreparedStatement ps = con.prepareStatement("INSERT into Utente (Nome,Cognome,username,passwordhash,email) VALUES (?,?,?,?,?);");
+
       ps.setString(1, customer.getNome());
       ps.setString(2, customer.getCognome());
       ps.setString(3, customer.getUsername());
@@ -50,12 +51,6 @@ public class UtenteDAO {
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
-
-      ResultSet rs = ps.getGeneratedKeys();
-      rs.next();
-      int id = rs.getInt(1);
-      customer.setId(id);
-      con.close();
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

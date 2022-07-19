@@ -16,6 +16,14 @@ body{
     color: black;
 }
 
+.SearchBar input{
+    border-radius: 9px;
+}
+
+.SearchBar button{
+    border-radius: 5px;
+}
+
 
 .navBar-links ul{
     margin: 0;
