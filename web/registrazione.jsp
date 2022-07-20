@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="Register.css">
 </head>
 <body>
+
+
+
 <form method="post" action="Registrazione">
 
 
@@ -20,6 +23,6 @@
 
     </div>
 </form>
-<%@include file="WEB-INF/result/footer.jsp"%>
+<%@include file="jsp/footer.jsp"%>
 </body>
 </html>

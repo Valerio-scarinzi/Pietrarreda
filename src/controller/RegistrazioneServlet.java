@@ -14,15 +14,16 @@ import java.io.IOException;
 public class RegistrazioneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nome= (String) req.getAttribute("nome");
-        String cognome= (String) req.getAttribute("cognome");
-        String username= (String) req.getAttribute("username");
-        String password= (String) req.getAttribute("password");
-        String email= (String) req.getAttribute("email");
+
+        String nome = (String) req.getParameter("nome");
+        String cognome= (String) req.getParameter("cognome");
+        String username= (String) req.getParameter("username");
+        String password= (String) req.getParameter("password");
+        String email= (String) req.getParameter("email");
 
         Utente utente=new Utente(nome,cognome,username,password,email);
 
-        System.out.println(utente.toString());
+        utente.toString();
 
         UtenteDAO utenteDAO=new UtenteDAO();
         utenteDAO.doSave(utente);

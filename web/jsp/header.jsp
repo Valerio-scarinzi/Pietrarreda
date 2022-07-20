@@ -29,8 +29,8 @@
     </script></div>
     <div class="navBar-links">
         <ul>
-            <li><a href="#">Catalogo </a></li>
-            <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+            <li><a href="pietre.pdf">Catalogo </a></li>
+            <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="registrazione.jsp"> Registrazione </a></li>
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <div class="SearchBar">

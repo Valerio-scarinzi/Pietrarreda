@@ -1,4 +1,4 @@
-<%--
+<%@ page import="model.Utente" %><%--
   Created by IntelliJ IDEA.
   User: VaLeRiX
   Date: 11/07/2022
@@ -11,9 +11,12 @@
     <title>Pietrarreda.com - Website </title>
   </head>
   <body>
-  <%@include file="WEB-INF/result/header.jsp"%>
+  <%@include file="jsp/header.jsp"%>
 
-  <%@include file="WEB-INF/result/footer.jsp"%>
+
+
+
+  <%@include file="jsp/footer.jsp"%>
 
   </body>
 </html>

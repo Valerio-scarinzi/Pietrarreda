@@ -24,7 +24,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.33" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -34,13 +33,19 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.35" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Lib_TSW/tomcat-jdbc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lucatest/web/WEB-INF/lib/tomcat-jdbc.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lucatest/web/WEB-INF/lib/jstl-1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lucatest/web/WEB-INF/lib/json-20200518.jar!/" />
+          <root url="file://$MODULE_DIR$" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/src" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
