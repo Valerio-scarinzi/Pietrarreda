@@ -22,6 +22,7 @@ public class RegistrazioneServlet extends HttpServlet {
         String email= (String) req.getParameter("email");
 
         Utente utente=new Utente(nome,cognome,username,password,email);
+        utente.setPassword(password);
 
         utente.toString();
 

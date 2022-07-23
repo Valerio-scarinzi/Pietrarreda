@@ -38,6 +38,38 @@ public class UtenteDAO {
     }
   }
 
+  public Utente doRetrieveByUsernamePassword(String username, String password) {
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps =
+          con.prepareStatement("SELECT * FROM  utente WHERE username=? AND passwordhash=?");
+
+      ps.setString(1, username);
+      ps.setString(2, password);
+
+      ResultSet rs = ps.executeQuery();
+
+      if (rs.next()) {
+
+        Utente p = new Utente();
+        p.setId(rs.getInt(1));
+        p.setNome(rs.getString(2));
+        p.setCognome(rs.getString(3));
+        p.setUsername(rs.getString(4));
+        p.setPassword(rs.getString(5));
+        p.setEmail(rs.getString(6));
+        System.out.println(p.toString());
+        return p;
+      }
+
+      con.close();
+      return null;
+
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+    return null;
+}
+
 
   public void doSave(Utente customer) {
     try (Connection con = ConPool.getConnection()) {

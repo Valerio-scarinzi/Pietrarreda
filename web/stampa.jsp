@@ -1,4 +1,5 @@
-<%@ page import="model.Utente" %><%--
+<%@ page import="model.Utente" %>
+<%@ page import="com.mysql.cj.Session" %><%--
   Created by IntelliJ IDEA.
   User: VaLeRiX
   Date: 12/07/2022
@@ -11,10 +12,12 @@
     <title>Title</title>
 </head>
 <body>
+ciao
+<br>
 
-<%=request.getAttribute("nome") %>
-<%=request.getAttribute("cognome") %>
-<%=request.getAttribute("username") %>
+<% Utente utente = (Utente) session.getAttribute("utenteLoggato");%>
+<%=utente.toString()%>
+
 
 
 

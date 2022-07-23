@@ -18,20 +18,21 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
 
-        boolean email_bool = false;
-            boolean password_bool = false;
 
         UtenteDAO utenteDAO = new UtenteDAO();
-        ArrayList<Utente> listUtente = utenteDAO.doRetrieveAll();
 
-        Utente utente = null ;
+        Utente utente  = utenteDAO.doRetrieveByUsernamePassword(username, password);
+        System.out.println(utente);
+        boolean user_bool = username.equals(utente.getUsername());
+        boolean password_bool = password.equals(utente.getPassword());
 
 
-        for(int i = 0 ; i<= listUtente.size()-1; i++){
+        /*for(int i = 0 ; i<= listUtente.size()-1; i++){
 
             utente = listUtente.get(i);
             email_bool=email.equals(utente.getEmail());
@@ -46,8 +47,11 @@ public class LoginServlet extends HttpServlet {
             }
         }
 
+**/
 
-        if(email_bool == true &&password_bool ==true){
+
+
+        if(user_bool==true&&password_bool==true){
 
             HttpSession oldSession = req.getSession();
             if(oldSession != null){
@@ -57,7 +61,7 @@ public class LoginServlet extends HttpServlet {
             recentSession.setAttribute("utenteLoggato",utente);
 
         }
-            RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("stampa.jsp");
             dispatcher.forward(req,resp);
 
         }
