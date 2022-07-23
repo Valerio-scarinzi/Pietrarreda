@@ -15,9 +15,11 @@
 <form method="post" action="Login" >
 
     email<br>
-    <input name="email" type="text">
+    <input name="email" type="text"><br>
     password<br>
-    <input name="password" type="text">
+    <input name="password" type="password"><br>
+    username<br>
+    <input name="username" type="text"><br>
     <input type="submit">
 
 
