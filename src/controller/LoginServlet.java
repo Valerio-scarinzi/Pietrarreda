@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
             if(oldSession != null){
              oldSession.invalidate();
 
-            HttpSession recentSession = req.getSession();
+            HttpSession recentSession = req.getSession();;
             recentSession.setAttribute("utenteLoggato",utente);
 
         }
