@@ -1,7 +1,7 @@
 package model;
 
 public class Prodotto {
-    private String idprod; //id del prodotto
+    private int idprod; //id del prodotto
     private String nome; //nome del prodotto
     private  int quantprodotto; //quantita' del prodotto
     private String desc; //descrizione del prodotto
@@ -14,13 +14,17 @@ public class Prodotto {
     }
 
     public Prodotto(String name, int qty) {
-        quantprodotto = qty;
-        nome = name;
+        this.quantprodotto = qty;
+        this.nome = name;
     }
     public Prodotto(String name, int qty, int id) {
-        idprod = Integer.toString(id);
-        quantprodotto = qty;
-        nome = name;
+        this.idprod = id;
+        this.quantprodotto = qty;
+        this.nome = name;
+    }
+
+    public Prodotto() {
+
     }
 
     //inizio getter and setter
@@ -32,11 +36,11 @@ public class Prodotto {
         this.disponibilita = disponibilita;
     }
 
-    public String getIdprod() {
+    public int getIdprod() {
         return idprod;
     }
 
-    public void setIdprod(String idprod) {
+    public void setIdprod(int idprod) {
         this.idprod = idprod;
     }
 
@@ -73,7 +77,7 @@ public class Prodotto {
     }
 
     public Prodotto(int id, String nome, String desc, double price,int disp) {
-        this.idprod = Integer.toString(id);
+        this.idprod = id;
         this.nome = nome;
         this.desc = desc;
         this.prezzo = price;

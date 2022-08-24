@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en"> <%-- Link al css nominato Header.css (fallo sempre così) file esterno--%>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="Header.css">
+    <link rel="stylesheet" href="header.css">
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous">
     </script>
     <title>Header responsive</title>
@@ -12,7 +12,7 @@
 </style>
 <body>
 <nav class="navBar">
-    <div class="brand-img"><a href="index.jsp"><img src="/Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.jpg"> </a></div>
+    <div class="brand-img"><a href="#"><img src="" alt="Logo.aapg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
         <a href="#" class="toggle-button">
             <span class="bar"></span>
@@ -29,7 +29,7 @@
     </script></div>
     <div class="navBar-links">
         <ul>
-            <li><a href="pietre.pdf">Catalogo </a></li>
+            <li><a href="showCatalogo.jsp">Catalogo</a></li>
             <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="registrazione.jsp"> Registrazione </a></li>
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>

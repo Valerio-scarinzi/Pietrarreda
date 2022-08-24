@@ -1,0 +1,82 @@
+/*css footer*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    font-weight: 300;
+}
+
+.footer{
+    position: absolute;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    width: 100%;
+    background-color: #292929;
+    border-radius: 10px;
+}
+
+.footer .social{
+    text-align: center;
+    padding-bottom: 25px;
+    color: #ffffff;
+
+}
+
+.footer .social a{
+    color: inherit;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 8px;
+}
+.footer .social a:hover{
+    color: #d1aa11;
+}
+.footer .Cell{
+    color: white;
+}
+.footer .chiSiamo{
+    color: white;
+}
+.footer .mail{
+    color: white;
+}
+.footer .support{
+    color: white;
+}
+.footer ul{
+    margin-top: 0;
+    padding: 3px;
+    list-style: none;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.footer ul a {
+    color:white;
+    text-decoration: none;
+}
+.footer ul li a:hover{
+    color: #d1aa11;
+}
+.footer ul li{
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.footer .copyright{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 12px;
+    color: darkgray;
+}
