@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <%@ page import="model.Utente" %><%--
   Created by IntelliJ IDEA.
   User: VaLeRiX
@@ -11,12 +12,7 @@
     <title>Pietrarreda.com - Website </title>
   </head>
   <body>
-  <%@include file="jsp/header.jsp"%>
-
-
-
-
-  <%@include file="jsp/footer.jsp"%>
-
+  <%@include file="header.jsp"%>
+  <%@include file="footer.jsp"%>
   </body>
 </html>

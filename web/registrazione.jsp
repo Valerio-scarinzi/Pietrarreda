@@ -23,6 +23,6 @@
 
     </div>
 </form>
-<%@include file="jsp/footer.jsp"%>
+<%@include file="footer.jsp"%>
 </body>
 </html>

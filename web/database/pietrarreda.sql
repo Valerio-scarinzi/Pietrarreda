@@ -9,6 +9,7 @@ create table Utente(
                 username varchar(20) not null,
                 passwordhash varchar(20) not null,
                 email varchar(20) not null,
+                 admin boolean default false,
 
                 primary key(id_user)
                             );
