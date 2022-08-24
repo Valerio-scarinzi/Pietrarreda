@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: elomi
-  Date: 15/07/2022
-  Time: 18:36
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
-<link rel="stylesheet" href="Footer.css">
+<link rel="stylesheet" href="footer.css">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">

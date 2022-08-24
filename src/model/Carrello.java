@@ -89,34 +89,34 @@ public class Carrello {
 // methods of Cart
 
     public void addProd(Prodotto prod, int qty_add) {
-        if (prod_cart.containsKey(Integer.parseInt(prod.getIdprod()))) {
+        if (prod_cart.containsKey(prod.getIdprod())) {
             this.totalPrice += (prod.getPrezzo() * qty_add);}
         else {
             this.totalPrice+=(prod.getPrezzo()*qty_add);
-            prod_cart.put(Integer.parseInt(prod.getIdprod()),new ProdottoQuantità(prod,qty_add));
+            prod_cart.put(prod.getIdprod(),new ProdottoQuantità(prod,qty_add));
 
         }
     }
 
     public void removeAll(ProdottoQuantità prodottoQuantita) {
         if (prod_cart.containsValue(prodottoQuantita)) {
-            prod_cart.remove(Integer.parseInt(prodottoQuantita.getProd().getIdprod()));
+            prod_cart.remove(prodottoQuantita.getProd().getIdprod());
             this.totalPrice = 0.0;
         }
     }
 
     public void removeProd (Prodotto prod,int qty_rmv) {
-        if (prod_cart.get(Integer.parseInt(prod.getIdprod())).getQtyprd() >= 0 || prod_cart.get(Integer.parseInt(prod.getIdprod())).getQtyprd() >= qty_rmv) {
+        if (prod_cart.get(prod.getIdprod()).getQtyprd() >= 0 || prod_cart.get(prod.getIdprod()).getQtyprd() >= qty_rmv) {
             this.totalPrice -= (prod.getPrezzo() * qty_rmv);
-            if (prod_cart.get(Integer.parseInt(prod.getIdprod())).getQtyprd()==0)
-                prod_cart.remove(Integer.parseInt(prod.getIdprod()));
+            if (prod_cart.get(prod.getIdprod()).getQtyprd()==0)
+                prod_cart.remove(prod.getIdprod());
         }
         else {
-            int adjust=prod_cart.get(Integer.parseInt(prod.getIdprod())).getQtyprd()+qty_rmv;
+            int adjust=prod_cart.get(prod.getIdprod()).getQtyprd()+qty_rmv;
             this.totalPrice -=(prod.getPrezzo() *adjust);
-            prod_cart.get(Integer.parseInt(prod.getIdprod())).setQtyprd(0);
-            if (prod_cart.get(Integer.parseInt(prod.getIdprod())).getQtyprd()==0)
-                prod_cart.remove(Integer.parseInt(prod.getIdprod()));
+            prod_cart.get(prod.getIdprod()).setQtyprd(0);
+            if (prod_cart.get(prod.getIdprod()).getQtyprd()==0)
+                prod_cart.remove(prod.getIdprod());
         }
 
 

@@ -11,9 +11,13 @@ body{
     justify-content: space-between;
     display: flex;
     align-items: center;
-    background-color: #e79213;
-    border: black solid;
-    color: black;
+    background-color: #292929;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.navBar{
+    box-shadow:2px 2px 25px;
 }
 
 .SearchBar input{
@@ -21,7 +25,7 @@ body{
 }
 
 .SearchBar button{
-    border-radius: 5px;
+    border-radius: 7px;
 }
 
 
@@ -36,12 +40,12 @@ body{
 .navBar-links li a {
     font-family: sans-serif;
     text-decoration: none;
-    color: black;
+    color: #ffffff;
     padding: 16px;
     display: block;
 }
-.navBar-links li:hover{
-    background-color: rgb(255, 211, 17);
+.navBar-links li a:hover{
+    color: rgb(255, 211, 17);
     transition-duration:0.1s;
 }
 .SearchBar {

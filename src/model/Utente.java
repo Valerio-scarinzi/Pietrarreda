@@ -14,6 +14,7 @@ public class Utente {
   private String username;
   private String password;
   private String email;
+  private boolean admin;
 
   public String getPassword() {
     return password;
