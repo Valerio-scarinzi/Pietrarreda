@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 **/
 
 
-
+        //Fai un altro if che controlla se l utente è admin (booleano),se admin -> indirizzare a jsp admin (da creare)
         if(user_bool==true&&password_bool==true){
 
             HttpSession oldSession = req.getSession();
