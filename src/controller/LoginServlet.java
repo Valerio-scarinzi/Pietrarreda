@@ -30,24 +30,9 @@ public class LoginServlet extends HttpServlet {
         System.out.println(utente);
         boolean user_bool = username.equals(utente.getUsername());
         boolean password_bool = password.equals(utente.getPassword());
+        boolean admin_bool = utente.isAdmin();
 
-
-        /*for(int i = 0 ; i<= listUtente.size()-1; i++){
-
-            utente = listUtente.get(i);
-            email_bool=email.equals(utente.getEmail());
-                if(email_bool==true){System.out.println("email corretta = "+email_bool+" "+utente.getEmail()); }
-
-            password_bool=password.equals(utente.getPassword());
-                if(password_bool==true){System.out.println("password corretta"+password_bool+" "+utente.getPassword());}
-
-
-            if(email_bool != true &&password_bool !=true) {
-                System.out.println("Utente non trovato!" + "  " + password_bool + " " + email_bool + " " + utente.getEmail() + " " + utente.getPassword());
-            }
-        }
-
-**/
+        
 
 
         //Fai un altro if che controlla se l utente è admin (booleano),se admin -> indirizzare a jsp admin (da creare)
@@ -61,7 +46,7 @@ public class LoginServlet extends HttpServlet {
             recentSession.setAttribute("utenteLoggato",utente);
 
         }
-            if(utente.isAdmin() == false){
+            if(admin_bool==false){
             RequestDispatcher dispatcher = req.getRequestDispatcher("stampa.jsp");
             dispatcher.forward(req,resp);}
             else{
