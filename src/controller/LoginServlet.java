@@ -57,12 +57,20 @@ public class LoginServlet extends HttpServlet {
             if(oldSession != null){
              oldSession.invalidate();
 
-            HttpSession recentSession = req.getSession();;
+            HttpSession recentSession = req.getSession();
             recentSession.setAttribute("utenteLoggato",utente);
 
         }
+            if(utente.isAdmin() == false){
             RequestDispatcher dispatcher = req.getRequestDispatcher("stampa.jsp");
-            dispatcher.forward(req,resp);
+            dispatcher.forward(req,resp);}
+            else{
+                RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
+                dispatcher.forward(req,resp);
+            }
+
+
+
 
         }
 

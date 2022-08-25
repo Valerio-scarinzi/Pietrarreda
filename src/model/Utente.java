@@ -46,6 +46,13 @@ public class Utente {
 
   }
 
+  public boolean isAdmin() {
+    return admin;
+  }
+
+  public void setAdmin(boolean admin) {
+    this.admin = admin;
+  }
 
   public Utente(String nome, String cognome, String username){
     this.nome = nome;
@@ -72,7 +79,8 @@ public class Utente {
             ", username='" + username + '\'' +
             ", password='" + password + '\'' +
             ", email='" + email + '\'' +
-            '}';
+        ", admin='" + admin + '\'' +
+        '}';
   }
 
   public int getId() {
