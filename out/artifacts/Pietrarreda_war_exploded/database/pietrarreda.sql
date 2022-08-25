@@ -13,10 +13,10 @@ create table Utente(
 
                 primary key(id_user)
                             );
-                            insert into utente values(default,'valerio','scarinzi','valerx',"valerio","valerio@email");
-                             insert into utente values(default,'francesco','di domenico','spaghettino',"franscesco","francesco@email");
-                              insert into utente values(default,'mario','guida','mario98',"mario","mario@email");
-                               insert into utente values(default,'andrea','landolfi','andre98',"andrea","andrea@email");
+                            insert into utente values(default,'valerio','scarinzi','valerx',"valerio","valerio@email",true);
+                             insert into utente values(default,'francesco','di domenico','spaghettino',"franscesco","francesco@email",true);
+                              insert into utente values(default,'mario','guida','mario98',"mario","mario@email",false);
+                               insert into utente values(default,'andrea','landolfi','andre98',"andrea","andrea@email",false);
                            
                 
   create table Categoria(

@@ -61,8 +61,16 @@ public class LoginServlet extends HttpServlet {
             recentSession.setAttribute("utenteLoggato",utente);
 
         }
+            if(utente.isAdmin() == false){
             RequestDispatcher dispatcher = req.getRequestDispatcher("stampa.jsp");
-            dispatcher.forward(req,resp);
+            dispatcher.forward(req,resp);}
+            else{
+                RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
+                dispatcher.forward(req,resp);
+            }
+
+
+
 
         }
 
