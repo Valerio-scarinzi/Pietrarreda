@@ -28,8 +28,8 @@
         }
     </script></div>
     <div class="navBar-links">
-        <ul>
-            <li><a href="showCatalogo.jsp">Catalogo</a></li>
+        <input>
+            <li> <form method="post" action="CategoriaServlet"> <input type="submit" value="Catalogo">Catalogo</form></li>
             <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="registrazione.jsp"> Registrazione </a></li>
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>

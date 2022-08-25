@@ -57,6 +57,7 @@ public class UtenteDAO {
         p.setUsername(rs.getString(4));
         p.setPassword(rs.getString(5));
         p.setEmail(rs.getString(6));
+        p.setAdmin(rs.getBoolean(7));
         System.out.println(p.toString());
         return p;
       }
