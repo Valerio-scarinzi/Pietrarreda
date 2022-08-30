@@ -20,7 +20,7 @@ public class CategoriaServlet extends HttpServlet {
         Categoria categoria1,categoria2,categoria3;
         ArrayList<Categoria> catList = new ArrayList<Categoria>();
         CategoriaDAO categoriaDAO = new CategoriaDAO();
-        catList = categoriaDAO.doRetrieveAll();
+        catList = categoriaDAO.doRetrieveAllCategory();
 
         categoria1=catList.get(0);req.setAttribute("Categoria1",categoria1);
         categoria2=catList.get(1);req.setAttribute("Categoria2",categoria2);
