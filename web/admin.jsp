@@ -9,8 +9,29 @@
 <html>
 <head>
     <title>admin console</title>
+<h1>Benvenuti nell'admin console </h1>
+
 </head>
 <body>
+
+<form method="post" action="ProdottoServlet">
+    <p>gestione prodotto </p>  <input type="submit" name="invio"> <br>
+
+</form>
+
+
+<form method="post" action="adminCatServ">
+    <p>gestione categoria </p>  <input type="submit" name="invio"> <br>
+
+</form>
+
+
+<form method="post" action="adminUtenteServ">
+    <p>gestione utente </p>  <input type="submit" name="invio"> <br>
+
+</form>
+
+
 
 </body>
 </html>

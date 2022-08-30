@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ProdottoDao {
+public class ProdottoDAO {
 
     public ArrayList<Prodotto> getAllProdotti() {
         try (Connection con = ConPool.getConnection()) {
@@ -46,5 +46,36 @@ public class ProdottoDao {
         }
 
 
+    }
+
+
+    public void doUpdate(int idprod,String nome,int quantprodotto,String descr,double prezzo,int disponibilita){
+        try(Connection connection=ConPool.getConnection()) {
+            PreparedStatement ps=connection.prepareStatement("UPDATE prodotto set idprod=?, nome=?,quantprodotto=?,descr=?,prezzo=?,disponibilita=?,where Id_product=?;");
+            ps.setInt(1,idprod);
+            ps.setString(2,nome);
+            ps.setString(3,descr);
+            ps.setDouble(4,prezzo);
+            ps.setInt(5,disponibilita);
+      
+            ps.executeUpdate();
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    public void doDelete(int parseInt) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE `Idprod` = ?;");
+            ps.setInt(1, parseInt);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("errore nella cancellazione");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

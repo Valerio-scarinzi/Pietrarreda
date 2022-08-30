@@ -11,7 +11,9 @@ import java.util.ArrayList;
 public class CategoriaDAO  {
 
 
-    public ArrayList<Categoria> doRetrieveAll() {
+    public static ArrayList<Categoria> doRetrieveAllCategory;
+
+    public ArrayList<Categoria> doRetrieveAllCategory() {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps =
                     con.prepareStatement("SELECT * FROM Categoria");

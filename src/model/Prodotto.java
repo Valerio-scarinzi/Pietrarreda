@@ -76,9 +76,10 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public Prodotto(int id, String nome, String desc, double price,int disp) {
+    public Prodotto(int id, String nome,int quantprodotto, String desc, double price,int disp) {
         this.idprod = id;
         this.nome = nome;
+        this.quantprodotto = quantprodotto;
         this.desc = desc;
         this.prezzo = price;
         this.disponibilita=disp;
