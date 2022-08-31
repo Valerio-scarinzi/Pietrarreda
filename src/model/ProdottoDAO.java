@@ -51,13 +51,13 @@ public class ProdottoDAO {
 
     public void doUpdate(int idprod,String nome,int quantprodotto,String descr,double prezzo,int disponibilita){
         try(Connection connection=ConPool.getConnection()) {
-            PreparedStatement ps=connection.prepareStatement("UPDATE prodotto set idprod=?, nome=?,quantprodotto=?,descr=?,prezzo=?,disponibilita=?,where Id_product=?;");
-            ps.setInt(1,idprod);
-            ps.setString(2,nome);
-            ps.setString(3,descr);
-            ps.setDouble(4,prezzo);
+            PreparedStatement ps=connection.prepareStatement("UPDATE Prodotto set  nome_prod=?,descrizione_prod=?,costo_prodotto=?,quantita_prod=?,disponibilita_prod=? where Id_prodotto=?;");
+            ps.setString(1,nome);
+            ps.setString(2,descr);
+            ps.setDouble(3,prezzo);
+            ps.setInt(4, quantprodotto);
             ps.setInt(5,disponibilita);
-      
+            ps.setInt(6,idprod);
             ps.executeUpdate();
         }
         catch (SQLException e){
@@ -67,10 +67,10 @@ public class ProdottoDAO {
     }
 
 
-    public void doDelete(int parseInt) {
+    public void doDelete(int id_prodotto) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE `Idprod` = ?;");
-            ps.setInt(1, parseInt);
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE `Id_prodotto` = ?;");
+            ps.setInt(1, id_prodotto);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("errore nella cancellazione");
             }

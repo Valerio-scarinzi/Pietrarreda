@@ -19,8 +19,6 @@
     <input name="password" type="text" placeholder="Inserisci Password"><br>
     <input name="email" type="text" placeholder="Inserisci E-mail"><br>
         <input type="submit" value="Registrati">
-
-
     </div>
 </form>
 <%@include file="footer.jsp"%>

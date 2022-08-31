@@ -3,13 +3,13 @@ package model;
 public class Categoria {
     private int id ;
     private String categoria_nome;
-    private String dscrizione;
+    private String descrizione;
     private String img;
 
     public Categoria(int id, String categoria_nome, String dscrizione) {
         this.id = id;
         this.categoria_nome = categoria_nome;
-        this.dscrizione = dscrizione;
+        this.descrizione = dscrizione;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Categoria {
         return "Categoria{" +
                 "id=" + id +
                 ", categoria_nome='" + categoria_nome + '\'' +
-                ", dscrizione='" + dscrizione + '\'' +
+                ", descrizione='" + descrizione + '\'' +
                 ", img='" + img + '\'' +
                 '}';
     }
@@ -53,12 +53,12 @@ public class Categoria {
         this.categoria_nome = categoria_nome;
     }
 
-    public String getDscrizione() {
-        return dscrizione;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setDscrizione(String dscrizione) {
-        this.dscrizione = dscrizione;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
     public String getImg() {

@@ -12,7 +12,7 @@
 </style>
 <body>
 <nav class="navBar">
-    <div class="brand-img"><a href="#"><img src="" alt="Logo.aapg"> </a></div>
+    <div class="brand-img"><a href="#"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
         <a href="#" class="toggle-button">
             <span class="bar"></span>
@@ -29,7 +29,7 @@
     </script></div>
     <div class="navBar-links">
         <input>
-            <li> <form method="post" action="CategoriaServlet"> <input type="submit" value="Catalogo">Catalogo</form></li>
+            <li> <form method="post" action="CategoriaServlet"> <input type="button" value="Catalogo">Catalogo</form></li>
             <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="registrazione.jsp"> Registrazione </a></li>
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>

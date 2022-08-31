@@ -22,19 +22,19 @@
 
     <div class="showProdotti">
 
-    <c:forEach items="${listProdotti}" var="prod">
-        <c:out value="${prod.nome}" /><br>
-        <c:out value="${prod.desc}" /><br>
-        <c:out value="${prod.prezzo}" /><br>
-        <c:out value="${prod.quantprodotto}" /><br>
-        <c:out value="${prod.disponibilita}" /><br>
+    <c:forEach items="${listProdotti}" var="prodotto">
+        ID: <c:out value="${prodotto.idprod}" /><br>
+        Nome:  <c:out value="${prodotto.nome}" /><br>
+        Descrizione:  <c:out value="${prodotto.desc}" /><br>
+        Prezzo:  <c:out value="${prodotto.prezzo}" /><br>
+        Quantita' prodotto:  <c:out value="${prodotto.quantprodotto}" /><br>
+        Disponibilita':  <c:out value="${prodotto.disponibilita}" /><br>
 
 
 
 
         <form method="post" action="GestioneProdottoServlet">
-    <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br><br>
-
+    <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
 
     <input type="text" name="cambiaDesc" id="cambiaDesc" placeholder="modifica descrizione"> <br>
 
@@ -44,22 +44,15 @@
 
     <input type="text" name="cambiaDisp" id="cambiaDisp" placeholder="modifica disponibilità"> <br>
 
-    Vuoi eliminare l'elemento dal DB  <input type="checkbox" name="elimina" >
+    Vuoi eliminare l'elemento dal DB ?  <input type="checkbox" name="elimina" >
 
     <c:set var="id" value="${prod.idprod}" scope="request"/>
+            <c:out value="id"/>
             <c:out value="${requestScope.id}"/>
 
     <input type="submit" value="Modifica/Elimina"> <br><br><br>
     </c:forEach>
 </form>
-
     </div>
-
-
-
-
-
-
-
 </body>
 </html>

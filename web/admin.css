@@ -9,9 +9,9 @@ body{
     align-items: center;
     height: 700px;
 }
-.Reg_panel{
+.admin_panel{
     color: #d1aa11;
-   background-color: #292929;
+    background-color: #292929;
     max-width: 700px;
     width: 100%;
     padding: 25px 30px;
@@ -19,7 +19,6 @@ body{
 }
 
 
-.Reg_panel input{
-    padding-top: 10px;
+.admin_panel input{
     horiz-align: center;
 }
