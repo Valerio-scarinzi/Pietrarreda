@@ -9,17 +9,17 @@ body{
     align-items: center;
     height: 700px;
 }
-.Reg_panel{
+.Log_panel{
     color: #d1aa11;
-   background-color: #292929;
-    max-width: 700px;
+    background-color: #292929;
+    max-width: 350px;
     width: 100%;
     padding: 25px 30px;
     border-radius: 15px;
 }
 
 
-.Reg_panel input{
-    padding-top: 10px;
+.Log_panel input{
+    height: 25px;
     horiz-align: center;
 }

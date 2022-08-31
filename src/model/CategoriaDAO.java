@@ -25,7 +25,7 @@ public class CategoriaDAO  {
                 Categoria p = new Categoria();
                 p.setId(rs.getInt(1));
                 p.setCategoria_nome(rs.getString(2));
-                p.setDscrizione(rs.getString(3));
+                p.setDescrizione(rs.getString(3));
                 p.setImg(rs.getString(4));
 
 

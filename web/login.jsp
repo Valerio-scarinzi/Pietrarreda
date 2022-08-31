@@ -7,26 +7,21 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<link rel="stylesheet" href="login.css">
 <head>
-    <title>login</title>
+
+    <title>login panel</title>
 </head>
 <body>
-
+<div class="Log_panel">
+    <h3>LOGIN PANEL </h3>
 <form method="post" action="Login" >
-
-    email<br>
-    <input name="email" type="text"><br>
-    password<br>
-    <input name="password" type="password"><br>
-    username<br>
-    <input name="username" type="text"><br>
-    <input type="submit">
-
-
-
-
-
+    E-mail: <input name="email" type="text" placeholder="inserisci e-mail"><br>
+    Password:  <input name="password" type="password" placeholder="inserisci password"><br>
+    Username:  <input name="username" type="text" placeholder="inserisci username"><br>
+    <input type="submit" value="Accedi">
 </form>
-
+</div>
+<%@include file="footer.jsp"%>
 </body>
 </html>

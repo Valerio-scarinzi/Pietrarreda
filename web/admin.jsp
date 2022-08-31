@@ -7,31 +7,28 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<link rel="stylesheet" href="admin.css">
 <head>
     <title>admin console</title>
-<h1>Benvenuti nell'admin console </h1>
 
 </head>
 <body>
 
+<div class="admin_panel">
+    <h3>ADMIN CONSOLE</h3>
 <form method="post" action="ProdottoServlet">
-    <p>gestione prodotto </p>  <input type="submit" name="invio"> <br>
-
+    <p>Gestione prodotto </p>  <input type="submit" value="gestisci"> <br>
 </form>
-
 
 <form method="post" action="adminCatServ">
-    <p>gestione categoria </p>  <input type="submit" name="invio"> <br>
-
+    <p>Gestione categoria </p>  <input type="submit" value="gestisci"> <br>
 </form>
-
 
 <form method="post" action="adminUtenteServ">
-    <p>gestione utente </p>  <input type="submit" name="invio"> <br>
-
+    <p>Gestione utente </p>  <input type="submit" value="gestisci"> <br>
 </form>
 
-
-
+</div>
+<%@include file="footer.jsp"%>
 </body>
 </html>

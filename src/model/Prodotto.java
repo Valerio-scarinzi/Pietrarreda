@@ -6,11 +6,11 @@ public class Prodotto {
     private  int quantprodotto; //quantita' del prodotto
     private String desc; //descrizione del prodotto
     private double prezzo; // prezzo del prodotto
-    private int disponibilita; //disponibilità del prodotto (non ho capito a che serve)
+    private int disponibilita; //disponibilità del prodotto
 
     //inizio costruttori
     public Prodotto(String name){
-        nome=name;
+        this.nome=name;
     }
 
     public Prodotto(String name, int qty) {
