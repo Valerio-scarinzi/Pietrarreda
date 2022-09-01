@@ -30,6 +30,8 @@
         Quantita' prodotto:  <c:out value="${prodotto.quantprodotto}" /><br>
         Disponibilita':  <c:out value="${prodotto.disponibilita}" /><br>
 
+
+
         <form method="post" action="GestioneProdottoServlet">
     <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
 

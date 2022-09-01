@@ -29,7 +29,8 @@
     </script></div>
     <div class="navBar-links">
         <input>
-            <li> <form method="post" action="CategoriaServlet"> <input type="button" value="Catalogo">Catalogo</form></li>
+
+            <li> <a href="AdminCategoria">Categorie</a></li>
             <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
 
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
