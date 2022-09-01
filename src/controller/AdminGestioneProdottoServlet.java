@@ -33,22 +33,21 @@ public class AdminGestioneProdottoServlet extends HttpServlet {
     HttpSession recentSession = req.getSession();
     ArrayList<Prodotto> lista = (ArrayList<Prodotto>) recentSession.getAttribute("listProdotti");
     Prodotto prod = new Prodotto();
-    int id= Integer.parseInt(req.getParameter("id"));
-    String newElimina = (String) req.getParameter("elimina");
+
 
 
     ProdottoDAO prodottoDAO = new ProdottoDAO();
+    int id=Integer.parseInt(req.getParameter("id"));
 
-    if(newElimina == null){
+
       prodottoDAO.doUpdate(id,newNome,quant,newDesc,prezzo,disp);
-    }
-    else{prodottoDAO.doDelete(id);}
 
 
 
-    // rindirizzare al pannello admin dopo ogni operazione
-    RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
-    dispatcher.forward(req, resp);
+
+
+    // rindirizzare al pannello admin dei prodotti dopo ogni operazione
+    resp.sendRedirect("ProdottoServlet");
   }
 
   @Override
