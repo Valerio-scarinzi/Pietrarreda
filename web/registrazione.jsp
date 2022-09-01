@@ -9,8 +9,6 @@
 
 
 <form method="post" action="Registrazione">
-
-
     <div class="Reg_panel">
         <h3>REGISTRAZIONE</h3>
         <input name="nome" type="text" placeholder="Inserisci Nome"><br>

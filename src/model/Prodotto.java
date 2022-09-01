@@ -17,6 +17,7 @@ public class Prodotto {
         this.quantprodotto = qty;
         this.nome = name;
     }
+
     public Prodotto(String name, int qty, int id) {
         this.idprod = id;
         this.quantprodotto = qty;
@@ -24,6 +25,15 @@ public class Prodotto {
     }
 
     public Prodotto() {
+    }
+    //costruttore per aggiunta prodotto
+    public Prodotto( String nome,String desc,int quantprodotto, double price,int disp) {
+
+        this.nome = nome;
+        this.quantprodotto = quantprodotto;
+        this.desc = desc;
+        this.prezzo = price;
+        this.disponibilita=disp;
 
     }
 
@@ -75,7 +85,7 @@ public class Prodotto {
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
-
+    //costruttore pieno
     public Prodotto(int id, String nome,int quantprodotto, String desc, double price,int disp) {
         this.idprod = id;
         this.nome = nome;
