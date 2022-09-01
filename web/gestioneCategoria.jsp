@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Categoria" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: VaLeRiX
   Date: 30/08/2022
@@ -11,6 +12,10 @@
     <title>Gestione categorie</title>
 </head>
 <body>
+
+<%ArrayList<Categoria> list = (ArrayList<Categoria>) session.getAttribute("listCategorie"); %>
+
+
 
 
 
