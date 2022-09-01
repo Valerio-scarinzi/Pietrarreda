@@ -11,14 +11,14 @@
 <html>
 <head>
     <title>aggiungi un prodotto</title>
+    <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <%ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("listProdotti");%>
-<h2>prodotti nel database.</h2>
-
-
-
-
+<h2>Prodotti nel database.</h2>
+<div class="addProdotto">
+    <a href="addProdotto.jsp"> Aggiungi prodotto <i class="fa-solid fa-plus"></i></a>
+</div>
 
     <div class="showProdotti">
 
@@ -29,9 +29,6 @@
         Prezzo:  <c:out value="${prodotto.prezzo}" /><br>
         Quantita' prodotto:  <c:out value="${prodotto.quantprodotto}" /><br>
         Disponibilita':  <c:out value="${prodotto.disponibilita}" /><br>
-
-
-
 
         <form method="post" action="GestioneProdottoServlet">
     <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
@@ -44,10 +41,10 @@
 
     <input type="text" name="cambiaDisp" id="cambiaDisp" placeholder="modifica disponibilità"> <br>
 
-    Vuoi eliminare l'elemento dal DB ?  <input type="checkbox" name="elimina" >
+    Vuoi eliminare l'elemento dal DB ?  <input type="checkbox" name="elimina" ><br>
 
     <c:set var="id" value="${prod.idprod}" scope="request"/>
-            <c:out value="id"/>
+            <c:out value="${id}"/>
             <c:out value="${requestScope.id}"/>
 
     <input type="submit" value="Modifica/Elimina"> <br><br><br>

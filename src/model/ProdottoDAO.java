@@ -78,4 +78,20 @@ public class ProdottoDAO {
             throw new RuntimeException(e);
         }
     }
+    public void doSave(Prodotto prodotto) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("INSERT into Prodotto (nome_prod,descrizione_prod,costo_prodotto,quantita_prod,disponibilita_prod) VALUES (?,?,?,?,?);");
+            ps.setString(1, prodotto.getNome());
+            ps.setString(2, prodotto.getDesc());
+            ps.setDouble(4, prodotto.getPrezzo());
+            ps.setInt(3, prodotto.getQuantprodotto());
+            ps.setInt(5, prodotto.getDisponibilita());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("Errore nell'inserimento");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

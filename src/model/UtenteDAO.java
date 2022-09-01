@@ -82,7 +82,7 @@ public class UtenteDAO {
       ps.setString(4, customer.getPassword());
       ps.setString(5, customer.getEmail());
       if (ps.executeUpdate() != 1) {
-        throw new RuntimeException("INSERT error.");
+        throw new RuntimeException("Errore nell'inserimento");
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);
