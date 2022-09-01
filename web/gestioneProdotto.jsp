@@ -17,7 +17,9 @@
 <%ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("listProdotti");%>
 <h2>Prodotti nel database.</h2>
 <div class="addProdotto">
+    <button class="btn">
     <a href="addProdotto.jsp"> Aggiungi prodotto <i class="fa-solid fa-plus"></i></a>
+    </button>
 </div>
 
     <div class="showProdotti">
@@ -35,19 +37,19 @@
 
     <input type="text" name="cambiaDesc" id="cambiaDesc" placeholder="modifica descrizione"> <br>
 
-      <input type="text" name="cambiaPrezzo" id="cambiaPrezzo" placeholder="modifica prezzo"> <br>
+      <input type="number" min="0" step="0.05" name="cambiaPrezzo" id="cambiaPrezzo" placeholder="modifica prezzo"> <br>
 
-    <input type="text" name="cambiaQuant" id="cambiaQuant" placeholder="modifica quantita"> <br>
+    <input type="number" min="0" name="cambiaQuant" id="cambiaQuant" placeholder="modifica quantita"> <br>
 
-    <input type="text" name="cambiaDisp" id="cambiaDisp" placeholder="modifica disponibilità"> <br>
+    <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" placeholder="modifica disponibilità"> <br>
 
-    Vuoi eliminare l'elemento dal DB ?  <input type="checkbox" name="elimina" ><br>
 
-    <c:set var="id" value="${prod.idprod}" scope="request"/>
-            <c:out value="${id}"/>
-            <c:out value="${requestScope.id}"/>
+                <button class="btn">
+              <a href="DeleteProdotto?id=${prodotto.idprod}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
+            </button>
 
-    <input type="submit" value="Modifica/Elimina"> <br><br><br>
+
+    <input type="submit" value="Modifica"> <br><br><br>
     </c:forEach>
 </form>
     </div>

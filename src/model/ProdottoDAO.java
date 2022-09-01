@@ -47,6 +47,35 @@ public class ProdottoDAO {
 
 
     }
+    public Prodotto getProdById(int id) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps =
+                    con.prepareStatement("SELECT * FROM  prodotto WHERE id_prodotto=?");
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                Prodotto p = new Prodotto();
+                p.setIdprod(rs.getInt(1));
+                p.setNome(rs.getString(2));
+                p.setDesc(rs.getString(3));
+                p.setPrezzo(rs.getDouble(4));
+                p.setQuantprodotto(rs.getInt(5));
+                p.setDisponibilita(rs.getInt(6));
+                return p;
+            }
+
+            con.close();
+            return null;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 
 
     public void doUpdate(int idprod,String nome,int quantprodotto,String descr,double prezzo,int disponibilita){
