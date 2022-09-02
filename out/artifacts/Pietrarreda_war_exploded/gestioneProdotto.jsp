@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>aggiungi un prodotto</title>
+    <title>Prodotti DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -43,15 +43,12 @@
 
     <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" placeholder="modifica disponibilità"> <br>
 
-
-                <button class="btn">
+            <button class="btn">
               <a href="DeleteProdotto?id=${prodotto.idprod}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-
-
-    <input type="submit" value="Modifica"> <br><br><br>
+    <input type="submit" value="Modifica"></form><br><br><br>
     </c:forEach>
-</form>
+
     </div>
 </body>
 </html>

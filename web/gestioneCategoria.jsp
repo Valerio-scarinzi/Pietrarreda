@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.Categoria" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
@@ -9,11 +10,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Gestione categorie</title>
+    <title>Categorie DB</title>
+    <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<%ArrayList<Categoria> list = (ArrayList<Categoria>) session.getAttribute("listCategorie"); %>
+<%ArrayList<Categoria> categorie = (ArrayList<Categoria>) session.getAttribute("listCategorie"); %>
+<h2>Categorie nel database</h2>
+<div class="addCategoria">
+    <button class="btn">
+        <a href="addCategoria.jsp"> Aggiungi Categoria <i class="fa-solid fa-plus"></i></a>
+    </button>
+</div>
+
+<div class="showCategorie">
+    <c:forEach items="${listCategorie}" var="categoria">
+    ID: <c:out value="${categoria.id}" /><br>
+    Nome:  <c:out value="${categoria.categoria_nome}" /><br>
+    Descrizione:  <c:out value="${categoria.descrizione}" /><br>
+    Immagine:  <c:out value="${categoria.img}" /><br>
+
+
+    <form method="post" action="GestioneCategoriaServlet?id=${categoria.id}">
+        <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
+
+        <input type="text" name="cambiaDesc" id="cambiaDesc" placeholder="modifica descrizione"> <br>
+
+        <input type="text" name="cambiaImg" id="cambiaImg" placeholder="modifica immagine"> <br>
+        <button class="btn">
+            <a href="DeleteCategoria?id=${categoria.id}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
+        </button>
+        
+        <input type="submit" value="Modifica"></form><br><br><br>
+        </c:forEach>
+</div>
+
 
 
 

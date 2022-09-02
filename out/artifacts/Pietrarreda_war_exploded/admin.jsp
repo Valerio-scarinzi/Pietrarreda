@@ -16,11 +16,11 @@
 
 <div class="admin_panel">
     <h3>ADMIN CONSOLE</h3>
-<form method="post" action="ProdottoServlet">
+<form method="post" action="ProdottiServlet">
     <p>Gestione prodotto </p>  <input type="submit" value="gestisci"> <br>
 </form>
 
-<form method="post" action="adminCatServ">
+<form method="post" action="CategorieServlet">
     <p>Gestione categoria </p>  <input type="submit" value="gestisci"> <br>
 </form>
 
