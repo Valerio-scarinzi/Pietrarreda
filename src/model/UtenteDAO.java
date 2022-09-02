@@ -26,6 +26,7 @@ public class UtenteDAO {
         p.setUsername(rs.getString(4));
         p.setEmail(rs.getString(6));
         p.setPassword(rs.getString(5));
+        p.setAdmin(rs.getBoolean(7));
 
         customerList.add(p);
 
@@ -74,13 +75,14 @@ public class UtenteDAO {
 
   public void doSave(Utente customer) {
     try (Connection con = ConPool.getConnection()) {
-      PreparedStatement ps = con.prepareStatement("INSERT into Utente (Nome,Cognome,username,passwordhash,email,admin) VALUES (?,?,?,?,?,false);");
+      PreparedStatement ps = con.prepareStatement("INSERT into Utente (Nome,Cognome,username,passwordhash,email,admin) VALUES (?,?,?,?,?,?);");
 
       ps.setString(1, customer.getNome());
       ps.setString(2, customer.getCognome());
       ps.setString(3, customer.getUsername());
       ps.setString(4, customer.getPassword());
       ps.setString(5, customer.getEmail());
+      ps.setBoolean(6,customer.isAdmin());
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("Errore nell'inserimento");
       }
@@ -88,5 +90,34 @@ public class UtenteDAO {
       throw new RuntimeException(e);
     }
 
+  }
+
+  public void doUpdate(int id,String nome,String cognome,String username,String password,String email,boolean admin) {
+    try(Connection connection=ConPool.getConnection()) {
+      PreparedStatement ps=connection.prepareStatement("UPDATE Utente set  Nome=?,Cognome=?,username=?,passwordhash=?,email=?,admin=? where Id_user=?;");
+      ps.setString(1,nome);
+      ps.setString(2,cognome);
+      ps.setString(3,username);
+      ps.setString(4, password);
+      ps.setString(5,email);
+      ps.setBoolean(6,admin);
+      ps.setInt(7,id);
+      ps.executeUpdate();
+    }
+    catch (SQLException e){
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void doDelete(int id) {
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps = con.prepareStatement("DELETE FROM Utente WHERE `Id_user` = ?;");
+      ps.setInt(1, id);
+      if (ps.executeUpdate() != 1) {
+        throw new RuntimeException("errore nella cancellazione");
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
   }
 }

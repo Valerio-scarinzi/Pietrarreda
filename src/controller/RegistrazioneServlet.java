@@ -27,6 +27,7 @@ public class RegistrazioneServlet extends HttpServlet {
         utente.toString();
 
         UtenteDAO utenteDAO=new UtenteDAO();
+        utente.setAdmin(false);
         utenteDAO.doSave(utente);
 
 

@@ -2,8 +2,8 @@ package controller;
 
 
 
-import model.Categoria;
-import model.CategoriaDAO;
+import model.Utente;
+import model.UtenteDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet("/DeleteCategoria")//rimozione categoria dal DB
-public class AdminEliminaCatServlet extends HttpServlet {
-    private Categoria categoria;
+@WebServlet("/DeleteUtente")//rimozione utente dal DB
+public class AdminEliminaUtenteServlet extends HttpServlet {
+    private Utente utente;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
@@ -23,9 +23,9 @@ public class AdminEliminaCatServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int id=Integer.parseInt(req.getParameter("id"));
-        CategoriaDAO categoriaDAO=new CategoriaDAO();
-        categoriaDAO.doDelete(id);
+        UtenteDAO utenteDAO=new UtenteDAO();
+        utenteDAO.doDelete(id);
 
-        resp.sendRedirect("CategorieServlet"); //rindirizzare al pannello admin delle categorie dopo ogni operazione
+        resp.sendRedirect("UtentiServlet"); //rindirizzare al pannello admin degli utenti dopo ogni operazione
     }
 }
