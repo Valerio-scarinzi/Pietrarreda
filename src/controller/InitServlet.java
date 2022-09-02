@@ -15,8 +15,8 @@ public class InitServlet extends HttpServlet {
   // inizializza il sito con estraendo tutte le categorie dal DB
   @Override
   public void init() throws ServletException {
-    ArrayList<Categoria> categories= CategoriaDAO.doRetrieveAllCategory;
+    /*ArrayList<Categoria> categories= CategoriaDAO.doRetrieveAllCategory;
     getServletContext().setAttribute("categorie",categories);
-    super.init();
+    super.init();*/
   }
 }
