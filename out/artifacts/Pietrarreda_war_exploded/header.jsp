@@ -28,10 +28,9 @@
         }
     </script></div>
     <div class="navBar-links">
-        <input>
-
             <li> <a href="AdminCategoria">Categorie</a></li>
             <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
+            <li><a href="registrazione.jsp">Registrati</a> </li>
 
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <div class="SearchBar">
