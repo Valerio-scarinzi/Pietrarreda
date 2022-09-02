@@ -24,7 +24,7 @@
     <p>Gestione categoria </p>  <input type="submit" value="gestisci"> <br>
 </form>
 
-<form method="post" action="adminUtenteServ">
+<form method="post" action="UtentiServlet">
     <p>Gestione utente </p>  <input type="submit" value="gestisci"> <br>
 </form>
 

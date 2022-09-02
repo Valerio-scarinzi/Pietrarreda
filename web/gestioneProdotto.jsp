@@ -46,7 +46,8 @@
             <button class="btn">
               <a href="DeleteProdotto?id=${prodotto.idprod}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-    <input type="submit" value="Modifica"></form><br><br><br>
+    <input type="submit" value="Modifica"><br><br><br>
+        </form>
     </c:forEach>
 
     </div>
