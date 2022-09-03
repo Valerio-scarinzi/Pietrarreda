@@ -45,9 +45,9 @@ public class AdminGestioneProdottoServlet extends HttpServlet {
 
 
 
-
     // rindirizzare al pannello admin dei prodotti dopo ogni operazione
-    resp.sendRedirect("ProdottoServlet");
+
+    resp.sendRedirect("ProdottiServlet");
   }
 
   @Override

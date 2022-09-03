@@ -3,6 +3,7 @@ package controller;
 import model.Utente;
 import model.UtenteDAO;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,9 @@ public class RegistrazioneServlet extends HttpServlet {
         UtenteDAO utenteDAO=new UtenteDAO();
         utente.setAdmin(false);
         utenteDAO.doSave(utente);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+        dispatcher.forward(req,resp);
 
 
     }
