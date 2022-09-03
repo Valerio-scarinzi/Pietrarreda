@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/AdminCategoria")
-public class AdminCetegoriaServlet  extends HttpServlet {
+@WebServlet("/CategorieServlet")
+public class AdminCategoriaServlet extends HttpServlet {
 
 
   @Override

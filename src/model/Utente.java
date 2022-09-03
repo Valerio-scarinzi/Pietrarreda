@@ -69,6 +69,25 @@ public class Utente {
     this.email=email;
     this.password=password;
   }
+  // costruttore per admin senza id
+  public Utente( String nome, String cognome, String username, String password, String email, boolean admin) {
+    this.nome = nome;
+    this.cognome = cognome;
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.admin = admin;
+  }
+  // costruttore per admin con id
+  public Utente(int id, String nome, String cognome, String username, String password, String email, boolean admin) {
+    this.id = id;
+    this.nome = nome;
+    this.cognome = cognome;
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.admin = admin;
+  }
 
   @Override
   public String toString() {

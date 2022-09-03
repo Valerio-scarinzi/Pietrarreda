@@ -2,8 +2,6 @@ package controller;
 
 import model.Prodotto;
 import model.ProdottoDAO;
-import model.Utente;
-import model.UtenteDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,8 +13,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-@WebServlet("/AddProdotto")
-public class AddProdotto extends HttpServlet { //aggiunta prodotto al DB
+@WebServlet("/AddProdotto")//aggiunta prodotto al DB
+public class AddProdotto extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

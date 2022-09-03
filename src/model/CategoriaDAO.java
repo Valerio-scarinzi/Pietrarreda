@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CategoriaDAO  {
 
 
-    public static ArrayList<Categoria> doRetrieveAllCategory;
+    public  ArrayList<Categoria> doRetrieveAllCategory;
 
     public ArrayList<Categoria> doRetrieveAllCategory() {
         try (Connection con = ConPool.getConnection()) {
@@ -41,4 +41,44 @@ public class CategoriaDAO  {
     }
 
 
+    public void doUpdate(int idcat,String nome,String descr,String imgCat) {
+        try(Connection connection=ConPool.getConnection()) {
+            PreparedStatement ps=connection.prepareStatement("UPDATE Categoria set  nome_cat=?,descrizione_cat=?,img_categoria=? where Id_categoria=?;");
+            ps.setString(1,nome);
+            ps.setString(2,descr);
+            ps.setString(3,imgCat);
+            ps.setInt(4,idcat);
+            ps.executeUpdate();
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void doSave(Categoria categoria) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("INSERT into Categoria (nome_cat,descrizione_cat,img_categoria) VALUES (?,?,?);");
+            ps.setString(1, categoria.getCategoria_nome());
+            ps.setString(2, categoria.getDescrizione());
+            ps.setString(3, categoria.getImg());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("Errore nell'inserimento");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void doDelete(int id) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Categoria WHERE `Id_categoria` = ?;");
+            ps.setInt(1, id);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("errore nella cancellazione");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

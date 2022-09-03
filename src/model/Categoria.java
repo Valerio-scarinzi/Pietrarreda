@@ -5,11 +5,18 @@ public class Categoria {
     private String categoria_nome;
     private String descrizione;
     private String img;
-
-    public Categoria(int id, String categoria_nome, String dscrizione) {
+    //costruttore pieno
+    public Categoria(int id, String categoria_nome, String descrizione,String img) {
         this.id = id;
         this.categoria_nome = categoria_nome;
-        this.descrizione = dscrizione;
+        this.descrizione = descrizione;
+        this.img=img;
+    }
+    //costruttore senza id
+    public Categoria( String categoria_nome, String descrizione,String img) {
+        this.categoria_nome = categoria_nome;
+        this.descrizione = descrizione;
+        this.img=img;
     }
 
     @Override
