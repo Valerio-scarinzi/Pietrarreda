@@ -12,6 +12,34 @@
 
     <title>login panel</title>
 </head>
+<style>
+    /*CSS login.jsp*/
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 700px;
+    }
+    .Log_panel{
+        color: #d1aa11;
+        background-color: #292929;
+        max-width: 350px;
+        width: 100%;
+        padding: 25px 30px;
+        border-radius: 15px;
+    }
+
+
+    .Log_panel input{
+        height: 25px;
+        horiz-align: center;
+    }
+</style>
 <body>
 <div class="Log_panel">
     <h3>LOGIN PANEL </h3>
