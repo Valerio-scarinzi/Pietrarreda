@@ -7,16 +7,42 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link rel="stylesheet" href="admin.css">
+<link rel="stylesheet">
 <head>
     <title>admin console</title>
-
 </head>
+<style>
+    /*CSS admin.jsp*/
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 700px;
+    }
+    .admin_panel{
+        color: #d1aa11;
+        background-color: #292929;
+        max-width: 700px;
+        width: 100%;
+        padding: 25px 30px;
+        border-radius: 15px;
+    }
+
+
+    .admin_panel input{
+        horiz-align: center;
+    }
+</style>
 <body>
 
 <div class="admin_panel">
     <h3>ADMIN CONSOLE</h3>
-<form method="post" action="ProdottiServlet">
+<form method="post" action="ProdottoServlet">
     <p>Gestione prodotto </p>  <input type="submit" value="gestisci"> <br>
 </form>
 

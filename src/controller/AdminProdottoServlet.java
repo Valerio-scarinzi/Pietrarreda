@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/ProdottiServlet")
+@WebServlet("/ProdottoServlet")
 public class AdminProdottoServlet extends HttpServlet {
 
 

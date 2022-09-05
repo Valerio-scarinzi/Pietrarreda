@@ -2,12 +2,37 @@
 <html>
 <head>
     <title>Registrazione</title>
-    <link rel="stylesheet" href="Register.css">
+    <link rel="stylesheet">
 </head>
+<style>
+    /*CSS registrazione.jsp*/
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 700px;
+    }
+    .Reg_panel{
+        color: #d1aa11;
+        background-color: #292929;
+        max-width: 700px;
+        width: 100%;
+        padding: 25px 30px;
+        border-radius: 15px;
+    }
+
+
+    .Reg_panel input{
+        padding-top: 10px;
+        horiz-align: center;
+    }
+</style>
 <body>
-
-
-
 <form method="post" action="Registrazione">
     <div class="Reg_panel">
         <h3>REGISTRAZIONE</h3>
