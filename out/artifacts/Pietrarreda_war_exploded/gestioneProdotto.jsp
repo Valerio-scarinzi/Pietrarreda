@@ -13,7 +13,18 @@
     <title>Prodotti DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
+<style>
+*{
+    box-sizing: border-box;
+}
+body{
+    margin-top: 30px;
+    padding: 5px;}
+
+
+</style>
 <body>
+<%@include file="header.jsp"%>
 <%ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("listProdotti");%>
 <h2>Prodotti nel database.</h2>
 <div class="addProdotto">
@@ -51,5 +62,6 @@
     </c:forEach>
 
     </div>
+<%@include file="footer.jsp"%>
 </body>
 </html>
