@@ -18,12 +18,12 @@
         padding: 0;
         box-sizing: border-box;
     }
-    body{
+   /* body{
         display: flex;
         justify-content: center;
         align-items: center;
         height: 700px;
-    }
+    }*/
     .admin_panel{
         color: #d1aa11;
         background-color: #292929;
@@ -31,6 +31,13 @@
         width: 100%;
         padding: 25px 30px;
         border-radius: 15px;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-bottom: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 
@@ -39,6 +46,7 @@
     }
 </style>
 <body>
+<%@include file="header.jsp"%>
 
 <div class="admin_panel">
     <h3>ADMIN CONSOLE</h3>

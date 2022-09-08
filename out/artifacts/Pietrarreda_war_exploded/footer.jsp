@@ -15,12 +15,16 @@
     }
 
     body{
+
         font-family: sans-serif;
         font-weight: 300;
     }
 
     .footer{
-        position: absolute;
+        position: relative;
+        bottom: auto;
+        margin-bottom: 0;
+
         padding: 10px 10px 0px 10px;
         bottom: 0;
         width: 100%;
