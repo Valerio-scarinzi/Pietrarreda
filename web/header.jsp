@@ -7,18 +7,19 @@
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous">
     </script>
     <title>Header responsive</title>
-</head>
+
 <style>
     *{
         box-sizing: border-box;
     }
-    body{
-        margin: 0;
-        padding: 0;
-    }
+
+
     .navBar{
-        position: fixed;
+        position: relative;
+        top: auto;
+        margin-bottom: 50px;
         width: 100%;
+        height: auto;
         justify-content: space-between;
         display: flex;
         align-items: center;
@@ -64,16 +65,21 @@
     /*submenu categorie*/
     .catDropdown {
         position: relative;
-        display: inline-flex;
+        display: flex;
+        margin-bottom: 15px;
     }
 
     .dropdown-content{
         display: none;
         position: absolute;
+
+
     }
 
     .dropdown-content a{
         display: block;
+        margin-top: auto;
+        background-color: #e49314;
     }
 
     .catDropdown:hover .dropdown-content{display: block;}
@@ -135,7 +141,7 @@
         }
     }
 </style>
-<body>
+
 <nav class="navBar">
     <div class="brand-img"><a href="#"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
@@ -153,17 +159,26 @@
         }
     </script></div>
     <div class="navBar-links">
+
+
+
+        <ul>
             <li>
+
                 <div class="catDropdown">
-                <button class="dropBtn">Negozio</button>
+                <a href="/" class="dropBtn">Negozio</a>
                     <div class="dropdown-content">
-                        <a href="#">Tutti i prodotti</a>
+                        <a href="#">Negozio</a>
                         <a href="#">Categoria 1</a>
                         <a href="#">Categoria 2</a>
                         <a href="#">Categoria 3</a>
                     </div>
             </div>
             </li>
+
+
+
+
 
             <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="registrazione.jsp">Registrati</a> </li>
@@ -178,5 +193,6 @@
         </ul>
     </div>
 </nav>
-</body>
+</head>
+<body class="body"></body>
 </html>

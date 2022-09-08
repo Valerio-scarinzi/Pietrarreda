@@ -19,18 +19,23 @@
         padding: 0;
         box-sizing: border-box;
     }
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 700px;
-    }
+
     .Log_panel{
+
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 25px 30px;
+        padding-bottom: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
         color: #d1aa11;
         background-color: #292929;
         max-width: 350px;
         width: 100%;
-        padding: 25px 30px;
+
         border-radius: 15px;
     }
 
@@ -41,6 +46,7 @@
     }
 </style>
 <body>
+<%@include file="header.jsp"%>
 <div class="Log_panel">
     <h3>LOGIN PANEL </h3>
 <form method="post" action="Login" >
