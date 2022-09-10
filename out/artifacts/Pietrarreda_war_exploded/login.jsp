@@ -19,41 +19,54 @@
         padding: 0;
         box-sizing: border-box;
     }
+    body{
+
+        justify-content: center;
+        align-items: center;
+        height: 700px;
+    }
 
     .Log_panel{
-
+        text-align: center;
         position: relative;
         margin-left: auto;
         margin-right: auto;
-
         padding: 25px 30px;
         padding-bottom: 5px;
         margin-top: 20px;
         margin-bottom: 20px;
-
-        color: #d1aa11;
+        color: #e79213;
         background-color: #292929;
         max-width: 350px;
         width: 100%;
-
         border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     }
 
 
     .Log_panel input{
-        height: 25px;
-        horiz-align: center;
+        background-color: #dcdcdc;
+        padding: 5px;
+        margin: 5px;
+        text-align: center;
     }
+    .submit:hover{
+
+        background-color: #e49314;
+
+    }
+
+
 </style>
 <body>
 <%@include file="header.jsp"%>
 <div class="Log_panel">
     <h3>LOGIN PANEL </h3>
 <form method="post" action="Login" >
-    E-mail: <input name="email" type="text" placeholder="inserisci e-mail"><br>
-    Password:  <input name="password" type="password" placeholder="inserisci password"><br>
-    Username:  <input name="username" type="text" placeholder="inserisci username"><br>
-    <input type="submit" value="Accedi">
+     <input name="email" type="text" placeholder="inserisci e-mail"><br>
+     <input name="password" type="password" placeholder="inserisci password"><br>
+     <input name="username" type="text" placeholder="inserisci username"><br>
+    <input class="submit" type="submit" value="Accedi">
 </form>
 </div>
 <%@include file="footer.jsp"%>

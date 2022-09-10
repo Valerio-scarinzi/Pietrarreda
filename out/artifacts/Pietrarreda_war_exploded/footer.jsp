@@ -21,12 +21,10 @@
     }
 
     .footer{
-        position: relative;
-        bottom: auto;
-        margin-bottom: 0;
-
-        padding: 10px 10px 0px 10px;
+        position:fixed;
         bottom: 0;
+        margin-bottom: 0;
+        padding: 10px 10px 0px 10px;
         width: 100%;
         background-color: #292929;
     }
@@ -50,7 +48,7 @@
         margin: 0 8px;
     }
     .footer .social a:hover{
-        color: #d1aa11;
+        color: #e79213;
     }
     .footer .Cell{
         color: white;
@@ -79,7 +77,7 @@
         text-decoration: none;
     }
     .footer ul li a:hover{
-        color: #d1aa11;
+        color: #e79213;
     }
     .footer ul li{
         display: inline-block;
@@ -94,13 +92,12 @@
     }
 </style>
 <body>
-<section class="footer">
+<div class="footer">
     <div class="social">
         <a href="#"><i class="fa-brands fa-facebook"></i></a>
         <a href="#"><i class="fa-brands fa-instagram"></i></a>
         <a href="#"><i class="fa-solid fa-map-location-dot"></i></a>
     </div>
-
     <ul class="lista">
         <li>
             <div class="chiSiamo">
@@ -122,7 +119,7 @@
         </li>
     </ul>
     <div class="copyright"><i class="fa-solid fa-copyright"></i><a>Copyright 2022 Pietrarreda - All rights reserved</a></div>
-</section>
+</div>
 
 </body>
 </html>

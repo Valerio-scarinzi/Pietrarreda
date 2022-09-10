@@ -3,6 +3,7 @@
 <head>
     <title>Aggiunta utente</title>
     <link rel="stylesheet" href="Register.css">
+    <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <body>
 
@@ -15,7 +16,7 @@
         <input name="password" type="text" placeholder="Inserisci Password"><br>
         <input name="email" type="text" placeholder="Inserisci Email "><br>
         Admin: <input name="admin" type="checkbox"><br>
-        <input type="submit" value="Aggiungi">
+        <input type="submit" value="Aggiungi" onclick="aggiunta()">
     </div>
 </form>
 <%@include file="footer.jsp"%>

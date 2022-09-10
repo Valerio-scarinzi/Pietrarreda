@@ -12,6 +12,7 @@
 <head>
     <title>Gestione Utente</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
+    <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <body>
 <%ArrayList<Utente> utenti = (ArrayList<Utente>) request.getAttribute("listUtenti");%>
@@ -33,7 +34,7 @@
         E-mail:  <c:out value="${utente.email}" /><br>
         Admin:  <c:out value="${utente.admin}" /><br>
 
-        <form method="post" action="GestioneUtenteServlet?id=${utente.id}">
+        <form id="updt" method="post" action="GestioneUtenteServlet?id=${utente.id}">
             <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
 
             <input type="text" name="cambiaCognome" id="cambiaCognome" placeholder="modifica cognome"> <br>
@@ -47,9 +48,9 @@
             Abilita admin:<input type="checkbox" name="cambiaAdmin" id="cambiaAdmin"> <br>
 
             <button class="btn">
-                <a href="DeleteUtente?id=${utente.id}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
+                <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-            <input type="submit" value="Modifica"><br><br><br>
+            <input type="submit" value="Modifica" onclick="modifica()"><br><br><br>
         </form>
     </c:forEach>
 
