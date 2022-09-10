@@ -11,31 +11,34 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.Console;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/ShowCategoria")
 public class ShowCategoriaClient extends HttpServlet {
 
-  Cookie cookie = new Cookie();
 
-  public Cookie getCookie() {
-
-    return cookie;
-  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    String idstr = (String) req.getParameter("idCat");
+    String idstr = (String) req.getParameter("id");
     int id = Integer.parseInt(idstr);
 
-    CategoriaDAO categoriaDAO = new CategoriaDAO();
- //   Categoria categoria = categoriaDAO.doRetrieveById(id);
 
-   // req.setAttribute("categoria",categoria);
+    ArrayList<Categoria> categorie = (ArrayList<Categoria>) getServletContext().getAttribute("categorie");
+    for (Categoria c :categorie) {
+      if(c.getId() == id){
+        req.setAttribute("ShowCategoria", c);
+
+      }
+
+    }
 
 
-    RequestDispatcher dispatcher = req.getRequestDispatcher("showCategoriaClient.jsp");
+    RequestDispatcher dispatcher = req.getRequestDispatcher("categoriaClient.jsp");
+    dispatcher.forward(req,resp);
 
   }
 

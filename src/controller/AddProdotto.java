@@ -28,11 +28,11 @@ public class AddProdotto extends HttpServlet {
         String descrizione= (String) req.getParameter("descrizione");
         String Strprezzo= (String) req.getParameter("prezzo"); //N.B "Str" sta per stringa, che poi convertiremo nella forma di variabile desiderata
         double prezzo=Double.parseDouble(Strprezzo); //Convertiamo
-        String  Strquantita= (String) req.getParameter("quantita");//N.B "Str" sta per stringa, che poi convertiremo nella forma di variabile desiderata
-        int quantita=Integer.parseInt(Strquantita); //Convertiamo
+        String  strImg= (String) req.getParameter("immagine");//N.B "Str" sta per stringa, che poi convertiremo nella forma di variabile desiderata
+
         String Strdisponibilita= (String) req.getParameter("disponibilita");//N.B "Str" sta per stringa, che poi convertiremo nella forma di variabile desiderata
         int disponibilita=Integer.parseInt(Strdisponibilita);//Convertiamo
-        Prodotto prodotto=new Prodotto(nome,descrizione,quantita,prezzo,disponibilita);
+        Prodotto prodotto=new Prodotto(nome,descrizione,prezzo,disponibilita,strImg);
 
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         prodottoDAO.doSave(prodotto);

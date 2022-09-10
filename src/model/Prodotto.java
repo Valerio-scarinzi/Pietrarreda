@@ -3,34 +3,48 @@ package model;
 public class Prodotto {
     private int idprod; //id del prodotto
     private String nome; //nome del prodotto
-    private  int quantprodotto; //quantita' del prodotto
+
     private String desc; //descrizione del prodotto
     private double prezzo; // prezzo del prodotto
     private int disponibilita; //disponibilità del prodotto
+    private String imgPath_prod; // path dell immagine
 
     //inizio costruttori
     public Prodotto(String name){
         this.nome=name;
     }
 
-    public Prodotto(String name, int qty) {
-        this.quantprodotto = qty;
-        this.nome = name;
-    }
 
-    public Prodotto(String name, int qty, int id) {
+    public Prodotto(String name, int disponibilita, int id) {
         this.idprod = id;
-        this.quantprodotto = qty;
+        this.disponibilita = disponibilita;
         this.nome = name;
     }
 
     public Prodotto() {
     }
-    //costruttore per aggiunta prodotto
-    public Prodotto( String nome,String desc,int quantprodotto, double price,int disp) {
+//costruttore con agiunta imgpath
+    public Prodotto(int idprod, String nome, String desc, double prezzo, int disponibilita, String imgPath_prod) {
+        this.idprod = idprod;
+        this.nome = nome;
+        this.desc = desc;
+        this.prezzo = prezzo;
+        this.disponibilita = disponibilita;
+        this.imgPath_prod = imgPath_prod;
+    }
+    public Prodotto( String nome, String desc, double prezzo, int disponibilita, String imgPath_prod) {
 
         this.nome = nome;
-        this.quantprodotto = quantprodotto;
+        this.desc = desc;
+        this.prezzo = prezzo;
+        this.disponibilita = disponibilita;
+        this.imgPath_prod = imgPath_prod;
+    }
+    //costruttore per aggiunta prodotto
+
+    public Prodotto( String nome,String desc, double price,int disp) {
+
+        this.nome = nome;
         this.desc = desc;
         this.prezzo = price;
         this.disponibilita=disp;
@@ -44,6 +58,14 @@ public class Prodotto {
 
     public void setDisponibilita(int disponibilita) {
         this.disponibilita = disponibilita;
+    }
+
+    public String getImgPath_prod() {
+        return imgPath_prod;
+    }
+
+    public void setImgPath_prod(String imgPath_prod) {
+        this.imgPath_prod = imgPath_prod;
     }
 
     public int getIdprod() {
@@ -62,13 +84,6 @@ public class Prodotto {
         this.nome = nome;
     }
 
-    public int getQuantprodotto() {
-        return quantprodotto;
-    }
-
-    public void setQuantprodotto(int quantprodotto) {
-        this.quantprodotto = quantprodotto;
-    }
 
     public String getDesc() {
         return desc;
@@ -85,11 +100,11 @@ public class Prodotto {
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
-    //costruttore pieno
-    public Prodotto(int id, String nome,int quantprodotto, String desc, double price,int disp) {
+    //costruttore senza img
+    public Prodotto(int id, String nome, String desc, double price,int disp) {
         this.idprod = id;
         this.nome = nome;
-        this.quantprodotto = quantprodotto;
+
         this.desc = desc;
         this.prezzo = price;
         this.disponibilita=disp;

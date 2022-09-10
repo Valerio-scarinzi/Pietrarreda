@@ -21,8 +21,8 @@ public class ProdottoDAO {
                 p.setNome(rs.getString(2));
                 p.setDesc(rs.getString(3));
                 p.setPrezzo(rs.getDouble(4));
-                p.setQuantprodotto(rs.getInt(5));
-                p.setDisponibilita(rs.getInt(6));
+                p.setDisponibilita(rs.getInt(5));
+                p.setImgPath_prod(rs.getString(6));
 
                 prodotti.add(p);
             }
@@ -63,8 +63,8 @@ public class ProdottoDAO {
                 p.setNome(rs.getString(2));
                 p.setDesc(rs.getString(3));
                 p.setPrezzo(rs.getDouble(4));
-                p.setQuantprodotto(rs.getInt(5));
-                p.setDisponibilita(rs.getInt(6));
+                p.setDisponibilita(rs.getInt(5));
+                p.setImgPath_prod(rs.getString(6));
                 return p;
             }
 
@@ -109,12 +109,12 @@ public class ProdottoDAO {
     }
     public void doSave(Prodotto prodotto) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT into Prodotto (nome_prod,descrizione_prod,costo_prodotto,quantita_prod,disponibilita_prod) VALUES (?,?,?,?,?);");
+            PreparedStatement ps = con.prepareStatement("INSERT into Prodotto (nome_prod,descrizione_prod,costo_prodotto,disponibilita_prod,imgPath_prod) VALUES (?,?,?,?,?);");
             ps.setString(1, prodotto.getNome());
             ps.setString(2, prodotto.getDesc());
             ps.setDouble(4, prodotto.getPrezzo());
-            ps.setInt(3, prodotto.getQuantprodotto());
-            ps.setInt(5, prodotto.getDisponibilita());
+            ps.setInt(3, prodotto.getDisponibilita());
+            ps.setString(5, prodotto.getImgPath_prod());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("Errore nell'inserimento");
             }

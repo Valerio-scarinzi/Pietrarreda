@@ -2,6 +2,8 @@ package controller;
 
 import model.Categoria;
 import model.CategoriaDAO;
+import model.Prodotto;
+import model.ProdottoDAO;
 
 
 import javax.servlet.ServletException;
@@ -15,8 +17,18 @@ public class InitServlet extends HttpServlet {
   // inizializza il sito con estraendo tutte le categorie dal DB
   @Override
   public void init() throws ServletException {
-    /*ArrayList<Categoria> categories= CategoriaDAO.doRetrieveAllCategory;
+    ArrayList<Categoria> categories= new ArrayList<>();
+    CategoriaDAO categoriaDAO = new CategoriaDAO();
+    categories =  categoriaDAO.doRetrieveAllCategory();
     getServletContext().setAttribute("categorie",categories);
-    super.init();*/
+
+    ArrayList<Prodotto> prodottos= new ArrayList<Prodotto>();
+    ProdottoDAO prodottoDAO = new ProdottoDAO();
+    prodottos = prodottoDAO.getAllProdotti();
+    getServletContext().setAttribute("prodotti",prodottos);
+
+
+
+    super.init();
   }
 }

@@ -168,10 +168,11 @@
                 <div class="catDropdown">
                 <a href="/" class="dropBtn">Negozio</a>
                     <div class="dropdown-content">
-                        <a href="#">Negozio</a>
-                        <a href="#">Categoria 1</a>
-                        <a href="#">Categoria 2</a>
-                        <a href="#">Categoria 3</a>
+                        <a href="negozio.jsp">Negozio</a>
+
+                        <a href="ShowCategoria?id=1">Categoria 1</a>
+                        <a href="ShowCategoria?id=2">Categoria 2</a>
+                        <a href="ShowCategoria?id=3">Categoria 3</a>
                     </div>
             </div>
             </li>

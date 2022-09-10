@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CategoriaDAO  {
 
 
-    public  ArrayList<Categoria> doRetrieveAllCategory;
+
 
     public ArrayList<Categoria> doRetrieveAllCategory() {
         try (Connection con = ConPool.getConnection()) {
