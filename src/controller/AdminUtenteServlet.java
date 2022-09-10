@@ -1,7 +1,5 @@
 package controller;
 
-import model.Prodotto;
-import model.ProdottoDAO;
 import model.Utente;
 import model.UtenteDAO;
 

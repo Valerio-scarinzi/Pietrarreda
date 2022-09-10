@@ -10,21 +10,27 @@
 
 <style>
     *{
+        padding: 0;
         box-sizing: border-box;
+        margin: 0;
     }
 
 
     .navBar{
         position: relative;
         top: auto;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         width: 100%;
         height: auto;
         justify-content: space-between;
         display: flex;
         align-items: center;
-        background-color: #292929;
+        background: linear-gradient(90deg, #e79213, #292929);
         color: #ffffff;
+    }
+
+    .brand-img{
+
     }
 
     .SearchBar input{
@@ -52,10 +58,11 @@
         display: block;
     }
     .navBar-links li a:hover{
-        color: rgb(255, 211, 17);
+        color: rgb(231, 146, 19);
         transition-duration:0.1s;
     }
     .SearchBar {
+        margin: auto;
         display: inline-flex;
     }
     .fa-magnifying-glass:hover{
@@ -79,14 +86,14 @@
     .dropdown-content a{
         display: block;
         margin-top: auto;
-        background-color: #e49314;
+        background-color: #ffd311;
     }
 
     .catDropdown:hover .dropdown-content{display: block;}
 
     /*hamburgher menu*/
     .toggle-button{
-        position: absolute;
+        position: fixed;
         display: none;
         top: 10px;
         right: 10px;
@@ -99,7 +106,7 @@
     .toggle-button .bar{
         height: 3px;
         width: 100%;
-        background-color: #292929;
+        background-color: #e79213;
         border-radius: 10px;
     }
 
@@ -132,6 +139,12 @@
         .navBar-links li {
             text-align: center;
         }
+        .dropBtn{
+           margin: auto;
+        }
+        .SearchBar{
+            margin:auto;
+        }
         .navBar-links li a{
             padding: .5rem 1rem;
         }
@@ -140,10 +153,17 @@
             display: flex;
         }
     }
+    @media (max-width: 255px){
+        .toggle-button .bar{
+            background-color: #292929;
+        }
+
+
+    }
 </style>
 
 <nav class="navBar">
-    <div class="brand-img"><a href="#"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
+    <div class="brand-img" title="HOMEPAGE"><a href="index.jsp"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
         <a href="#" class="toggle-button">
             <span class="bar"></span>
@@ -159,12 +179,8 @@
         }
     </script></div>
     <div class="navBar-links">
-
-
-
         <ul>
             <li>
-
                 <div class="catDropdown">
                 <a href="/" class="dropBtn">Negozio</a>
                     <div class="dropdown-content">
@@ -176,18 +192,12 @@
                     </div>
             </div>
             </li>
-
-
-
-
-
-            <li><a href="login.jsp"><i class="fa-solid fa-user"></i></a></li>
+            <li><a href="login.jsp" title="LOGIN"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="registrazione.jsp">Registrati</a> </li>
-
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <div class="SearchBar">
-                <form>
-                    <input type="text" placeholder="Cerca qui...">
+                <form action="RicServ" method="get">
+                    <input type="text" placeholder="Cerca qui..." name="search" onkeyup="ricerca(this.value)">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>

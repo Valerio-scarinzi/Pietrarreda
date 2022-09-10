@@ -10,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name = "InitServlet",urlPatterns = {"/InitServ"},loadOnStartup = 0)
 public class InitServlet extends HttpServlet {
@@ -28,6 +27,11 @@ public class InitServlet extends HttpServlet {
     getServletContext().setAttribute("prodotti",prodottos);
 
 
+    System.out.println("ciao");
+    System.out.println("ciao");
+
+    String c = "ciao";
+    System.out.println(c);
 
     super.init();
   }

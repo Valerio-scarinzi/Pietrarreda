@@ -3,7 +3,6 @@ package controller;
 import model.Prodotto;
 import model.ProdottoDAO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +22,8 @@ public class AdminGestioneProdottoServlet extends HttpServlet {
 
     String newNome = (String) req.getParameter("cambiaNome");
     String newDesc = (String) req.getParameter("cambiaDesc");
-    String newQuant =(String) req.getParameter("cambiaQuant");
-    int quant = Integer.parseInt(newQuant);
+    String newimg =(String) req.getParameter("cambiaImg");
+
     String newPrezzo = (String) req.getParameter("cambiaPrezzo");
     double prezzo = Double.parseDouble(newPrezzo);
     String newDisp = req.getParameter("cambiaDisp");
@@ -40,7 +39,7 @@ public class AdminGestioneProdottoServlet extends HttpServlet {
     int id=Integer.parseInt(req.getParameter("id"));
 
 
-      prodottoDAO.doUpdate(id,newNome,quant,newDesc,prezzo,disp);
+      prodottoDAO.doUpdate(id,newNome,newimg,newDesc,prezzo,disp);
 
 
 

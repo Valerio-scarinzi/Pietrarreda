@@ -12,56 +12,61 @@
 <head>
     <title>Prodotti DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
+    <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <style>
 *{
     box-sizing: border-box;
 }
-body{
-    margin-top: 30px;
-    padding: 5px;}
-
+    .showProdotti{
+        margin: auto;
+    }
 
 </style>
 <body>
 <%@include file="header.jsp"%>
 <%ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) request.getAttribute("listProdotti");%>
-<h2>Prodotti nel database.</h2>
-<div class="addProdotto">
+
+<div class="addProdotto" style="margin-left: 1%">
+    <h2>Prodotti nel database.</h2>
     <button class="btn">
     <a href="addProdotto.jsp"> Aggiungi prodotto <i class="fa-solid fa-plus"></i></a>
-    </button>
+    </button> <hr><hr>
 </div>
 
-    <div class="showProdotti">
 
+    <div class="showProdotti" style="margin-left: 1%">
     <c:forEach items="${listProdotti}" var="prodotto">
+        <fieldset>
         ID: <c:out value="${prodotto.idprod}" /><br>
         Nome:  <c:out value="${prodotto.nome}" /><br>
         Descrizione:  <c:out value="${prodotto.desc}" /><br>
         Prezzo:  <c:out value="${prodotto.prezzo}" /><br>
-        Quantita' prodotto:  <c:out value="${prodotto.quantprodotto}" /><br>
+        IMG PATH:  <c:out value="${prodotto.imgPath_prod}" /><br>
         Disponibilita':  <c:out value="${prodotto.disponibilita}" /><br>
 
-        <form method="post" action="GestioneProdottoServlet?id=${prodotto.idprod}">
-    <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
+        <form id="updt" method="post" action="GestioneProdottoServlet?id=${prodotto.idprod}">
+    <input type="text" name="cambiaNome" id="cambiaNome" value="${prodotto.nome}"> <br>
 
-    <input type="text" name="cambiaDesc" id="cambiaDesc" placeholder="modifica descrizione"> <br>
+    <input type="text" name="cambiaDesc" id="cambiaDesc" value="${prodotto.desc}"> <br>
 
-      <input type="number" min="0" step="0.05" name="cambiaPrezzo" id="cambiaPrezzo" placeholder="modifica prezzo"> <br>
+      <input type="number" min="0" step="0.05" name="cambiaPrezzo" id="cambiaPrezzo" value="${prodotto.prezzo}"> <br>
 
-    <input type="number" min="0" name="cambiaQuant" id="cambiaQuant" placeholder="modifica quantita"> <br>
+    <input type="text"  name="cambiaImg" id="cambiaImg" value="${prodotto.imgPath_prod}"> <br>
 
-    <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" placeholder="modifica disponibilità"> <br>
+    <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" value="${prodotto.disponibilita}"> <br>
 
             <button class="btn">
-              <a href="DeleteProdotto?id=${prodotto.idprod}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
+              <a href="DeleteProdotto?id=${prodotto.idprod}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-    <input type="submit" value="Modifica"><br><br><br>
+    <input type="submit" value="Modifica" onclick="modifica()"><br><br><br>
         </form>
+</fieldset>
     </c:forEach>
-
     </div>
+
+
+
 <%@include file="footer.jsp"%>
 </body>
 </html>

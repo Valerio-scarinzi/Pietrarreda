@@ -16,11 +16,10 @@
   <%@include file="header.jsp"%>
 
   1wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br>
-  <img src="Immagini/ImgProdotti/porfidoOpus.jpeg" height="225" width="225"  >
+  <img src="Immagini/ImgProdotti/0travertinoOpus.jpg" height="225" width="225"  >
   wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br>
 
 
-  <img src="pietraAlpinaOpus.jpg" >
 
 
   <%@include file="footer.jsp"%>

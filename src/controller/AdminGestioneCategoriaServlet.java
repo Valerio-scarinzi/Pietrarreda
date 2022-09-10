@@ -2,10 +2,7 @@ package controller;
 
 import model.Categoria;
 import model.CategoriaDAO;
-import model.Prodotto;
-import model.ProdottoDAO;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +35,7 @@ public class AdminGestioneCategoriaServlet extends HttpServlet {
         int id=Integer.parseInt(req.getParameter("id"));
 
         categoriaDAO.doUpdate(id,newNome,newDesc,newImg);
+        
 
 
 

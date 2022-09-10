@@ -2,8 +2,6 @@ package controller;
 
 import model.Categoria;
 import model.CategoriaDAO;
-import model.Prodotto;
-import model.ProdottoDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

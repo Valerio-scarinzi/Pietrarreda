@@ -1,9 +1,6 @@
 package controller;
 
 
-import com.mysql.cj.Session;
-import model.Categoria;
-import model.CategoriaDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 
