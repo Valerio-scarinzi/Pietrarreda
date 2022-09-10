@@ -12,6 +12,7 @@
 <head>
     <title>Categorie DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
+    <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <body>
 
@@ -31,17 +32,14 @@
     Immagine:  <c:out value="${categoria.img}" /><br>
 
 
-    <form method="post" action="GestioneCategoriaServlet?id=${categoria.id}">
+    <form id="updt"  method="post" action="GestioneCategoriaServlet?id=${categoria.id}">
         <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
-
         <input type="text" name="cambiaDesc" id="cambiaDesc" placeholder="modifica descrizione"> <br>
-
         <input type="text" name="cambiaImg" id="cambiaImg" placeholder="modifica immagine"> <br>
         <button class="btn">
-            <a href="DeleteCategoria?id=${categoria.id}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
+            <a id="del" href="DeleteCategoria?id=${categoria.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
         </button>
-        
-        <input type="submit" value="Modifica"></form><br><br><br>
+        <input type="submit" value="Modifica" onclick="modifica()"></form><br><br><br>
         </c:forEach>
 </div>
 

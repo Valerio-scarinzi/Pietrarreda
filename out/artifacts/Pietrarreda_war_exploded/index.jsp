@@ -15,9 +15,6 @@
   <body>
   <%@include file="header.jsp"%>
 
-  1wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br>
-
-  wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br> wr<br>
 
 
 

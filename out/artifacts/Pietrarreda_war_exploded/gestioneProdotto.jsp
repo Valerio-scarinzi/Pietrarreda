@@ -12,15 +12,15 @@
 <head>
     <title>Prodotti DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
+    <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <style>
 *{
     box-sizing: border-box;
 }
-body{
-    margin-top: 30px;
-    padding: 5px;}
-
+    .showProdotti{
+        margin: auto;
+    }
 
 </style>
 <body>
@@ -34,7 +34,6 @@ body{
 </div>
 
     <div class="showProdotti">
-
     <c:forEach items="${listProdotti}" var="prodotto">
         ID: <c:out value="${prodotto.idprod}" /><br>
         Nome:  <c:out value="${prodotto.nome}" /><br>
@@ -43,7 +42,7 @@ body{
         Quantita' prodotto:  <c:out value="${prodotto.quantprodotto}" /><br>
         Disponibilita':  <c:out value="${prodotto.disponibilita}" /><br>
 
-        <form method="post" action="GestioneProdottoServlet?id=${prodotto.idprod}">
+        <form id="updt" method="post" action="GestioneProdottoServlet?id=${prodotto.idprod}">
     <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
 
     <input type="text" name="cambiaDesc" id="cambiaDesc" placeholder="modifica descrizione"> <br>
@@ -55,13 +54,13 @@ body{
     <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" placeholder="modifica disponibilità"> <br>
 
             <button class="btn">
-              <a href="DeleteProdotto?id=${prodotto.idprod}" >Elimina <i class="fa-solid fa-trash-can"></i></a>
+              <a href="DeleteProdotto?id=${prodotto.idprod}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-    <input type="submit" value="Modifica"><br><br><br>
+    <input type="submit" value="Modifica" onclick="modifica()"><br><br><br>
         </form>
     </c:forEach>
-
     </div>
+
 <%@include file="footer.jsp"%>
 </body>
 </html>

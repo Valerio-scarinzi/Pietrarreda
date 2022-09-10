@@ -32,14 +32,13 @@
         padding: 25px 30px;
         border-radius: 15px;
         position: relative;
-        margin-left: auto;
-        margin-right: auto;
-
-        padding-bottom: 5px;
+        margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
     }
+.forms{
 
+}
 
     .admin_panel input{
         horiz-align: center;
@@ -50,17 +49,17 @@
 
 <div class="admin_panel">
     <h3>ADMIN CONSOLE</h3>
+    <div class="forms">
 <form method="post" action="ProdottoServlet">
     <p>Gestione prodotto </p>  <input type="submit" value="gestisci"> <br>
 </form>
-
 <form method="post" action="CategorieServlet">
     <p>Gestione categoria </p>  <input type="submit" value="gestisci"> <br>
 </form>
-
 <form method="post" action="UtentiServlet">
     <p>Gestione utente </p>  <input type="submit" value="gestisci"> <br>
 </form>
+    </div>
 
 </div>
 <%@include file="footer.jsp"%>

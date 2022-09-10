@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProdottoDAO {
 
@@ -77,7 +78,7 @@ public class ProdottoDAO {
         return null;
     }
 
-
+    //Modifica prodotto in base all ID,con parametri messi in input 
     public void doUpdate(int idprod,String nome,int quantprodotto,String descr,double prezzo,int disponibilita){
         try(Connection connection=ConPool.getConnection()) {
             PreparedStatement ps=connection.prepareStatement("UPDATE Prodotto set  nome_prod=?,descrizione_prod=?,costo_prodotto=?,quantita_prod=?,disponibilita_prod=? where Id_prodotto=?;");
@@ -94,8 +95,8 @@ public class ProdottoDAO {
         }
 
     }
-
-
+    
+    //Cancella prodotto da DB attraverso ID
     public void doDelete(int id_prodotto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE `Id_prodotto` = ?;");
@@ -122,5 +123,33 @@ public class ProdottoDAO {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public List<Prodotto> SearchProdByName(String name_prod) {
+        ArrayList<Prodotto> search_prod=new ArrayList<>();
+        PreparedStatement ps=null;
+        try(Connection connection=ConPool.getConnection()) {
+            ps=connection.prepareStatement("SELECT * FROM  prodotto WHERE nome_prod=?;");
+            ps.setString(1,name_prod);
+            ResultSet rs=ps.executeQuery();
+            if(rs== null)
+                throw new Controller.MyExceptionServlet("errore nella query di ricerca prodotto");
+            else{
+                while (rs.next()){
+                    Prodotto p = new Prodotto();
+                    p.setIdprod(rs.getInt(1));
+                    p.setNome(rs.getString(2));
+                    p.setDesc(rs.getString(3));
+                    p.setPrezzo(rs.getDouble(4));
+                    p.setQuantprodotto(rs.getInt(5));
+                    p.setDisponibilita(rs.getInt(6));
+                    search_prod.add(p);
+                }
+            }
+
+        } catch (SQLException | Controller.MyExceptionServlet e) {
+            e.printStackTrace();
+        }
+        return search_prod;
     }
 }
