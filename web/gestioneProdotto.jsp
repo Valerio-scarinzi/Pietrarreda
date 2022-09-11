@@ -46,22 +46,23 @@
         Disponibilita':  <c:out value="${prodotto.disponibilita}" /><br>
 
         <form id="updt" method="post" action="GestioneProdottoServlet?id=${prodotto.idprod}">
-    <input type="text" name="cambiaNome" id="cambiaNome" value="${prodotto.nome}"> <br>
+    <input type="text" name="cambiaNome" id="cambiaNome" value="${prodotto.nome}" required="required"> <br>
 
-    <input type="text" name="cambiaDesc" id="cambiaDesc" value="${prodotto.desc}"> <br>
+    <input type="text" name="cambiaDesc" id="cambiaDesc" value="${prodotto.desc}" required="required"> <br>
 
-      <input type="number" min="0" step="0.05" name="cambiaPrezzo" id="cambiaPrezzo" value="${prodotto.prezzo}"> <br>
+      <input type="number" min="0" step="0.05" name="cambiaPrezzo" id="cambiaPrezzo" value="${prodotto.prezzo}" required="required"> <br>
 
-    <input type="text"  name="cambiaImg" id="cambiaImg" value="${prodotto.imgPath_prod}"> <br>
+    <input type="text"  name="cambiaImg" id="cambiaImg" value="${prodotto.imgPath_prod}" required="required"> <br>
 
-    <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" value="${prodotto.disponibilita}"> <br>
+    <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" value="${prodotto.disponibilita}" required="required"> <br>
 
             <button class="btn">
               <a href="DeleteProdotto?id=${prodotto.idprod}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-    <input type="submit" value="Modifica" onclick="modifica()"><br><br><br>
+    <input type="submit" value="Modifica" onclick="modifica()"><br><br>
         </form>
 </fieldset>
+        <br>
     </c:forEach>
     </div>
 
