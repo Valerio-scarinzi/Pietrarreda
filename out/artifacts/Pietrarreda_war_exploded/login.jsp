@@ -51,9 +51,7 @@
         text-align: center;
     }
     .submit:hover{
-
-        background-color: #e49314;
-
+        background-color: #e79213;
     }
 
 
@@ -63,9 +61,9 @@
 <div class="Log_panel">
     <h3>LOGIN PANEL </h3>
 <form method="post" action="Login" >
-     <input name="email" type="text" placeholder="inserisci e-mail"><br>
-     <input name="password" type="password" placeholder="inserisci password"><br>
-     <input name="username" type="text" placeholder="inserisci username"><br>
+     <input name="email" type="email" placeholder="inserisci e-mail" required="required"><br>
+     <input name="password" type="password" placeholder="inserisci password" required="required"><br>
+     <input name="username" type="text" placeholder="inserisci username" required="required"><br>
     <input class="submit" type="submit" value="Accedi">
 </form>
 </div>

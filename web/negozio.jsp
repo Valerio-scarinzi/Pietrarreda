@@ -22,9 +22,16 @@
     }
     .InForNegozioJSP{
         float:left;
-        margin:3%;
+        margin:25px;
         background-color: #e49314;
         max-width: min-content;
+        height: 450px;
+        border-radius: 5%;
+    }
+
+    .imgProd{
+        border-color: #292929;
+        border-radius: 5%;
     }
 
     .InForNegozioJSP:hover{
@@ -33,8 +40,8 @@
 
     }
 
-
-    .button-27 {
+    /*Bottone aggiungi a carrello*/
+    .button-cart {
         float: right;
         appearance: none;
         background-color: #292929;
@@ -44,7 +51,6 @@
         color: #FFFFFF;
         cursor: pointer;
         display: inline-block;
-        font-size: 16px;
         font-weight: 600;
         line-height: normal;
         margin: 0;
@@ -62,17 +68,17 @@
         will-change: transform;
     }
 
-    .button-27:disabled {
+    .button-cart:disabled {
         pointer-events: none;
     }
 
-    .button-27:hover {
+    .button-cart:hover {
         box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
         color: #e49314;
         transform: translateY(-2px);
     }
 
-    .button-27:active {
+    .button-cart:active {
         box-shadow: none;
         transform: translateY(0);
     }
@@ -84,22 +90,20 @@
 <div class="ForNegozioJSP">
 <% for (Prodotto p: prodotti) {%>
  <div class="InForNegozioJSP">
-     <fieldset>
+
       <table>
-          <tr> <td>   id : <%=p.getIdprod()%></td></tr>
-          <tr><td>   Nome: <%=p.getNome()%></td></tr>
+          <tr><td>Nome: <%=p.getNome()%></td></tr>
           <tr><td>Descrizione: <%=p.getDesc()%></td></tr>
-          <tr><td>   Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
-          <tr><td> Disponibilità: <%=p.getDisponibilita()%></td></tr>
-          <a href="prodotto.jsp"><img src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
+          <tr><td>Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
+          <tr><td>Disponibilità: <%=p.getDisponibilita()%></td></tr>
+          <a href="ShowProdotto?id=<%=p.getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" alt="IMG_PATH_NOT_FOUND"></a>
           <div>
-              <button class="button-27"><i class="fa-solid fa-cart-shopping"></i>
+              <button class="button-cart" title="Aggiungi a carrello"><i class="fa-solid fa-cart-shopping"></i>
               </button>
           </div>
       </table>
     <br><br>
 
-    </fieldset>
     </div>
     <%}%></div>
 
