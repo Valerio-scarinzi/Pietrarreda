@@ -22,7 +22,7 @@
         position: relative;
         margin-left: auto;
         margin-right: auto;
-        color: #d1aa11;
+        color: #e79213;
         background-color: #292929;
         max-width:270px;
         width: 100%;
@@ -40,6 +40,10 @@
         margin: 5px;
         text-align: center;
     }
+    .submit:hover{
+        background-color: #e79213;
+    }
+
 
 </style>
 <body>
@@ -48,12 +52,12 @@
     <div class="Reg_panel">
         <h3>REGISTRAZIONE</h3>
 
-        <input name="nome" type="text" placeholder="Inserisci Nome"><br>
-        <input name="cognome" type="text" placeholder="Inserisci Cognome"><br>
-        <input name="username" type="text" placeholder="Inserisci Username"><br>
-        <input name="password" type="text" placeholder="Inserisci Password"><br>
-        <input name="email" type="text" placeholder="Inserisci E-mail"><br>
-       <div class="btn"><input  type="submit" value="Registrati"></div>
+        <input name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
+        <input name="cognome" type="text" placeholder="Inserisci Cognome" required="required"><br>
+        <input name="username" type="text" placeholder="Inserisci Username" required="required"><br>
+        <input name="password" type="text" placeholder="Inserisci Password" required="required"><br>
+        <input name="email" type="email" placeholder="Inserisci E-mail" required="required"><br>
+       <div class="btn"><input class="submit" type="submit" value="Registrati"></div>
     </div>
 </form>
 <%@include file="footer.jsp"%>

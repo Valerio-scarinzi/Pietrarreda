@@ -43,7 +43,7 @@ create table Prodotto(
 
 
 
-          id_prodotto int not null auto_increment,
+            id_prodotto int not null auto_increment,
             nome_prod varchar(25) not null,
             descrizione_prod varchar(200)not null,
             costo_prodotto double not null,
@@ -70,7 +70,7 @@ create table Carrello(
                               );
 
 create table CategoriaProdotto(
-            id_prod int not null,
+                    id_prod int not null,
                     id_cat int not null,
                     primary key(id_prod,id_cat),
                     foreign key(id_prod) references Prodotto(id_prodotto),

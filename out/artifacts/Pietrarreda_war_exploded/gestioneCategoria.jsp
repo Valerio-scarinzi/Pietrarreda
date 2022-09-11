@@ -15,6 +15,7 @@
     <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <body>
+<%@include file="header.jsp"%>
 
 <%ArrayList<Categoria> categorie = (ArrayList<Categoria>) session.getAttribute("listCategorie"); %>
 <h2>Categorie nel database</h2>
@@ -22,10 +23,10 @@
     <button class="btn">
         <a href="addCategoria.jsp"> Aggiungi Categoria <i class="fa-solid fa-plus"></i></a>
     </button>
-</div>
+</div><hr>
 
 <div class="showCategorie">
-    <c:forEach items="${listCategorie}" var="categoria">
+    <c:forEach items="${listCategorie}" var="categoria"><fieldset>
     ID: <c:out value="${categoria.id}" /><br>
     Nome:  <c:out value="${categoria.categoria_nome}" /><br>
     Descrizione:  <c:out value="${categoria.descrizione}" /><br>
@@ -33,13 +34,16 @@
 
 
     <form id="updt"  method="post" action="GestioneCategoriaServlet?id=${categoria.id}">
-        <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
-        <input type="text" name="cambiaDesc" id="cambiaDesc" placeholder="modifica descrizione"> <br>
-        <input type="text" name="cambiaImg" id="cambiaImg" placeholder="modifica immagine"> <br>
+        <input type="text" name="cambiaNome" id="cambiaNome" value="${categoria.categoria_nome}" placeholder="modifica nome" required="required"> <br>
+        <input type="text" name="cambiaDesc" id="cambiaDesc" value="${categoria.descrizione}" placeholder="modifica descrizione" required="required"> <br>
+        <input type="text" name="cambiaImg" id="cambiaImg" value="${categoria.img}" placeholder="modifica immagine" required="required"> <br>
         <button class="btn">
             <a id="del" href="DeleteCategoria?id=${categoria.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
         </button>
-        <input type="submit" value="Modifica" onclick="modifica()"></form><br><br><br>
+        <input type="submit" value="Modifica" onclick="modifica()"><br><br>
+    </form>
+    </fieldset>
+        <br>
         </c:forEach>
 </div>
 
