@@ -11,6 +11,7 @@
     <title>Bio</title>
 </head>
 <body>
+<%@include file="header.jsp"%>
 
 <div class="bio-devs">
     <img class="imgFDD" src="#" alt="Immagine_Francesco">

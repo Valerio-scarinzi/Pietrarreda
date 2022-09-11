@@ -10,9 +10,9 @@
 <form id="add" method="post" action="AddCategoria">
     <div class="AddCat_panel">
         <h3>AGGIUNTA CATEGORIA </h3>
-        <input name="nome" type="text" placeholder="Inserisci Nome"><br>
-        <input name="descrizione" type="text" placeholder="Inserisci Descrizione"><br>
-        <input name="immagine" type="text" placeholder="immetti immagine"><br>
+        <input name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
+        <input name="descrizione" type="text" placeholder="Inserisci Descrizione" required="required"><br>
+        <input name="immagine" type="text" placeholder="immetti immagine" required="required"><br>
         <input type="submit" value="Aggiungi" onclick="aggiunta()">
     </div>
 </form>

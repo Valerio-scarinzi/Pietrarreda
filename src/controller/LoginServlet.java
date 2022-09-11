@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        //prendi username email e password da input e salva
         String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
@@ -26,9 +26,10 @@ public class LoginServlet extends HttpServlet {
 
         UtenteDAO utenteDAO = new UtenteDAO();
 
-        Utente utente  = utenteDAO.doRetrieveByUsernamePassword(username, password);
+        Utente utente  = utenteDAO.doRetrieveByUsernameEmailPassword(email,username, password);
         System.out.println(utente);
         boolean user_bool = username.equals(utente.getUsername());
+        boolean email_bool=email.equals(utente.getEmail());
         boolean password_bool = password.equals(utente.getPassword());
         boolean admin_bool = utente.isAdmin();
 
@@ -36,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 
 
         //Fai un altro if che controlla se l utente è admin (booleano),se admin -> indirizzare a jsp admin (da creare)
-        if(user_bool==true&&password_bool==true){
+        if(user_bool==true&&password_bool==true&&email_bool==true){
 
             HttpSession oldSession = req.getSession();
             if(oldSession != null){

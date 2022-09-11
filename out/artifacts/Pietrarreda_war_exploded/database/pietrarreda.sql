@@ -4,6 +4,8 @@ use pietrarreda;
 
 
 
+
+
 create table Utente(
                 Id_user int not null auto_increment,
                 Nome varchar (20) not null,
@@ -33,21 +35,27 @@ create table Utente(
 
 
 
+
+
 create table Prodotto(
 
 
 
-           id_prodotto int not null auto_increment,
+
+
+          id_prodotto int not null auto_increment,
             nome_prod varchar(25) not null,
             descrizione_prod varchar(200)not null,
             costo_prodotto double not null,
-			disponibilita_prod int not null,
+            disponibilita_prod int not null,
             imgPath_prod varchar (200) not null,
             primary key(id_prodotto)
 );
             insert into prodotto values(default,'Travertino Anticato','Tevartino opera incerta  ',18,200,'travertinoOpus.jpg');
-            insert into prodotto values(default,'Pietra Alpina Anticato','Pietra Alpina OpusIncertum',20,10,'Immagini/ImgProdotti/pietraAlpinaOpus.png');
-                        insert into prodotto values(default,'Porfido','Porfido opera incerta ',16,200,'Immagini/ImgProdotti/porfidoOpus.jpeg');
+            insert into prodotto values(default,'Pietra Alpina Anticato','Pietra Alpina OpusIncertum',20,10,'pietraAlpinaOpus.png');
+                        insert into prodotto values(default,'Porfido','Porfido opera incerta ',16,200,'porfidoOpus.jpeg');
+
+
 
 
 create table Carrello(

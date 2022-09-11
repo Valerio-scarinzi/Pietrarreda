@@ -17,6 +17,7 @@
 
 
     .navBar{
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         position: relative;
         top: auto;
         margin-bottom: 20px;
@@ -25,7 +26,7 @@
         justify-content: space-between;
         display: flex;
         align-items: center;
-        background: linear-gradient(90deg, #e79213, #292929);
+        background-color: #292929;
         color: #ffffff;
     }
 
@@ -66,7 +67,7 @@
         display: inline-flex;
     }
     .fa-magnifying-glass:hover{
-        color: rgb(255, 211, 17);
+        color: rgb(231, 146, 19);
     }
 
     /*submenu categorie*/
@@ -86,10 +87,13 @@
     .dropdown-content a{
         display: block;
         margin-top: auto;
-        background-color: #ffd311;
+        background-color: #292929;
     }
 
-    .catDropdown:hover .dropdown-content{display: block;}
+    .catDropdown:hover .dropdown-content{
+        display: block;
+
+    }
 
     /*hamburgher menu*/
     .toggle-button{
@@ -185,7 +189,6 @@
                 <a href="/" class="dropBtn">Negozio</a>
                     <div class="dropdown-content">
                         <a href="negozio.jsp">Negozio</a>
-
                         <a href="ShowCategoria?id=1">Categoria 1</a>
                         <a href="ShowCategoria?id=2">Categoria 2</a>
                         <a href="ShowCategoria?id=3">Categoria 3</a>

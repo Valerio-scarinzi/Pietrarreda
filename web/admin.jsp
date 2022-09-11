@@ -25,10 +25,11 @@
         height: 700px;
     }*/
     .admin_panel{
-        color: #d1aa11;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        color: #e79213;
         background-color: #292929;
-        max-width: 700px;
-        width: 100%;
+        text-align: center;
+        max-width: max-content;
         padding: 25px 30px;
         border-radius: 15px;
         position: relative;
@@ -36,9 +37,9 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
-.forms{
-
-}
+    .submit:hover{
+        background-color: #e79213;
+    }
 
     .admin_panel input{
         horiz-align: center;
@@ -51,13 +52,13 @@
     <h3>ADMIN CONSOLE</h3>
     <div class="forms">
 <form method="post" action="ProdottoServlet">
-    <p>Gestione prodotto </p>  <input type="submit" value="gestisci"> <br>
+    <p>Gestione prodotto </p>  <input class="submit"type="submit" value="gestisci"> <br>
 </form>
 <form method="post" action="CategorieServlet">
-    <p>Gestione categoria </p>  <input type="submit" value="gestisci"> <br>
+    <p>Gestione categoria </p>  <input class="submit"type="submit" value="gestisci"> <br>
 </form>
 <form method="post" action="UtentiServlet">
-    <p>Gestione utente </p>  <input type="submit" value="gestisci"> <br>
+    <p>Gestione utente </p>  <input  class="submit" type="submit" value="gestisci"> <br>
 </form>
     </div>
 

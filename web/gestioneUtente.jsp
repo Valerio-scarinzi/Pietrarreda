@@ -1,12 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.Utente" %>
-<%@ page import="java.util.ArrayList" %><%--
-  Created by IntelliJ IDEA.
-  User: VaLeRiX
-  Date: 30/08/2022
-  Time: 12:01
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.ArrayList" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -16,6 +10,7 @@
     <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <body>
+<%@include file="header.jsp"%>
 <%ArrayList<Utente> utenti = (ArrayList<Utente>) request.getAttribute("listUtenti");%>
 <h2>Utenti nel database.</h2>
 <div class="addUtente">
@@ -23,10 +18,11 @@
         <a href="addUtente.jsp"> Aggiungi utente <i class="fa-solid fa-plus"></i></a>
     </button>
 </div>
+<hr>
 
 <div class="showUtenti">
 
-    <c:forEach items="${listUtenti}" var="utente">
+    <c:forEach items="${listUtenti}" var="utente"><fieldset>
         ID: <c:out value="${utente.id}" /><br>
         Nome:  <c:out value="${utente.nome}" /><br>
         Cognome:  <c:out value="${utente.cognome}" /><br>
@@ -36,23 +32,25 @@
         Admin:  <c:out value="${utente.admin}" /><br>
 
         <form id="updt" method="post" action="GestioneUtenteServlet?id=${utente.id}">
-            <input type="text" name="cambiaNome" id="cambiaNome" placeholder="modifica nome"> <br>
+            <input type="text" name="cambiaNome" id="cambiaNome" value="${utente.nome}" placeholder="modifica nome" required="required"> <br>
 
-            <input type="text" name="cambiaCognome" id="cambiaCognome" placeholder="modifica cognome"> <br>
+            <input type="text" name="cambiaCognome" id="cambiaCognome" value="${utente.cognome}" placeholder="modifica cognome" required="required"> <br>
 
-            <input type="text" name="cambiaUsername" id="cambiaUsername" placeholder="modifica username"> <br>
+            <input type="text" name="cambiaUsername" id="cambiaUsername" value="${utente.username}" placeholder="modifica username" required="required"> <br>
 
-            <input type="password" name="cambiaPass" id="cambiaPass" placeholder="modifica password"> <br>
+            <input type="password" name="cambiaPass" id="cambiaPass" value="${utente.password}" placeholder="modifica password" required="required"> <br>
 
-            <input type="text" name="cambiaEmail" id="cambiaEmail" placeholder="modifica email"> <br>
+            <input type="text" name="cambiaEmail" id="cambiaEmail" value="${utente.email}" placeholder="modifica email" required="required"> <br>
 
-            Abilita admin:<input type="checkbox" name="cambiaAdmin" id="cambiaAdmin"> <br>
+            Abilita admin:<input type="checkbox" name="cambiaAdmin" value="if${utente.admin}" id="cambiaAdmin"> <br>
 
             <button class="btn">
                 <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-            <input type="submit" value="Modifica" onclick="modifica()"><br><br><br>
+            <input type="submit" value="Modifica" onclick="modifica()"><br><br>
         </form>
+    </fieldset>
+        <br>
     </c:forEach>
 
 </div>
