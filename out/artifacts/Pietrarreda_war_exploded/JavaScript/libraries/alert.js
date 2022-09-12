@@ -17,3 +17,9 @@ function elimina() {
     if (form.checkValidity()){
         window.alert("Rimozione avvenuta con successo!");}
 }
+//alert logout
+function logout() {
+    var form=document.getElementById("logOut");
+    if (form.checkValidity()){
+        window.alert("Logout!");}
+}
