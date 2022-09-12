@@ -12,11 +12,13 @@
     <title>Title</title>
 </head>
 <body>
+<%@include file="header.jsp"%>
 ciao
 <br>
 
 <% Utente utente = (Utente) session.getAttribute("utenteLoggato");%>
 <%=utente.toString()%>
+<a href="index.jsp">Premi qui per tornare alla homepage</a>
 
 
 

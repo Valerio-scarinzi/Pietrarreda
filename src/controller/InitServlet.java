@@ -21,10 +21,7 @@ public class InitServlet extends HttpServlet {
     categories =  categoriaDAO.doRetrieveAllCategory();
     getServletContext().setAttribute("categorie",categories);
 
-    ArrayList<Prodotto> prodottos= new ArrayList<Prodotto>();
-    ProdottoDAO prodottoDAO = new ProdottoDAO();
-    prodottos = prodottoDAO.getAllProdotti();
-    getServletContext().setAttribute("prodotti",prodottos);
+
 
 
     System.out.println("ciao");

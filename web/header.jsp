@@ -1,3 +1,4 @@
+<%@ page import="model.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -165,6 +166,7 @@
 
     }
 </style>
+    <%Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");%>
 
 <nav class="navBar">
     <div class="brand-img" title="HOMEPAGE"><a href="index.jsp"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
@@ -186,6 +188,7 @@
         <ul>
             <li>
                 <div class="catDropdown">
+
                 <a href="/" class="dropBtn">Negozio</a>
                     <div class="dropdown-content">
                         <a href="negozio.jsp">Negozio</a>
@@ -195,7 +198,10 @@
                     </div>
             </div>
             </li>
-            <li><a href="login.jsp" title="LOGIN"><i class="fa-solid fa-user"></i></a></li>
+            <%if(utenteLog == null){%>
+            <li><a href="login.jsp" title="LOGIN"><i class="fa-solid fa-user"></i></a></li><%}%>
+            <%if(utenteLog != null){%>
+            <li><a href="pagUtente.jsp" title="UTENTE">Benvenuto: <%=utenteLog.getUsername()%></a></li><%}%>
             <li><a href="registrazione.jsp">Registrati</a> </li>
             <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <div class="SearchBar">
