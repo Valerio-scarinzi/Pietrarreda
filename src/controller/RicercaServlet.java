@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import model.Prodotto;
 import model.ProdottoDAO;
@@ -21,8 +21,8 @@ public class RicercaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name_prod= request.getParameter("search");
         ProdottoDAO prod= new ProdottoDAO();
-     //   List<Prodotto> products= prod.SearchProdByName(name_prod);
-      //  request.setAttribute("showprodsearch",products);
+    //   List<Prodotto> products= prod.SearchProdByName(name_prod);
+      // request.setAttribute("showprodsearch",products);
         RequestDispatcher dispatcher=request.getRequestDispatcher("");
         dispatcher.forward(request,response);
     }
