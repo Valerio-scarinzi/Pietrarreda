@@ -153,4 +153,52 @@ public class UtenteDAO {
     }
     return null;
   }
+
+    public void doUpdate(int id, String newNome, String newCognome, String newUser, String newPass) {
+      try(Connection connection=ConPool.getConnection()) {
+        PreparedStatement ps=connection.prepareStatement("UPDATE Utente set  Nome=?,Cognome=?,username=?,passwordhash=? where Id_user=?;");
+        ps.setString(1,newNome);
+        ps.setString(2,newCognome);
+        ps.setString(3,newUser);
+        ps.setString(4,newPass);
+        ps.setInt(5,id);
+        ps.executeUpdate();
+      }
+      catch (SQLException e){
+        throw new RuntimeException(e);
+      }
+    }
+
+  public Utente doRetriveById(int id) {
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps =
+              con.prepareStatement("SELECT * FROM  utente WHERE Id_user=?");
+
+      ps.setInt(1,id);
+
+
+      ResultSet rs = ps.executeQuery();
+
+      if (rs.next()) {
+
+        Utente p = new Utente();
+        p.setId(rs.getInt(1));
+        p.setNome(rs.getString(2));
+        p.setCognome(rs.getString(3));
+        p.setUsername(rs.getString(4));
+        p.setPassword(rs.getString(5));
+        p.setEmail(rs.getString(6));
+        p.setAdmin(rs.getBoolean(7));
+        return p;
+      }
+
+      con.close();
+      return null;
+
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+    return null;
+
+  }
 }

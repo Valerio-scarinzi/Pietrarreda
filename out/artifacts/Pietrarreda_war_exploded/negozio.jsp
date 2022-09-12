@@ -1,5 +1,6 @@
 <%@ page import="model.Prodotto" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.ProdottoDAO" %><%--
   Created by IntelliJ IDEA.
   User: VaLeRiX
   Date: 08/09/2022
@@ -86,7 +87,10 @@
 </style>
 <body>
 <%@include file="header.jsp"%>
-<% ArrayList<Prodotto> prodotti = (ArrayList<Prodotto>) session.getServletContext().getAttribute("prodotti");%>
+<% ArrayList<Prodotto> prodotti= new ArrayList<Prodotto>();%>
+   <%ProdottoDAO prodottoDAO = new ProdottoDAO();%>
+    <%prodotti = prodottoDAO.getAllProdotti();%>
+   <%session.getServletContext().setAttribute("prodotti",prodotti);%>
 <div class="ForNegozioJSP">
 <% for (Prodotto p: prodotti) {%>
  <div class="InForNegozioJSP">

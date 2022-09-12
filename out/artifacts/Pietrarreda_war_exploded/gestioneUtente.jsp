@@ -42,7 +42,7 @@
 
             <input type="text" name="cambiaEmail" id="cambiaEmail" value="${utente.email}" placeholder="modifica email" required="required"> <br>
 
-            Abilita admin:<input type="checkbox" name="cambiaAdmin" value="if${utente.admin}" id="cambiaAdmin"> <br>
+            Abilita admin:<input type="checkbox" name="cambiaAdmin" value="" id="cambiaAdmin"> <br>
 
             <button class="btn">
                 <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>

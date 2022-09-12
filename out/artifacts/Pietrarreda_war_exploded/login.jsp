@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Utente" %>
+<%@ page import="java.util.Iterator" %><%--
   Created by IntelliJ IDEA.
   User: VaLeRiX
   Date: 19/07/2022

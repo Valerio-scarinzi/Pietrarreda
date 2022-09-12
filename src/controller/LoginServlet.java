@@ -10,11 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.View;
 import java.io.IOException;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
+
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //prendi username email e password da input e salva
@@ -22,43 +28,38 @@ public class LoginServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-
-
+        HttpSession oldSession = req.getSession();
+        if (oldSession != null) {
+            oldSession.invalidate();}
+        HttpSession recentSession = req.getSession();
         UtenteDAO utenteDAO = new UtenteDAO();
-
-        Utente utente  = utenteDAO.doRetrieveByUsernameEmailPassword(email,username, password);
-        System.out.println(utente);
-        boolean user_bool = username.equals(utente.getUsername());
-        boolean email_bool=email.equals(utente.getEmail());
-        boolean password_bool = password.equals(utente.getPassword());
-        boolean admin_bool = utente.isAdmin();
-
-        
-
-
-        //Fai un altro if che controlla se l utente è admin (booleano),se admin -> indirizzare a jsp admin (da creare)
-        if(user_bool==true&&password_bool==true&&email_bool==true){
-
-            HttpSession oldSession = req.getSession();
-            if(oldSession != null){
-             oldSession.invalidate();
-
-            HttpSession recentSession = req.getSession();
-            recentSession.setAttribute("utenteLoggato",utente);
-
-        }
-            if(admin_bool==false){
-            RequestDispatcher dispatcher = req.getRequestDispatcher("stampa.jsp");
-            dispatcher.forward(req,resp);}
-            else{
-                RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
-                dispatcher.forward(req,resp);
+           Utente utente = utenteDAO.doRetrieveByUsernameEmailPassword(email, username, password);// controlla del DB se esiste un utente con questi parametri.Se non esiste "utente"=null
+            if(utente==null){ //utente non trovato nel db
+                throw new MyExceptionServlet("Errore di login!"+"\n"+"Dati errati");
             }
 
 
+           //Fai un altro if che controlla se l utente è admin (booleano),se admin -> indirizzare a jsp admin (da creare)
+           if (utente!=null) {
 
 
-        }
+
+
+
+                   recentSession.setAttribute("utenteLoggato", utente);
+
+
+               if (utente.isAdmin() == false) {
+                   RequestDispatcher dispatcher = req.getRequestDispatcher("stampa.jsp");
+                   dispatcher.forward(req, resp);
+               } else {
+                   recentSession.setAttribute("AdminLoggeto",utente);
+                   RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
+                   dispatcher.forward(req, resp);
+               }
+
+
+           }
 
 
 

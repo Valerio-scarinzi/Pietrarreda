@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 
 
@@ -21,6 +21,8 @@ public class MyExceptionServlet extends ServletException {
     public MyExceptionServlet(String msg){
         super(msg);
     }
+
+
 
     public static void checkAdmin(HttpServletRequest request) throws MyExceptionServlet {
         Utente utente = (Utente) request.getSession().getAttribute("usrLog");
