@@ -35,13 +35,18 @@
 
 
     .Reg_panel input{
-        background-color: #dcdcdc;
         padding: 5px;
         margin: 5px;
+        border-radius: 7px;
         text-align: center;
     }
+    .submit{
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
     .submit:hover{
-        background-color: #e79213;
+        color: #e79213;
     }
 
 

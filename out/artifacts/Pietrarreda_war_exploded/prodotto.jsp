@@ -1,4 +1,5 @@
-<%@ page import="model.Prodotto" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="model.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -74,7 +75,6 @@
 <%@include file="header.jsp"%>
 <% Prodotto p = (Prodotto) request.getAttribute("ShowProdotto");%>
 <div class="product">
-
         <a><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
     <a><img class="imgProd" src="Immagini/ImgProdotti/1<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
         <table class="attProd">
@@ -83,10 +83,16 @@
             <tr><td>   Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
             <tr><td> Disponibilità: <%=p.getDisponibilita()%></td></tr>
 
-        <div>
-            <button class="button-cart" title="Aggiungi a carrello"><i class="fa-solid fa-cart-shopping"></i>
-            </button>
-        </div>
+            <%if(utenteLog!=null){%> <form action="Carrello" method="post">
+                <input type="hidden" name="prodId" value="<%=p.getIdprod()%>">
+                <tr><td>Quantita':<select name="addNum">
+            <c:forEach begin="1" end="20" varStatus="loop">
+                <option name="quantitaNum" value="${loop.index}"> ${loop.index} </option>
+            </c:forEach>
+        </select></td></tr>
+           <tr><td><input type="submit"value="Aggiungi a carrello"></td></tr><%}%>
+            </form>
+
     </table>
 </div>
 </body>

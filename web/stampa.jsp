@@ -13,15 +13,10 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-ciao
-<br>
-
 <% Utente utente = (Utente) session.getAttribute("utenteLoggato");%>
-<%=utente.toString()%>
-<a href="index.jsp">Premi qui per tornare alla homepage</a>
-
-
-
-
+<div>
+Ciao <%=utente.getCognome()%> <%=utente.getNome()%> !
+Siamo lieti di darti il benvenuto sul nostro sito e-commerce Pietrarreda.</div>
+<a href="index.jsp">Clicca qui per tornare alla homepage</a>
 </body>
 </html>

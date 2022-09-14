@@ -6,6 +6,7 @@
     <script src="JavaScript/libraries/alert.js"></script>
 </head>
 <body>
+<%@include file="header.jsp"%>
 
 <form id="add" method="post" action="AddCategoria">
     <div class="AddCat_panel">
@@ -16,6 +17,6 @@
         <input type="submit" value="Aggiungi" onclick="aggiunta()">
     </div>
 </form>
-<%@include file="footer.jsp"%>
+<!--<%@include file="footer.jsp"%>-->
 </body>
 </html>

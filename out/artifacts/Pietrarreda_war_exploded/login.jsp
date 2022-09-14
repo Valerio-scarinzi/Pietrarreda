@@ -30,12 +30,11 @@
     .Log_panel{
         text-align: center;
         position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 25px 30px;
-        padding-bottom: 5px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: auto;
+        padding: 35px 30px;
+        padding-bottom: 10px;
+        margin-top: 30px;
+        margin-bottom: 35px;
         color: #e79213;
         background-color: #292929;
         max-width: 350px;
@@ -46,13 +45,18 @@
 
 
     .Log_panel input{
-        background-color: #dcdcdc;
         padding: 5px;
         margin: 5px;
+        border-radius: 7px;
         text-align: center;
     }
+    .submit{
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
     .submit:hover{
-        background-color: #e79213;
+        color: #e79213;
     }
 
 

@@ -29,9 +29,7 @@ public class ShowProdottoServlet extends HttpServlet {
             if(p.getIdprod() == id){
                 req.setAttribute("ShowProdotto", p);
             }
-
         }
-
         RequestDispatcher dispatcher = req.getRequestDispatcher("prodotto.jsp");
         dispatcher.forward(req,resp);
     }

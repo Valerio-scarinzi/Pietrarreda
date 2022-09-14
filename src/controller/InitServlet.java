@@ -20,16 +20,6 @@ public class InitServlet extends HttpServlet {
     CategoriaDAO categoriaDAO = new CategoriaDAO();
     categories =  categoriaDAO.doRetrieveAllCategory();
     getServletContext().setAttribute("categorie",categories);
-
-
-
-
-    System.out.println("ciao");
-    System.out.println("ciao");
-
-    String c = "ciao";
-    System.out.println(c);
-
     super.init();
   }
 }
