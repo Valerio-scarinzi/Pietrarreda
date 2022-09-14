@@ -38,11 +38,6 @@ create table Utente(
 
 
 create table Prodotto(
-
-
-
-
-
             id_prodotto int not null auto_increment,
             nome_prod varchar(25) not null,
             descrizione_prod varchar(200)not null,

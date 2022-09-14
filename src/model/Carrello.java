@@ -1,157 +1,89 @@
+
 package model;
+import model.Prodotto;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Locale;
-
+import java.util.LinkedHashMap;
 public class Carrello {
-    private int idcarrello, idprodotto, idutente;
-    HashMap<Integer, ProdottoQuantità> prod_cart = new HashMap<>();
-    private double totalPrice;
-
-
-    public static class ProdottoQuantità {
-
-        public ProdottoQuantità() {
+    private int idUtente;
+    private int idSc;
+    public static class ProdottoQuantita {
+        private Prodotto prodotto;
+        private int quantita;
+        private ProdottoQuantita(Prodotto prodotto, int quantita) {
+            this.prodotto = prodotto;
+            this.quantita = quantita;
         }
 
-        public ProdottoQuantità(Prodotto prodotto, int quantita) {
-            this.prod = prodotto;
-            this.qtyprd = quantita;
+        public int getQuantita() {
+            return quantita;
         }
 
-        public int getQtyprd() {
-            return qtyprd;
+        public void setQuantita(int quantita) {
+            this.quantita = quantita;
         }
 
-        public void setQtyprd(int qtyprd) {
-            this.qtyprd = qtyprd;
+        public Prodotto getProdotto() {
+            return prodotto;
         }
 
-        private int qtyprd;
-
-        public Prodotto getProd() {
-            return prod;
+        public double getPrezzoTot() {
+            return quantita * prodotto.getPrezzo();
         }
 
-        public void setProd(Prodotto prod) {
-            this.prod = prod;
-        }
-
-        private Prodotto prod;
     }
 
-    public Carrello() {
-
+    private LinkedHashMap<Integer, ProdottoQuantita> prodotti = new LinkedHashMap<>();
+    public Collection<ProdottoQuantita> getProdotti() {
+        return prodotti.values();
     }
 
-    // getters and setters of class Cart's attribute
-    public double getTotalPrice() {
-        return totalPrice;
+    public ProdottoQuantita get(int prodId) {
+        return prodotti.get(prodId);
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void put(Prodotto prodotto, int quantita) {
+        prodotti.put(prodotto.getIdprod(), new ProdottoQuantita(prodotto, quantita));
     }
 
-    public int getIdcarrello() {
-        return idcarrello;
+    public ProdottoQuantita remove(int prodId) {
+        return prodotti.remove(prodId);
     }
 
-
-    public void setIdcarrello(int idcarrello) {
-        this.idcarrello = idcarrello;
-    }
-
-
-    public int getIdprodotto(int id_cliente) {
-        return idprodotto;
-    }
-
-
-    public void setIdprodotto(int idprodotto) {
-        this.idprodotto = idprodotto;
-    }
-
-
-    public int getIdutente() {
-        return idutente;
-    }
-
-
-    public void setIdutente(int idutente) {
-        this.idutente = idutente;
-    }
-
-
-// methods of Cart
-
-    public void addProd(Prodotto prod, int qty_add) {
-        if (prod_cart.containsKey(prod.getIdprod())) {
-            this.totalPrice += (prod.getPrezzo() * qty_add);}
-        else {
-            this.totalPrice+=(prod.getPrezzo()*qty_add);
-            prod_cart.put(prod.getIdprod(),new ProdottoQuantità(prod,qty_add));
-
-        }
-    }
-
-    public void removeAll(ProdottoQuantità prodottoQuantita) {
-        if (prod_cart.containsValue(prodottoQuantita)) {
-            prod_cart.remove(prodottoQuantita.getProd().getIdprod());
-            this.totalPrice = 0.0;
-        }
-    }
-
-    public void removeProd (Prodotto prod,int qty_rmv) {
-        if (prod_cart.get(prod.getIdprod()).getQtyprd() >= 0 || prod_cart.get(prod.getIdprod()).getQtyprd() >= qty_rmv) {
-            this.totalPrice -= (prod.getPrezzo() * qty_rmv);
-            if (prod_cart.get(prod.getIdprod()).getQtyprd()==0)
-                prod_cart.remove(prod.getIdprod());
-        }
-        else {
-            int adjust=prod_cart.get(prod.getIdprod()).getQtyprd()+qty_rmv;
-            this.totalPrice -=(prod.getPrezzo() *adjust);
-            prod_cart.get(prod.getIdprod()).setQtyprd(0);
-            if (prod_cart.get(prod.getIdprod()).getQtyprd()==0)
-                prod_cart.remove(prod.getIdprod());
-        }
-
-
-    }
-
-
-    public void setProd_cart(HashMap<Integer,ProdottoQuantità> link) {
-        prod_cart=link;
-    }
-    public ProdottoQuantità getPrdQty(int idprod) {
-        return prod_cart.get(idprod);
-    }
-
-
-    public int getSize () {
-        return prod_cart.size();
+    public double getPrezzoTot() {
+        return prodotti.values().stream().mapToDouble(p -> p.getPrezzoTot()).sum();
     }
 
 
     @Override
     public String toString() {
-        return "Carrello [idcarrello=" + idcarrello + ", idprodotto=" + idprodotto + ", idutente=" + idutente
-                + ", listaProdotti=" + prod_cart + "prezzototale=" + getSubTotale() + "]";
+        return "Carrello [prodotti=" + prodotti + "]";
     }
 
-    public String getSubTotale () {
-        Locale locale = new Locale("ITALIAN");
-        String pattern = "###.##";
-
-        DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
-        decimalFormat.applyPattern(pattern);
-        return decimalFormat.format(totalPrice);
-    }
-    public Collection<ProdottoQuantità> getProds(){
-        return prod_cart.values();
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((prodotti == null) ? 0 : prodotti.hashCode());
+        return result;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Carrello other = (Carrello) obj;
+        if (prodotti == null) {
+            if (other.prodotti != null)
+                return false;
+        } else if (!prodotti.equals(other.prodotti))
+            return false;
+        return true;
+    }
 }
+
+

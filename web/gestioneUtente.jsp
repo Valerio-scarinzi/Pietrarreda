@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.Utente" %>
 <%@ page import="java.util.ArrayList" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,6 +8,16 @@
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
     <script src="JavaScript/libraries/alert.js"></script>
 </head>
+<style>
+    .submit{
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
+    .submit:hover{
+        color: #e79213;
+    }
+</style>
 <body>
 <%@include file="header.jsp"%>
 <%ArrayList<Utente> utenti = (ArrayList<Utente>) request.getAttribute("listUtenti");%>
@@ -47,7 +56,7 @@
             <button class="btn">
                 <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-            <input type="submit" value="Modifica" onclick="modifica()"><br><br>
+            <input class="submit" type="submit" value="Modifica" onclick="modifica()"><br><br>
         </form>
     </fieldset>
         <br>

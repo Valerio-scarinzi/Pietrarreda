@@ -21,6 +21,14 @@
     .showProdotti{
         margin: auto;
     }
+.submit{
+    border-color: #e49314;
+    color: #FFFFFF;
+    background-color: #292929;
+}
+.submit:hover{
+    color: #e79213;
+}
 
 </style>
 <body>
@@ -59,7 +67,7 @@
             <button class="btn">
               <a href="DeleteProdotto?id=${prodotto.idprod}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
-    <input type="submit" value="Modifica" onclick="modifica()"><br><br>
+    <input  class="submit" type="submit" value="Modifica" onclick="modifica()"><br><br>
         </form>
 </fieldset>
         <br>

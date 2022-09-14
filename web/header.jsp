@@ -1,4 +1,7 @@
 <%@ page import="model.Utente" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Categoria" %>
+<%@ page import="model.CategoriaDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -166,9 +169,14 @@
 
     }
 </style>
-    <%Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");%>
 
-<nav class="navBar">
+    <%Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");%>
+    <%ArrayList<Categoria> categorie=new ArrayList<Categoria>();%>
+    <%CategoriaDAO catetegoriaDAO=new CategoriaDAO();%>
+    <%categorie=catetegoriaDAO.doRetrieveAllCategory();%>
+    <%session.getServletContext().setAttribute("categorie",categorie);%>
+
+            <nav class="navBar">
     <div class="brand-img" title="HOMEPAGE"><a href="index.jsp"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
         <a href="#" class="toggle-button">
@@ -188,26 +196,25 @@
         <ul>
             <li>
                 <div class="catDropdown">
-
-                <a href="/" class="dropBtn">Negozio</a>
+                <a href="negozio.jsp" class="dropBtn">Negozio</a>
                     <div class="dropdown-content">
                         <a href="negozio.jsp">Negozio</a>
-                        <a href="ShowCategoria?id=1">Categoria 1</a>
-                        <a href="ShowCategoria?id=2">Categoria 2</a>
-                        <a href="ShowCategoria?id=3">Categoria 3</a>
+                        <%for (Categoria c:categorie){%>
+                       <a href="ShowCategoria?id=<%=c.getId()%>"> <%=c.getCategoria_nome()%></a><%}%>
                     </div>
             </div>
             </li>
             <%if(utenteLog == null){%>
-            <li><a href="login.jsp" title="LOGIN"><i class="fa-solid fa-user"></i></a></li><%}%>
-            <%if(utenteLog != null){%>
-            <li><a href="pagUtente.jsp" title="UTENTE">Benvenuto: <%=utenteLog.getUsername()%></a></li><%}%>
+            <li><a href="login.jsp" title="LOGIN"> <i class="fa-regular fa-user"></i></a></li>
             <li><a href="registrazione.jsp">Registrati</a> </li>
-            <li> <a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <%}%>
+            <%if(utenteLog != null){%>
+            <li><a href="pagUtente.jsp" title="UTENTE">Benvenuto: <%=utenteLog.getUsername()%>  </a></li><%}%>
+
+            <li> <a href="Carrello"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <div class="SearchBar">
                 <form action="RicServ" method="get">
                     <input type="text" placeholder="Cerca qui..." name="search" onkeyup="ricerca(this.value)">
-                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </ul>

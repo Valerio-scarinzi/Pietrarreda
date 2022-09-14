@@ -14,10 +14,20 @@
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
     <script src="JavaScript/libraries/alert.js"></script>
 </head>
+<style>
+    .submit{
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
+    .submit:hover{
+        color: #e79213;
+    }
+</style>
 <body>
 <%@include file="header.jsp"%>
 
-<%ArrayList<Categoria> categorie = (ArrayList<Categoria>) session.getAttribute("listCategorie"); %>
+
 <h2>Categorie nel database</h2>
 <div class="addCategoria">
     <button class="btn">
@@ -40,7 +50,7 @@
         <button class="btn">
             <a id="del" href="DeleteCategoria?id=${categoria.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
         </button>
-        <input type="submit" value="Modifica" onclick="modifica()"><br><br>
+        <input class="submit" type="submit" value="Modifica" onclick="modifica()"><br><br>
     </form>
     </fieldset>
         <br>

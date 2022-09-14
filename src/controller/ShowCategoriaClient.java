@@ -31,15 +31,10 @@ public class ShowCategoriaClient extends HttpServlet {
     for (Categoria c :categorie) {
       if(c.getId() == id){
         req.setAttribute("ShowCategoria", c);
-
       }
-
     }
-
-
     RequestDispatcher dispatcher = req.getRequestDispatcher("categoriaClient.jsp");
     dispatcher.forward(req,resp);
-
   }
 
   @Override
