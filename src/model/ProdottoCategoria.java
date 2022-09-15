@@ -4,6 +4,8 @@ public class ProdottoCategoria {
 
     private int id_cat;
     private int id_prod;
+    public ProdottoCategoria(){}
+
     public ProdottoCategoria(int id_cat,int id_prod){
         this.id_cat=id_cat;
         this.id_prod=id_prod;
