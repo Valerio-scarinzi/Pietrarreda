@@ -91,23 +91,27 @@
    <%ProdottoDAO prodottoDAO = new ProdottoDAO();%>
     <%prodotti = prodottoDAO.getAllProdotti();%>
    <%session.getServletContext().setAttribute("prodotti",prodotti);%>
-<div class="ForNegozioJSP">
-<% for (Prodotto p: prodotti) {%>
- <div class="InForNegozioJSP">
 
-      <table>
-          <tr><td>Nome: <%=p.getNome()%></td></tr>
-          <tr><td>Descrizione: <%=p.getDesc()%></td></tr>
-          <tr><td>Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
-          <tr><td>Disponibilità: <%=p.getDisponibilita()%></td></tr>
-          <a href="ShowProdotto?id=<%=p.getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" alt="IMG_PATH_NOT_FOUND"></a>
-          <%if(utenteLog!=null){%>
-          <div>
-              <form action="Carrello" method="post"><i class="fa-solid fa-cart-shopping"></i>
-              <input type="submit">
-          </div><%}%>
-      </table>
-    <br><br>
+<div class="ForNegozioJSP">
+    <% for (Prodotto p: prodotti) {%>
+    <div class="InForNegozioJSP">
+
+        <table>
+            <tr><td>Nome: <%=p.getNome()%></td></tr>
+            <tr><td>Descrizione: <%=p.getDesc()%></td></tr>
+            <tr><td>Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
+            <tr><td>Disponibilità: <%=p.getDisponibilita()%></td></tr>
+            <a href="ShowProdotto?id=<%=p.getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" alt="IMG_PATH_NOT_FOUND"></a>
+            <%if(utenteLog!=null){%>
+            <div>
+                <form action="Carrello" method="post"><i class="fa-solid fa-cart-shopping"></i>
+                    <input type="submit">
+                    </form>
+            </div>
+
+            <%}%>
+        </table>
+        <br><br>
 
     </div>
     <%}%></div>
