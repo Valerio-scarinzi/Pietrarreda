@@ -25,6 +25,7 @@
         bottom: auto;
         bottom: 0;
         margin-bottom: 0;
+        margin-top: 35px;
         padding: 10px 10px 0px 10px;
         width: 100%;
         background-color: #292929;

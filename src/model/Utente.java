@@ -14,6 +14,25 @@ public class Utente {
   private String username;
   private String password;
   private String email;
+  private String indirizzo;
+  private int CAP;
+
+  public String getIndirizzo() {
+    return indirizzo;
+  }
+
+  public void setIndirizzo(String indirizzo) {
+    this.indirizzo = indirizzo;
+  }
+
+  public int getCAP() {
+    return CAP;
+  }
+
+  public void setCAP(int CAP) {
+    this.CAP = CAP;
+  }
+
   private boolean admin;
 
   public String getPassword() {

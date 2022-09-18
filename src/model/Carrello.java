@@ -1,19 +1,29 @@
 
 package model;
-import model.Prodotto;
+
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 public class Carrello {
-    private int idUtente;
-    private int idSc;
+    private int idutente;
+    private int idcarrello;
+    private int idprodotto;
+    private double prezzotot;
+    private HashMap<Integer, ProdottoQuantita> prodotti = new HashMap<>();
+
     public static class ProdottoQuantita {
         private Prodotto prodotto;
         private int quantita;
-        private ProdottoQuantita(Prodotto prodotto, int quantita) {
+
+        public ProdottoQuantita(Prodotto prodotto, int quantita) {
             this.prodotto = prodotto;
             this.quantita = quantita;
         }
+        private ProdottoQuantita() {
+        }
+
+
 
         public int getQuantita() {
             return quantita;
@@ -27,62 +37,114 @@ public class Carrello {
             return prodotto;
         }
 
+        public void setProdotto(Prodotto prodotto) {
+            this.prodotto = prodotto;
+        }
+
         public double getPrezzoTot() {
             return quantita * prodotto.getPrezzo();
         }
 
     }
 
-    private LinkedHashMap<Integer, ProdottoQuantita> prodotti = new LinkedHashMap<>();
-    public Collection<ProdottoQuantita> getProdotti() {
-        return prodotti.values();
+    public Carrello() {
+
     }
 
-    public ProdottoQuantita get(int prodId) {
-        return prodotti.get(prodId);
+    public int getIdutente() {
+        return idutente;
     }
 
-    public void put(Prodotto prodotto, int quantita) {
-        prodotti.put(prodotto.getIdprod(), new ProdottoQuantita(prodotto, quantita));
+    public void setIdutente(int idutente) {
+        this.idutente = idutente;
     }
 
-    public ProdottoQuantita remove(int prodId) {
-        return prodotti.remove(prodId);
+    public int getIdcarrello() {
+        return idcarrello;
     }
 
-    public double getPrezzoTot() {
-        return prodotti.values().stream().mapToDouble(p -> p.getPrezzoTot()).sum();
+    public void setIdcarrello(int idcarrello) {
+        this.idcarrello = idcarrello;
     }
 
+    public int getIdprodotto() {
+        return idprodotto;
+    }
+
+    public void setIdprodotto(int idprodotto) {
+        this.idprodotto = idprodotto;
+    }
+
+    public double getPrezzotot() {
+        return prezzotot;
+    }
+
+    public void setPrezzotot(double prezzotot) {
+        this.prezzotot = prezzotot;
+    }
+
+
+    //Metodi carrello
+    public void addProdotto(Prodotto prod,int quant){
+        if(prodotti.containsKey(prod.getIdprod())){
+            this.prezzotot+=(prod.getPrezzo()*quant);}
+        else {
+            this.prezzotot+=(prod.getPrezzo()*quant);
+            prodotti.put(prod.getIdprod(),new ProdottoQuantita(prod,quant));
+        }
+    }
+
+    public void removeAll(ProdottoQuantita prodottoQuantita) {
+        if ( prodotti.containsValue(prodottoQuantita)) {
+            prodotti.remove(prodottoQuantita.getProdotto().getIdprod());
+            this.prezzotot = 0.0;
+        }
+    }
+
+    public void removeProd (Prodotto prod,int quant) {
+        if (prodotti.get(prod.getIdprod()).getQuantita() >= 0 || prodotti.get(prod.getIdprod()).getQuantita() >= quant) {
+            this.prezzotot -= (prod.getPrezzo() * quant);
+            if (prodotti.get(prod.getIdprod()).getQuantita()==0)
+                prodotti.remove(prod.getIdprod());
+        }
+        else {
+            int adjust=prodotti.get(prod.getIdprod()).getQuantita()+quant;
+            this.prezzotot -=(prod.getPrezzo() *adjust);
+            prodotti.get(prod.getIdprod()).setQuantita(0);
+            if (prodotti.get(prod.getIdprod()).getQuantita()==0)
+                prodotti.remove(prod.getIdprod());
+        }
+
+
+
+
+    }
+
+    public void setProdotti(HashMap<Integer,ProdottoQuantita> link){
+        prodotti=link;
+    }
+
+    public ProdottoQuantita getProdQuant(int idprod) {
+        return prodotti.get(idprod);
+    }
+
+    public int getSize(){
+        return prodotti.size();
+    }
 
     @Override
     public String toString() {
-        return "Carrello [prodotti=" + prodotti + "]";
+        return "Carrello{" +
+                "idutente=" + idutente +
+                ", idcarrello=" + idcarrello +
+                ", idprodotto=" + idprodotto +
+                ", prezzotot=" + prezzotot +
+                ", prodotti=" + prodotti +
+                '}';
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((prodotti == null) ? 0 : prodotti.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Carrello other = (Carrello) obj;
-        if (prodotti == null) {
-            if (other.prodotti != null)
-                return false;
-        } else if (!prodotti.equals(other.prodotti))
-            return false;
-        return true;
+    public Collection<Carrello.ProdottoQuantita> getProdotti(){
+        return prodotti.values();
     }
 }
 
