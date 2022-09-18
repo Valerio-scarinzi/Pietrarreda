@@ -1,21 +1,32 @@
 <%@ page import="java.util.List" %>
-<%@ page import="model.Utente" %><%--
-  Created by IntelliJ IDEA.
-  User: VaLeRiX
-  Date: 11/07/2022
-  Time: 16:09
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <title>Pietrarreda.com - Website </title>
 
   </head>
+  <style>
+
+    *{
+      padding: 0;
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    .homepage{
+      text-align: center;
+    }
+
+  </style>
   <body>
   <%@include file="header.jsp"%>
 
-
+<div class="homepage">
+  <h2 style="color: #e49314">Bevenuto su Pietrarreda.com</h2>
+  <hr><br><br>
+  <%@include file="slideGallery.jsp"%>
+</div>
 
 
 

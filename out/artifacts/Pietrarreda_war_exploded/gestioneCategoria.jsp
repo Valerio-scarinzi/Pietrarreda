@@ -12,7 +12,7 @@
 <head>
     <title>Categorie DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
-    <script src="JavaScript/libraries/alert.js"></script>
+    <script src="JavaScript/alert.js"></script>
 </head>
 <style>
     .submit{

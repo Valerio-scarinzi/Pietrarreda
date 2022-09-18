@@ -1,14 +1,8 @@
 <%@ page import="model.Utente" %>
-<%@ page import="java.util.Iterator" %><%--
-  Created by IntelliJ IDEA.
-  User: VaLeRiX
-  Date: 19/07/2022
-  Time: 12:50
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Iterator" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link rel="stylesheet" href="login.css">
 <head>
 
     <title>login panel</title>
