@@ -1,5 +1,5 @@
+<%@ page import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,7 +34,10 @@
 </style>
 <body>
 <%@include file="header.jsp"%>
-<section>
+<% CarrelloDAO carrelloDao=new CarrelloDAO();%>
+<%Carrello carrello=new Carrello();%>
+<% carrello=carrelloDao.getCarrelloByUser(utenteLog.getId());%>
+
     <h1 class="titolo">Carrello</h1>
     <grid class="Colonne">
         <c:forEach items="${carrello.prodotti}" var="pq">
