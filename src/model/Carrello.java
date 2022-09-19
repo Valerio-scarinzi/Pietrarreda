@@ -10,7 +10,9 @@ public class Carrello {
     private int idcarrello;
     private int idprodotto;
     private double prezzotot;
-    private HashMap<Integer, ProdottoQuantita> prodotti = new HashMap<>();
+    private  HashMap<Integer, ProdottoQuantita> prodotti = new HashMap<>();
+
+
 
     public static class ProdottoQuantita {
         private Prodotto prodotto;
@@ -49,6 +51,9 @@ public class Carrello {
 
     public Carrello() {
 
+    }
+    public Collection<Carrello.ProdottoQuantita> getProds(){
+        return prodotti.values();
     }
 
     public int getIdutente() {

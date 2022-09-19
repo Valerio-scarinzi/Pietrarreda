@@ -76,7 +76,7 @@
 <% Prodotto p = (Prodotto) request.getAttribute("ShowProdotto");%>
 <% CarrelloDAO carrelloDao=new CarrelloDAO();%>
 <%Carrello carrello=new Carrello();%>
-<% carrello=carrelloDao.getCarrelloByUser(utenteLog.getId());%>
+
 <div class="product">
         <a><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
     <a><img class="imgProd" src="Immagini/ImgProdotti/1<%=p.getImgPath_prod()%>" width="225" height="225" ></a>

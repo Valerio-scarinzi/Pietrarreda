@@ -11,6 +11,30 @@ import java.util.HashMap;
 
 public class CarrelloDAO {
 
+    public static void doDeleteAll(Carrello carrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM carrello WHERE Id_usr=?");
+            ps.setInt(1, carrello.getIdutente());
+            if (ps.executeUpdate() == 0) {
+                throw new RuntimeException("DELETE error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void deleteProdotto(int idCliente, int idProdotto){
+        PreparedStatement ps = null;
+        try(Connection con = ConPool.getConnection()){
+            ps=con.prepareStatement("delete from carrello where Id_prd=? and Id_usr=?;");
+            ps.setInt(1,idProdotto);
+            ps.setInt(2,idCliente);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void doSave(int idUser, int idPrd, int quantita,Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
@@ -61,15 +85,15 @@ public class CarrelloDAO {
     public Carrello getCarrelloByUser(int idUtente){
         PreparedStatement ps;
         try(Connection con = ConPool.getConnection()){
-            ps = con.prepareStatement("select * from carrello join prodotto on carello.id_prd = prodotto.id_prodotto where Id_usr=?;");
+            ps = con.prepareStatement("select Id_sc, Id_usr, Id_prd, nome_prod, costo_prodotto,descrizione_prod,qty_product,Total_price from carrello join prodotto on id_prd = prodotto.id_prodotto where Id_usr=?;");
             ps.setInt(1,idUtente);
             HashMap<Integer, Carrello.ProdottoQuantita> list_product= new HashMap<>();
             Carrello cart = new Carrello();
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Prodotto p = new Prodotto();
-                cart.setIdcarrello(rs.getInt("Id_sc"));
-                cart.setIdutente(rs.getInt("Id_usr"));
+                cart.setIdcarrello(rs.getInt(1));
+                cart.setIdutente(rs.getInt(2));
                 p.setNome(rs.getString(4));
                 p.setPrezzo(rs.getDouble(5));
                 p.setDesc(rs.getString(6));
@@ -77,6 +101,7 @@ public class CarrelloDAO {
                 Carrello.ProdottoQuantita prodottoQuantita=new Carrello.ProdottoQuantita(p, rs.getInt(7));
                 list_product.put(rs.getInt(3),prodottoQuantita);
                 cart.setPrezzotot(rs.getDouble(8));
+
             }
             cart.setProdotti(list_product);
             return cart;
@@ -86,9 +111,9 @@ public class CarrelloDAO {
         return null;
 
     }
-    public static void setQuantita(Carrello carrello, int new_qty, int idProdotto) {
+  public static void setQuantita(Carrello carrello, int new_qty, int idProdotto) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(" update shipping_cart  set qty_product=?  where Id_prd=? and Id_usr=?; ");
+            PreparedStatement ps = con.prepareStatement(" update carrello  set qty_product=?  where Id_prd=? and Id_usr=?; ");
             ps.setInt(1, new_qty);
             ps.setInt(2, idProdotto);
             ps.setInt(3, carrello.getIdutente());
@@ -101,7 +126,7 @@ public class CarrelloDAO {
     }
     public static void setPrezzo(Carrello cart, double new_price,int idProdotto){
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(" update shipping_cart  set Total_price=?  where Id_prd=? and Id_usr=?; ");
+            PreparedStatement ps = con.prepareStatement(" update carrello  set Total_price=?  where Id_prd=? and Id_usr=?; ");
             ps.setDouble(1, new_price);
             ps.setInt(2, idProdotto);
             ps.setInt(3, cart.getIdutente());

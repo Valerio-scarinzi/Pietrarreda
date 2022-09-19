@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @WebServlet("/Carrello")
 public class CarrelloServlet extends HttpServlet {
@@ -26,10 +28,12 @@ public class CarrelloServlet extends HttpServlet {
         HttpSession session=req.getSession();
         Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");
         Carrello carrello;
+
         CarrelloDAO carrelloDao=(CarrelloDAO)new CarrelloDAO();
 
         if(utenteLog!=null) {//recupero carrello dell utente
             carrello = carrelloDao.getCarrelloByUser(utenteLog.getId());
+            int n = carrello.getSize();
             if (carrello == null) { // se l'utente loggato non ha mai messo nulla devo creare il carrello.
                 carrello = new Carrello();
                 synchronized (session) {
@@ -80,7 +84,7 @@ public class CarrelloServlet extends HttpServlet {
 
         }
 
-/*
+
         String removeProd=req.getParameter("rimuovi-prod");
         if(removeProd!=null){
             String idprod=req.getParameter("prodId");
@@ -92,7 +96,7 @@ public class CarrelloServlet extends HttpServlet {
                 throw new MyExceptionServlet("Formato id prodotto errato");
 
             }
-            String numRemove= request.getParameter("numero-rimossi");
+            String numRemove= req.getParameter("numero-rimossi");
             int removeNum;
             try {
                 removeNum=Integer.parseInt(numRemove);
@@ -101,42 +105,44 @@ public class CarrelloServlet extends HttpServlet {
                 throw new MyExceptionServlet("Formato rimozione errato");
             }
             if(!idprod.isEmpty()&& !numRemove.isEmpty()){
-                Carrello.ProdottoQuantità prodottoQuantita=car.getPrdQty(id);
+                Carrello.ProdottoQuantita prodottoQuantita=carrello.getProdQuant(id);
                 if(prodottoQuantita!=null){
-                    prodottoQuantita.setQtyprd(prodottoQuantita.getQtyprd()-removeNum);
-                    car.removeProd(prodottoQuantita.getProd(),removeNum); // fa aggiormaneto dentro remove prod
-                    CarrelloDao.setQuantita(car,prodottoQuantita.getQtyprd(),id);
-                    CarrelloDao.setPrezzo(car, car.getTotalPrice(),id);
-                    if(prodottoQuantita.getQtyprd()==0)
-                        CarrelloDao.deleteProdotto(car.getIdutente(),id);
+                    prodottoQuantita.setQuantita(prodottoQuantita.getQuantita()-removeNum);
+                    carrello.removeProd(prodottoQuantita.getProdotto(),removeNum); // fa aggiormaneto dentro remove prod
+                    carrelloDao.setQuantita(carrello,prodottoQuantita.getQuantita(),id);
+                    carrelloDao.setPrezzo(carrello, carrello.getPrezzotot(),id);
+                    if(prodottoQuantita.getQuantita() == 0)
+                        carrelloDao.deleteProdotto(carrello.getIdutente(),id);
 
                 }
 
             }
         }
 
-        String rmvall=request.getParameter("pulisci-carrello");
+        String rmvall=req.getParameter("pulisci-carrello");
         if (rmvall!=null){
-            Collection<Carrello.ProdottoQuantità> lista_prod=car.getProds();
-            ArrayList<Carrello.ProdottoQuantità> remove_list=new ArrayList<>(lista_prod);
-            Model.CarrelloDao.doDeleteAll(car);
+            Collection<Carrello.ProdottoQuantita> lista_prod=carrello.getProds();
+            ArrayList<Carrello.ProdottoQuantita> remove_list=new ArrayList<>(lista_prod);
+            model.CarrelloDAO.doDeleteAll(carrello);
 
             for(int i=0; i<remove_list.size();i++){
-                car.removeAll(remove_list.get(i));
+                carrello.removeAll(remove_list.get(i));
             }
-            session.setAttribute("carrello",car);
+            session.setAttribute("carrello",carrello);
 
         }
 
-        // String show=request.getParameter("showCart"); // quando viene cliccato dalla navbar per rispiarmiare ulteriore servlet.
-        // if(show!=null) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/carrello.jsp");
-        dispatcher.include(request, response);
-        // }
-        /*RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/carrello.jsp");
-        dispatcher.include(request, response);*/
+       /* String show=req.getParameter("showCart"); // quando viene cliccato dalla navbar per rispiarmiare ulteriore servlet.
+        if(show!=null) {
+        RequestDispatcher dispatcher1 = req.getRequestDispatcher("carrello.jsp");
+        dispatcher1.include(req, resp);
+        }*/
 
-
+       int g= carrello.getSize();
+       System.out.println("debug elementi nel carrello in sessione " + g);
+        session.setAttribute("carrello",carrello);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("carrello.jsp");
+        dispatcher.include(req, resp);
     }
 
 }
