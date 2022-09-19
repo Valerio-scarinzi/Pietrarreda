@@ -50,7 +50,7 @@
             </div>
             <div col="2/3">
                 <p><%=prodotto.getProdotto().getNome()%></p>
-                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;, Prezzo tot.:<%=carrello.getPrezzotot()%>;  &euro;</h5>
+                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;</h5>
                 <select name="numero-rimossi">
                     <c:forEach begin="1" end="10" varStatus="loop">
                         <option value="${loop.index}"> ${loop.index} </option>
@@ -65,7 +65,7 @@
             </div>
              </div>
 </form>
-                 <%}%>
+                 <%}%><%if (carrello.getSize()!=0){%>
                  <div class="subtot">
                      <p>Prezzo totale:<%=carrello.getPrezzotot()%></p>
                  </div>
@@ -80,6 +80,9 @@
                      </form>
 
                  </div>
-
+              <%}else{%>
+<div>Carrello vuoto!
+<a href="negozio.jsp">premi qui</a> per tornare al negozio</div>
+<%}%>
 </body>
 </html>

@@ -45,6 +45,7 @@ create table Prodotto(
             imgPath_prod varchar (200) not null,
             primary key(id_prodotto)
 );
+
             insert into prodotto values(default,'Travertino Anticato','Tevartino opera incerta  ',18,200,'travertinoOpus.jpg');
             insert into prodotto values(default,'Travertino Squadrato','Travertino Squadrato 20cm a correre',35,200,'porfidoOpus.jpeg');
             insert into prodotto values(default,'Pietra Di Trani Bocciardato Anticato','Pietra Di Trani opera incerta, lavorazioni Bocciardato e Anticato',16,200,'PietraDiTraniAnticata.png');
@@ -74,6 +75,30 @@ create table Carrello(
                               foreign key (Id_prd) references Prodotto(id_prodotto)
                               );
 
+
+
+create table Ordine(
+				Id_ordine int not null auto_increment,
+                Id_usr int not null,
+                data_ordine varchar(50) not null,
+                name_ordine varchar(500) not null,
+                stato_ordine varchar(500) not null,
+                indirizzo_sped varchar(500) not null,
+                tot_price double not null,
+
+                primary key(Id_ordine)
+                );
+
+         create table OrderProd (
+                           Id_ordine int not null,
+                           Id_prod int not null,
+                           qty_ord_prod int not null,
+                           primary key(Id_ordine,Id_prod),
+                           foreign key(Id_ordine) references Ordine(Id_ordine),
+                           foreign key(Id_prod) references Prodotto(id_prodotto)
+);
+
+
 create table ProdottoCategoria(
             id_prod int not null,
 			id_cat int not null,
@@ -97,3 +122,4 @@ create table ProdottoCategoria(
                     insert into ProdottoCategoria values("13","3");
 					insert into ProdottoCategoria values("14","3");
 					insert into ProdottoCategoria values("15","3");
+
