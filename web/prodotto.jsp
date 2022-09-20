@@ -78,6 +78,7 @@
 <%Carrello carrello=new Carrello();%>
 
 <div class="product">
+
         <a><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
     <a><img class="imgProd" src="Immagini/ImgProdotti/1<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
         <table class="attProd">
@@ -87,6 +88,7 @@
             <tr><td> Disponibilità: <%=p.getDisponibilita()%></td></tr>
 
             <%if(utenteLog!=null){%> <form action="Carrello" method="post">
+            <input type="hidden" name="pathImg" value="<%=p.getImgPath_prod()%>">
             <%session.setAttribute("carrello",carrello);%>
                 <input type="hidden" name="prodId" value="<%=p.getIdprod()%>">
                 <tr><td>Quantita':<select name="addNum">
@@ -94,7 +96,10 @@
                 <option name="quantitaNum" value="${loop.index}"> ${loop.index} </option>
             </c:forEach>
         </select></td></tr>
-           <tr><td><input type="submit"value="Aggiungi a carrello"></td></tr><%}%>
+
+            <input type="hidden" name="aggiungi-prod" value="true">
+            <td><tr><input class="acquisto-prd" type="submit" value="Acquista Prodotto"></tr></td>
+          <%}%>
             </form>
 
     </table>

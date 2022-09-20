@@ -24,7 +24,7 @@ public class CarrelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        String pathImg = req.getParameter("pathImg");
         HttpSession session=req.getSession();
         Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");
         Carrello carrello;
@@ -44,7 +44,7 @@ public class CarrelloServlet extends HttpServlet {
                 throw new MyExceptionServlet("Utente non loggato impossibile accedere al carrello");// valutare eccezione o gestione utente non loggato
 
 
-        String addProd= req.getParameter("addNum");
+        String addProd= req.getParameter("aggiungi-prod");
         if(addProd!=null) {                        // utente vuole aggiungere prodotto al carrello
             String idprod=req.getParameter("prodId");
             int id;
@@ -65,10 +65,12 @@ public class CarrelloServlet extends HttpServlet {
 
             if(!idprod.isEmpty() && !numAggiunte.isEmpty()){
                 Carrello.ProdottoQuantita prodottoQuantita=carrello.getProdQuant(id);
+
                 if(prodottoQuantita!=null) {
-                    prodottoQuantita.setQuantita(prodottoQuantita.getQuantita()+numProd);
-                    carrello.addProdotto(prodottoQuantita.getProdotto(),numProd); // fa aggiornamento dell ProdQty dentro addProd
-                    CarrelloDAO.setQuantita(carrello,prodottoQuantita.getQuantita(),id);
+                   prodottoQuantita.setQuantita(numProd);
+                   carrello.addProdotto(prodottoQuantita.getProdotto(),prodottoQuantita.getQuantita()); // fa aggiornamento dell ProdQty dentro addProd
+
+                    CarrelloDAO.setQuantita(carrello,carrello.getProdQuant(id).getQuantita(),id);
                     CarrelloDAO.setPrezzo(carrello,carrello.getPrezzotot(),id);
                     session.setAttribute("carrello", carrello);
                     //valutare aggiornamento tabella Product se non lo fa in automatico SQL tramite le chiavi referenziali
@@ -121,7 +123,7 @@ public class CarrelloServlet extends HttpServlet {
 
         String rmvall=req.getParameter("pulisci-carrello");
         if (rmvall!=null){
-            Collection<Carrello.ProdottoQuantita> lista_prod=carrello.getProds();
+            Collection<Carrello.ProdottoQuantita> lista_prod=carrello.getProdotti();
             ArrayList<Carrello.ProdottoQuantita> remove_list=new ArrayList<>(lista_prod);
             model.CarrelloDAO.doDeleteAll(carrello);
 
@@ -142,7 +144,7 @@ public class CarrelloServlet extends HttpServlet {
        System.out.println("debug elementi nel carrello in sessione " + g);
         session.setAttribute("carrello",carrello);
         RequestDispatcher dispatcher = req.getRequestDispatcher("carrello.jsp");
-        dispatcher.include(req, resp);
+        dispatcher.forward(req, resp);
     }
 
 }

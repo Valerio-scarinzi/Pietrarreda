@@ -40,17 +40,17 @@
 
 <h1 class="titolo">Carrello</h1>
 <grid class="Colonne"></grid>
-         <%for (Carrello.ProdottoQuantita prodotto : carrello.getProds()) {%>
+         <%for (Carrello.ProdottoQuantita prodotto : carrello.getProdotti()) {%>
 <form class="form-cart-dett" action="${pageContext.request.contextPath}/Carrello" method="post">
 
 
              <div class="prodInCarrello">
             <div col="1/3">
-                <a href="ShowProdotto?id=<%=prodotto.getProdotto().getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=prodotto.getProdotto().getImgPath_prod()%>" width="180" height="180" ></a>
+                <a href="ShowProdotto?id=<%=prodotto.getProdotto().getIdprod()%>"></a>
             </div>
             <div col="2/3">
                 <p><%=prodotto.getProdotto().getNome()%></p>
-                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;, Prezzo tot.:<%=carrello.getPrezzotot()%>;  &euro;</h5>
+                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;, Prezzo tot.:<%=prodotto.getProdotto().getPrezzo()* prodotto.getQuantita()%>;  &euro;</h5>
                 <select name="numero-rimossi">
                     <c:forEach begin="1" end="10" varStatus="loop">
                         <option value="${loop.index}"> ${loop.index} </option>

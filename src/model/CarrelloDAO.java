@@ -39,7 +39,7 @@ public class CarrelloDAO {
     public static void doSave(int idUser, int idPrd, int quantita,Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("INSERT into carrello (Id_sc,Id_usr,Id_prd,Total_price,qty_product) VALUES (?,?,?,?,?);");
-            ps.setInt(1, carrello.getIdcarrello());
+            ps.setInt(1, idUser);
             ps.setInt(2, idUser);
             ps.setInt(3, idPrd);
             ps.setDouble(4,carrello.getPrezzotot());
@@ -111,6 +111,7 @@ public class CarrelloDAO {
         return null;
 
     }
+
   public static void setQuantita(Carrello carrello, int new_qty, int idProdotto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(" update carrello  set qty_product=?  where Id_prd=? and Id_usr=?; ");

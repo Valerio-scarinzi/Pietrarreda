@@ -79,6 +79,22 @@ public class ProdottoDAO {
     return null;
   }
 
+  public void doUpdateCart(int idprod,String nome,String descr,double prezzo,int disponibilita){
+    try(Connection connection=ConPool.getConnection()) {
+      PreparedStatement ps=connection.prepareStatement("UPDATE Prodotto set  nome_prod=?,descrizione_prod=?,costo_prodotto=?,disponibilita_prod=? where Id_prodotto=?;");
+      ps.setString(1,nome);
+      ps.setString(2,descr);
+      ps.setDouble(3,prezzo);
+      ps.setInt(4, disponibilita);
+
+      ps.setInt(5,idprod);
+      ps.executeUpdate();
+    }
+    catch (SQLException e){
+      throw new RuntimeException(e);
+    }
+
+  }
 
   public void doUpdate(int idprod,String nome,String img,String descr,double prezzo,int disponibilita){
     try(Connection connection=ConPool.getConnection()) {
