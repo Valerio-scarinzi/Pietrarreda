@@ -10,6 +10,7 @@ public class Carrello {
     private int idcarrello;
     private int idprodotto;
     private double prezzotot;
+    private double prezzoTotCar;
     private  HashMap<Integer, ProdottoQuantita> prodotti = new HashMap<>();
 
 
@@ -26,6 +27,9 @@ public class Carrello {
         }
 
 
+
+        public  String getImgPath_prod(){return  prodotto.getImgPath_prod();}
+        public  void setImgPath_prod(String newPath){ prodotto.setImgPath_prod(newPath);}
 
         public int getQuantita() {
             return quantita;
@@ -52,8 +56,13 @@ public class Carrello {
     public Carrello() {
 
     }
-    public Collection<Carrello.ProdottoQuantita> getProds(){
-        return prodotti.values();
+
+    public Double getPrezzoTotCar() {
+        return prezzoTotCar;
+    }
+
+    public void setPrezzoTotCar(Double prezzoTotCar) {
+        this.prezzoTotCar = prezzoTotCar;
     }
 
     public int getIdutente() {
@@ -81,6 +90,13 @@ public class Carrello {
     }
 
     public double getPrezzotot() {
+
+        /*for (int i=0;i<=prodotti.size();i++){
+            int e = pr
+           setPrezzotot(prezzotot += e);
+
+        }*/
+
         return prezzotot;
     }
 
@@ -92,7 +108,10 @@ public class Carrello {
     //Metodi carrello
     public void addProdotto(Prodotto prod,int quant){
         if(prodotti.containsKey(prod.getIdprod())){
-            this.prezzotot+=(prod.getPrezzo()*quant);}
+            this.prezzotot=(prod.getPrezzo()*quant);
+            this.prezzoTotCar+=this.prezzotot;
+        }
+
         else {
             this.prezzotot+=(prod.getPrezzo()*quant);
             prodotti.put(prod.getIdprod(),new ProdottoQuantita(prod,quant));
@@ -149,6 +168,10 @@ public class Carrello {
     }
 
     public Collection<Carrello.ProdottoQuantita> getProdotti(){
+        return prodotti.values();
+    }
+
+    public Collection<Carrello.ProdottoQuantita> getProds(){
         return prodotti.values();
     }
 }
