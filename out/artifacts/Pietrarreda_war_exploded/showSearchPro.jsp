@@ -54,6 +54,10 @@
             <%if(utenteLog!=null){%>
             <div>
                 <form action="Carrello" method="post"><i class="fa-solid fa-cart-shopping"></i>
+                <input type="hidden" name="addNum" value="1">
+                <input type="hidden" name="prodId" value="<%=p.getIdprod()%>">
+                <input type="hidden" name="aggiungi-prod" value="true">
+
                     <input type="submit">
                 </form>
             </div>

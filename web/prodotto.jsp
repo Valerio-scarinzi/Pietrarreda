@@ -88,7 +88,7 @@
             <tr><td> Disponibilità: <%=p.getDisponibilita()%></td></tr>
 
             <%if(utenteLog!=null){%> <form action="Carrello" method="post">
-            <input type="hidden" name="pathImg" value="<%=p.getImgPath_prod()%>">
+
             <%session.setAttribute("carrello",carrello);%>
                 <input type="hidden" name="prodId" value="<%=p.getIdprod()%>">
                 <tr><td>Quantita':<select name="addNum">
