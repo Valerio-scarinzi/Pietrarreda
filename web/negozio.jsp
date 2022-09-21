@@ -104,10 +104,12 @@
             <a href="ShowProdotto?id=<%=p.getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" alt="IMG_PATH_NOT_FOUND"></a>
             <%if(utenteLog!=null){%>
             <div>
-                <form action="Carrello" method="post"><i class="fa-solid fa-cart-shopping"></i>
-                    <input type="submit">
-                    </form>
-            </div>
+                    <form action="Carrello" method="post"><i class="fa-solid fa-cart-shopping"></i>
+                    <input name="addNum" value="1" hidden>
+                    <input name="prodId" value=<%=p.getIdprod()%> hidden>
+                    <input type="submit" >
+                </form>
+            </>
 
             <%}%>
         </table>

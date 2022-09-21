@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+
+
+import java.util.ArrayList;
 
 @WebServlet("/RicServ")
 public class RicercaServlet extends HttpServlet {
@@ -21,9 +23,9 @@ public class RicercaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name_prod= request.getParameter("search");
         ProdottoDAO prod= new ProdottoDAO();
-    //   List<Prodotto> products= prod.SearchProdByName(name_prod);
-      // request.setAttribute("showprodsearch",products);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("");
+        ArrayList<Prodotto> prodotti= prod.getProdByName(name_prod);
+        request.setAttribute("search",prodotti);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("showSearchPro.jsp");
         dispatcher.forward(request,response);
     }
 }

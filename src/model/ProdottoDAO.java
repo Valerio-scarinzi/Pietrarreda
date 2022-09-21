@@ -1,6 +1,7 @@
 package model;
 
 import controller.ConPool;
+import controller.MyExceptionServlet;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,20 +34,38 @@ public class ProdottoDAO {
     }
   } //restituisci tutti i prodotti dal database
 
-  public ArrayList<Prodotto> getProdByName(String name_prod) {
+  public ArrayList<Prodotto> getProdByName(String nome_prod) {
     try (Connection con = ConPool.getConnection()) {
-      ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
-      PreparedStatement ps = con.prepareStatement("SELECT * FROM Prodotto where nome_prod=?;");
+      ArrayList<Prodotto> prodotti=new ArrayList<>();
+      PreparedStatement ps = con.prepareStatement("SELECT * FROM Prodotto where instr(nome_prod,?)");
+      ps.setString(1,nome_prod);
       ResultSet rs = ps.executeQuery();
+      if(rs== null){
+        throw new MyExceptionServlet("errore nella query di ricerca prodotto");
+      }
+      else{
+        while(rs.next()){
+          String name=rs.getString(2);
+          int id=rs.getInt(1);
+          String desc=rs.getString(3);
+          int quant=rs.getInt(5);
+          double prezzo=rs.getDouble(4);
+          String img=rs.getString(6);
+          Prodotto p=new Prodotto(id,name,desc,prezzo,quant,img);
+          prodotti.add(p);
+        }
+      }
 
       con.close();
       return prodotti;
-    } catch (SQLException e) {
+    } catch (SQLException | MyExceptionServlet e) {
       throw new RuntimeException(e);
     }
 
 
   }
+
+
 
 
   public Prodotto getProdById(int id) {

@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -59,7 +58,7 @@
     }
 
 
-    /* The dots/bullets/indicators */
+    /* pallini */
     .dot {
         cursor: pointer;
         height: 15px;
@@ -77,18 +76,11 @@
 <body>
 <script src="JavaScript/slide.js"></script>
 
-<div class="slide-container"> <!--Prima immagine-->
+<div class="slide-container">
+    <% for (Categoria c: categorie) {%>
     <div class="slide">
-        <img src="Immagini/ImgProdotti/0CiottoliCarrara.jpg" style="width: 100%;border-radius:10px">
-    </div>
-
-    <div class="slide">  <!--Seconda immagine -->
-        <img src="Immagini/ImgProdotti/0CiottoliFiume.jpg" style="width: 100%;border-radius:10px">
-    </div>
-
-    <div class="slide">  <!--Terza immagine-->
-        <img src="Immagini/ImgProdotti/1PorfidoCubetti.JPG" style="width: 100%;border-radius:10px">
-    </div>
+        <a href="ShowCategoria?id=<%=c.getId()%>"><img class="imgCat" src="Immagini/ImgProdotti/0<%=c.getImg()%>" alt="IMG_<%=c.getCategoria_nome()%>_not_found" width="255" height="255"></a>
+    </div><%}%>
 
     <!--Avanti e indietro-->
     <a class="prev" onclick="plusSlides(-1)"> <i class="fa-solid fa-arrow-left"></i> </a>
@@ -96,9 +88,9 @@
 
     <!--Pallini seleziona immagini-->
     <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
 </div>
