@@ -40,6 +40,7 @@
 
 <h1 class="titolo">Carrello</h1>
 <grid class="Colonne"></grid>
+        <%if (carrello.getProdotti()!=null){%>
          <%for (Carrello.ProdottoQuantita prodotto : carrello.getProdotti()) {%>
 <form class="form-cart-dett" action="${pageContext.request.contextPath}/Carrello" method="post">
 
@@ -50,7 +51,7 @@
             </div>
             <div col="2/3">
                 <p><%=prodotto.getProdotto().getNome()%></p>
-                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;, Prezzo tot.:<%=prodotto.getProdotto().getPrezzo()* prodotto.getQuantita()%>;  &euro;</h5>
+                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;, Prezzo tot.:<%=prodotto.getPrezzoTot()%>;  &euro;</h5>
                 <select name="numero-rimossi">
                     <c:forEach begin="1" end="10" varStatus="loop">
                         <option value="${loop.index}"> ${loop.index} </option>
@@ -65,9 +66,9 @@
             </div>
              </div>
 </form>
-                 <%}%>
+                 <%}%>  <%}%>
                  <div class="subtot">
-                     <p>Prezzo totale:<%=carrello.getPrezzotot()%></p>
+                     <p>Prezzo totale:<%=carrello.getPrezzoTotCar()%></p>
                  </div>
                  <div>
                      <form action="${pageContext.request.contextPath}/Carrello" method="get">

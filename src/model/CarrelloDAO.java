@@ -42,7 +42,7 @@ public class CarrelloDAO {
             ps.setInt(1, idUser);
             ps.setInt(2, idUser);
             ps.setInt(3, idPrd);
-            ps.setDouble(4,carrello.getPrezzotot());
+            ps.setDouble(4,carrello.getPrezzoTotCar());
             ps.setInt(5, quantita);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("Errore nell'inserimento");
@@ -100,7 +100,7 @@ public class CarrelloDAO {
                 p.setIdprod(rs.getInt(3));
                 Carrello.ProdottoQuantita prodottoQuantita=new Carrello.ProdottoQuantita(p, rs.getInt(7));
                 list_product.put(rs.getInt(3),prodottoQuantita);
-                cart.setPrezzotot(rs.getDouble(8));
+                cart.setPrezzoTotCar(rs.getDouble(8));
 
             }
             cart.setProdotti(list_product);

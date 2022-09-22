@@ -27,7 +27,7 @@ public class OrdineDAO {
       ps.setString(2, name_ordine);
       ps.setString(4, data);
       ps.setString(5, status);
-      ps.setDouble(3,carrello.getPrezzotot());
+      ps.setDouble(3,carrello.getPrezzoTotCar());
       if (ps.executeUpdate() != 1)
         throw new MyExceptionServlet("errore nel salvataggio del ordine");
       ResultSet rs=ps.getGeneratedKeys();
