@@ -9,8 +9,7 @@ public class Carrello {
     private int idutente;
     private int idcarrello;
     private int idprodotto;
-    private double prezzotot;
-    private double prezzoTotCar;
+    private double prezzoTotCar = 0;
     private  HashMap<Integer, ProdottoQuantita> prodotti = new HashMap<>();
 
 
@@ -18,6 +17,7 @@ public class Carrello {
     public static class ProdottoQuantita {
         private Prodotto prodotto;
         private int quantita;
+        private double prezzoTot = 0;
 
         public ProdottoQuantita(Prodotto prodotto, int quantita) {
             this.prodotto = prodotto;
@@ -25,8 +25,6 @@ public class Carrello {
         }
         private ProdottoQuantita() {
         }
-
-
 
         public  String getImgPath_prod(){return  prodotto.getImgPath_prod();}
         public  void setImgPath_prod(String newPath){ prodotto.setImgPath_prod(newPath);}
@@ -48,8 +46,13 @@ public class Carrello {
         }
 
         public double getPrezzoTot() {
-            return quantita * prodotto.getPrezzo();
+            this.prezzoTot = quantita * prodotto.getPrezzo();
+            return  this.prezzoTot ;
         }
+        public void setPrezzoTot(Double prezzoTot) {
+            this.prezzoTot = prezzoTot;
+        }
+
 
     }
 
@@ -89,54 +92,53 @@ public class Carrello {
         this.idprodotto = idprodotto;
     }
 
-    public double getPrezzotot() {
 
-        /*for (int i=0;i<=prodotti.size();i++){
-            int e = pr
-           setPrezzotot(prezzotot += e);
 
-        }*/
 
-        return prezzotot;
-    }
-
-    public void setPrezzotot(double prezzotot) {
-        this.prezzotot = prezzotot;
-    }
 
 
     //Metodi carrello
-    public void addProdotto(Prodotto prod,int quant){
-        if(prodotti.containsKey(prod.getIdprod())){
-            this.prezzotot=(prod.getPrezzo()*quant);
-            this.prezzoTotCar+=this.prezzotot;
+    public void addProdotto(Prodotto prod,int quant){//
+
+        if (prodotti.containsKey((prod.getIdprod()))) {
+            prodotti.get(prod.getIdprod()).setQuantita( prodotti.get(prod.getIdprod()).getQuantita()+quant);
+            prodotti.get(prod.getIdprod()).getPrezzoTot();
+
+            this.prezzoTotCar += (prod.getPrezzo() * quant);}
+    else {
+
+            prodotti.put((prod.getIdprod()),new ProdottoQuantita(prod,quant));
+            this.prezzoTotCar+=(prod.getPrezzo()*quant);
+            prodotti.get(prod.getIdprod()).getPrezzoTot();
         }
 
-        else {
-            this.prezzotot+=(prod.getPrezzo()*quant);
-            prodotti.put(prod.getIdprod(),new ProdottoQuantita(prod,quant));
-        }
     }
 
     public void removeAll(ProdottoQuantita prodottoQuantita) {
         if ( prodotti.containsValue(prodottoQuantita)) {
             prodotti.remove(prodottoQuantita.getProdotto().getIdprod());
-            this.prezzotot = 0.0;
+
+            this.prezzoTotCar = 0.0;
         }
     }
 
     public void removeProd (Prodotto prod,int quant) {
+        //se la quantita del prod e maggiore di 0 e maggiore della quantita da eliminare
         if (prodotti.get(prod.getIdprod()).getQuantita() >= 0 || prodotti.get(prod.getIdprod()).getQuantita() >= quant) {
-            this.prezzotot -= (prod.getPrezzo() * quant);
-            if (prodotti.get(prod.getIdprod()).getQuantita()==0)
-                prodotti.remove(prod.getIdprod());
+
+            setPrezzoTotCar(getPrezzoTotCar()-(prodotti.get(prod.getIdprod()).getPrezzoTot()));
+
+            if (prodotti.get(prod.getIdprod()).getQuantita()==0){
+                prodotti.remove(prod.getIdprod());}
         }
         else {
-            int adjust=prodotti.get(prod.getIdprod()).getQuantita()+quant;
-            this.prezzotot -=(prod.getPrezzo() *adjust);
+            //quando la quantita del prod è minore della quantita immessa da eliminare
+         //   int adjust=prodotti.get(prod.getIdprod()).getQuantita()+quant;
+            setPrezzoTotCar(getPrezzoTotCar()-(prodotti.get(prod.getIdprod()).getPrezzoTot()));
             prodotti.get(prod.getIdprod()).setQuantita(0);
             if (prodotti.get(prod.getIdprod()).getQuantita()==0)
                 prodotti.remove(prod.getIdprod());
+
         }
 
 
@@ -162,7 +164,7 @@ public class Carrello {
                 "idutente=" + idutente +
                 ", idcarrello=" + idcarrello +
                 ", idprodotto=" + idprodotto +
-                ", prezzotot=" + prezzotot +
+                ", prezzotot=" + prezzoTotCar +
                 ", prodotti=" + prodotti +
                 '}';
     }

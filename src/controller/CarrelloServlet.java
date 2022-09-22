@@ -67,11 +67,14 @@ public class CarrelloServlet extends HttpServlet {
                 Carrello.ProdottoQuantita prodottoQuantita=carrello.getProdQuant(id);
 
                 if(prodottoQuantita!=null) {
-                   prodottoQuantita.setQuantita(numProd);
-                   carrello.addProdotto(prodottoQuantita.getProdotto(),prodottoQuantita.getQuantita()); // fa aggiornamento dell ProdQty dentro addProd
+                   //prodottoQuantita.setQuantita(numProd);
+                   carrello.addProdotto(prodottoQuantita.getProdotto(),numProd); // fa aggiornamento dell ProdQty dentro addProd
 
-                    CarrelloDAO.setQuantita(carrello,carrello.getProdQuant(id).getQuantita(),id);
-                    CarrelloDAO.setPrezzo(carrello,carrello.getPrezzotot(),id);
+                    model.CarrelloDAO.deleteProdotto(utenteLog.getId(),prodottoQuantita.getProdotto().getIdprod());
+                    model.CarrelloDAO.doSave(utenteLog.getId(),id,carrello.getProdQuant(id).getQuantita(),carrello);
+
+                  /*  CarrelloDAO.setQuantita(carrello,carrello.getProdQuant(id).getQuantita(),id);
+                    CarrelloDAO.setPrezzo(carrello,carrello.getPrezzoTotCar(),id);*/
                     session.setAttribute("carrello", carrello);
                     //valutare aggiornamento tabella Product se non lo fa in automatico SQL tramite le chiavi referenziali
                 }
@@ -79,7 +82,10 @@ public class CarrelloServlet extends HttpServlet {
                     ProdottoDAO prodottoDAO=new ProdottoDAO();
                     Prodotto prodotto=prodottoDAO.getProdById(id);
                     carrello.addProdotto(prodotto,numProd);
+
                     model.CarrelloDAO.doSave(utenteLog.getId(),id,carrello.getProdQuant(id).getQuantita(),carrello);
+
+                   // CarrelloDAO.setPrezzo(carrello,carrello.getPrezzoTotCar(),id);
                     session.setAttribute("carrello", carrello);
                 }
             }
@@ -112,7 +118,7 @@ public class CarrelloServlet extends HttpServlet {
                     prodottoQuantita.setQuantita(prodottoQuantita.getQuantita()-removeNum);
                     carrello.removeProd(prodottoQuantita.getProdotto(),removeNum); // fa aggiormaneto dentro remove prod
                     carrelloDao.setQuantita(carrello,prodottoQuantita.getQuantita(),id);
-                    carrelloDao.setPrezzo(carrello, carrello.getPrezzotot(),id);
+                    carrelloDao.setPrezzo(carrello, carrello.getPrezzoTotCar(),id);
                     if(prodottoQuantita.getQuantita() == 0)
                         carrelloDao.deleteProdotto(carrello.getIdutente(),id);
 
