@@ -17,27 +17,32 @@
 <%ArrayList<Ordine> list_ord = (ArrayList<Ordine>) session.getAttribute("listaOrdiniUsrAdmin");%>
 <% for (Ordine ord:list_ord) {%>
 <div id = "ConteinerOrdini">
-    <form id="updt" method="post" action="GestioneUtenteServlet?id=${utente.id}">
+    <form id="updt" method="post" action="AdminGestioneOrdine?id=<%=ord.getIdOrdine()%>">
     <p>Dettagli Ordine</p>
     <p><%=ord.getNomeOrdine()%></p>
     <p>emesso il:<%=ord.getDataEmissione()%></p>
+    <p>Spedito Verso: <%=ord.getIndirizzo()%></p>
+    <p>Stato Attuale: <%=ord.getStatusOrdine()%></p>
+     <p></p>
     <% for(Carrello.ProdottoQuantita prod: ord.getProdotti()) {%>
     <div class="ContainerProdOrdine">
 
-        <input type="text" name="modificaIndirizzo" placeholder="Modifica Indirizzo">
+        <input type="text" name="modificaIndirizzo" value="<%=ord.getIndirizzo()%>" placeholder="Modifica Indirizzo">
 
-        <select>
-            <option name="option1" >confermato</option>
-            <option name="option3" >In consegna</option>
+        <select name="option0" >
+            <option name="option1"  >ordine in lavorazione</option>
+            <option name="option2" >ordine confermato</option>
+            <option name="option2" >ordine effettuato</option>
+
         </select>
-
         <button class="btn">
-            <a href="DeleteOrdine?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
+            <a href="DeleteOrdine?idDelete=<%=ord.getIdOrdine()%>" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
         </button>
+
             <input class="submit" type="submit" value="modifica" onclick="modifica()"><br><br>
       </div>
     </form>
-        <p>Prodotti</p>
+        <h5>Prodotti</h5>
         <p>nome: <%=prod.getProdotto().getNome()%></p>
         <p>prezzo: <%=prod.getProdotto().getPrezzo()%></p>
         <p>quantità: <%=prod.getQuantita()%></p>

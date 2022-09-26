@@ -141,4 +141,47 @@ System.out.println(idord);
     }
   }
 
+  public void doUpdateStatoIndirizzo(int id,String stato,String indirizzo){
+    try(Connection connection=ConPool.getConnection()) {
+      PreparedStatement ps=connection.prepareStatement("UPDATE ordine set  stato_ordine=?,indirizzo_sped=? where Id_ordine=?;");
+      ps.setString(1,stato);
+      ps.setString(2,indirizzo);
+      ps.setDouble(3,id);
+
+
+
+      ps.executeUpdate();
+    }
+    catch (SQLException e){
+      throw new RuntimeException(e);
+    }
+
+
+
+
+  }
+
+
+  public void doDelete(int idOrdine) {
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps1 = con.prepareStatement("DELETE FROM orderprod WHERE id_order = ?;");
+      ps1.setInt(1, idOrdine);
+      if (ps1.executeUpdate() != 1) {
+        throw new RuntimeException("errore nella cancellazione");
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps = con.prepareStatement("DELETE FROM ordine WHERE Id_ordine = ?;");
+      ps.setInt(1, idOrdine);
+      if (ps.executeUpdate() != 1) {
+        throw new RuntimeException("errore nella cancellazione");
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+
 }
