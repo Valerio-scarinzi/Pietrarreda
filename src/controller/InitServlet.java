@@ -20,6 +20,7 @@ public class InitServlet extends HttpServlet {
     CategoriaDAO categoriaDAO = new CategoriaDAO();
     categories =  categoriaDAO.doRetrieveAllCategory();
     getServletContext().setAttribute("categorie",categories);
+
     super.init();
   }
 }

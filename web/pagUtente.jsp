@@ -50,6 +50,11 @@
     <form id="logOut" action="LogOut" method="post">
         <input type="submit" value="Log-Out" style="color: red"><br><br>
     </form>
+
+    <br>
+    <a href="imieiOrdini.jsp">Storico Ordini</a>
+    <br>
+
 </div>
 <%@include file="footer.jsp"%>
 </body>

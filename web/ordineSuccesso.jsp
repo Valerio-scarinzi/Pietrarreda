@@ -11,8 +11,12 @@
     <title>Ordine OK</title>
 </head>
 <body>
+<%@include file="header.jsp"%>
 
-ordine salvato
 
+<h3>ordine effettuato con successo</h3>
+
+
+<%@include file="footer.jsp"%>
 </body>
 </html>

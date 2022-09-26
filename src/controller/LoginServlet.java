@@ -1,5 +1,7 @@
 package controller;
 
+import model.Ordine;
+import model.OrdineDAO;
 import model.Utente;
 import model.UtenteDAO;
 
@@ -42,6 +44,9 @@ public class LoginServlet extends HttpServlet {
            //Fai un altro if che controlla se l utente è admin (booleano),se admin -> indirizzare a jsp admin (da creare)
            if (utente!=null) {
 
+             OrdineDAO ordineDAO =new OrdineDAO();
+             ArrayList<Ordine> ordiniByuUer = ordineDAO.getAllOrdersByUsr(utente.getId());
+             recentSession.setAttribute("listaOrdiniUsr",ordiniByuUer);
 
 
 
@@ -60,7 +65,6 @@ public class LoginServlet extends HttpServlet {
 
 
            }
-
 
 
     }

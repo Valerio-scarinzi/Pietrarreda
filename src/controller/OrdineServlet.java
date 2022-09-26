@@ -1,8 +1,6 @@
 package controller;
 
-import model.Carrello;
-import model.OrdineDAO;
-import model.Utente;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet("/Ordine")
 public class OrdineServlet extends HttpServlet {
@@ -34,11 +37,23 @@ public class OrdineServlet extends HttpServlet {
         if(cart.getProds().isEmpty())
           throw new MyExceptionServlet("Carrello vuoto impossibile completare l'ordine");
         OrdineDAO ordineDAO=new OrdineDAO();
-
+        int n=0;
         //aggiungere la riduzione della quantita dal prodotto esvuotare il carrello
         ordineDAO.doSave(usr.getId(),"Ordine in lavorazione",cart,indirizzo);
         req.setAttribute("notifica","Ordine creato con successo");
         //cart.getProdQuant().getQuantita();
+        ArrayList<Ordine> ordiniByuUer = ordineDAO.getAllOrdersByUsr(usr.getId());
+        Ordine ordineAttuale = null;
+        for (Ordine o : ordiniByuUer){
+          if(n<=o.getIdOrdine()){
+           n=o.getIdOrdine();
+          ordineAttuale=o;}
+        }
+        session.setAttribute("odrineAttuale",ordineAttuale);
+        session.setAttribute("listaOrdiniUsr",ordiniByuUer);
+        model.CarrelloDAO.doDeleteAll(cart);
+
+
         RequestDispatcher dispatcher=req.getRequestDispatcher("ordineSuccesso.jsp");
         dispatcher.forward(req,resp);
 
@@ -46,6 +61,9 @@ public class OrdineServlet extends HttpServlet {
       else
         throw new MyExceptionServlet("Errore nella ordinazione");
     }
+
+
+
 
 
 

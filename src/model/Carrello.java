@@ -124,22 +124,19 @@ public class Carrello {
 
     public void removeProd (Prodotto prod,int quant) {
         //se la quantita del prod e maggiore di 0 e maggiore della quantita da eliminare
-        if (prodotti.get(prod.getIdprod()).getQuantita() >= 0 || prodotti.get(prod.getIdprod()).getQuantita() >= quant) {
-
-            setPrezzoTotCar(getPrezzoTotCar()-(prodotti.get(prod.getIdprod()).getPrezzoTot()));
-
-            if (prodotti.get(prod.getIdprod()).getQuantita()==0){
-                prodotti.remove(prod.getIdprod());}
+        if (prodotti.get((prod.getIdprod())).getQuantita() >= 0 || prodotti.get((prod.getIdprod())).getQuantita() >= quant) {
+            this.prezzoTotCar -= (prod.getPrezzo() * quant);
+            if (prodotti.get((prod.getIdprod())).getQuantita()==0)
+                prodotti.remove((prod.getIdprod()));
         }
         else {
-            //quando la quantita del prod è minore della quantita immessa da eliminare
-         //   int adjust=prodotti.get(prod.getIdprod()).getQuantita()+quant;
-            setPrezzoTotCar(getPrezzoTotCar()-(prodotti.get(prod.getIdprod()).getPrezzoTot()));
-            prodotti.get(prod.getIdprod()).setQuantita(0);
-            if (prodotti.get(prod.getIdprod()).getQuantita()==0)
-                prodotti.remove(prod.getIdprod());
-
+            int adjust=prodotti.get((prod.getIdprod())).getQuantita()+quant;
+            this.prezzoTotCar -=(prod.getPrezzo() *adjust);
+            prodotti.get((prod.getIdprod())).setQuantita(0);
+            if (prodotti.get((prod.getIdprod())).getQuantita()==0)
+                prodotti.remove((prod.getIdprod()));
         }
+
 
 
 
