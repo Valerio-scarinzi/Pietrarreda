@@ -22,7 +22,7 @@
     <img class="imgVS" src="" alt="Immagine_Valerio">
     <p class="bio2">
         Mi chiamo Valerio Scarinzi <br> sono uno studente alla facoltà di informatica nel campus Unisa <br>
-        Sono nato il 16/09 a Benevento(BN) e vivo a Poggiomarino(NA),ho 22 anni <br>
+        Sono nato il 16/09 a Benevento(BN) e vivo a Foglianise(BN),ho 22 anni <br>
     </p>
 </div>
 <section>
@@ -30,14 +30,9 @@
         <p class="text">
             <br>
             <br>
-            Pietrarreda è un sito di E-commerce che si occupa della vendita di materiali utilizzati nella
-            andando a consolidare le esigenze di tutta la tipologia di clientela; dal principiante alle prime armi fino ad arrivare al ricercatore più esperto.
-            la spedizione è rapida e le consegne rispettano sempre le date di scadenza.
-            i metodi di pagamento sono: contrassegno, postepay, paypal, iban e carta di credito.
-            Le consegne arrivano ovunque tu voglia e il servizio clienti è sempre a disposizione per maggiori informazioni cliccate nelle nostre pagine social.
+            Pietrarreda è un sito di E-commerce che si occupa della vendita di rivestimenti in pietra e di pavimentazioni
             <br>
             <br>
-            <q>Per scoprire qualcosa, è meglio eseguire esperimenti accurati che impegnarsi in profonde discussioni filosofiche.</q>
         </p>
 
     </div>

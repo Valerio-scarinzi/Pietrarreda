@@ -25,6 +25,12 @@
 <body>
 <%@include file="header.jsp"%><% ArrayList<Prodotto> prodotti= new ArrayList<Prodotto>();%>  <%ProdottoDAO prodottoDAO = new ProdottoDAO();%>  <%prodotti = prodottoDAO.getAllProdotti();%>  <%session.getServletContext().setAttribute("prodotti",prodotti);%><div class="homepage">
   <h1 style="color: #e49314">Bevenuto su Pietrarreda.com</h1>
+  <P>Pietrarreda è un'azienda che fornisce minerali naturali per pavimentazioni e rivestimenti per dare un tocco in più alla tua casa o anche ad infrastrutture pubbliche.</P>
+  <br>
+  <p>LA CAPACITA' CHE DA SEMPRE
+    ci contraddistingue è coniugare tutti i campi che riguardano questo materiale, frutto di un’importante tradizione familiare. Lavorazione effettuata con grande perizia con l’obiettivo di dare al prodotto finale un gusto antico e suggestivo, visibile in tutte le nostre proposte. Oltre a pavimentazioni e rivestimenti in pietra, sia nuova produzione che recuperata, vastissima scelta di oggettistica in pietra, frutto di un’accurata ricerca e selezione. Bellissimi e scenografici sono i camini, i portali, le fontane, le statue,
+    la terracotta e i tanti altri articoli di arredo sia da giardino che da interno.
+    Con grande cura e attenzione ci dedichiamo inoltre alla lavorazione della pietra per l’arredamento interno ed esterno.</p>
   <hr><br><br>
   <%@include file="slideGallery.jsp"%><div class="passion">
   <h2>La passione per la pietra</h2>

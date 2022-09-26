@@ -22,6 +22,7 @@ public class AdminOrdineUsrServlet extends HttpServlet {
 
     OrdineDAO ordineDAO = new OrdineDAO();
     ArrayList<Ordine> ordineArrayList = null;
+    String modificaIndirizzo = req.getParameter("modificaIndirizzo");
     String ids= req.getParameter("id");
     if(ids != null ){
     int id = Integer.parseInt(ids);
