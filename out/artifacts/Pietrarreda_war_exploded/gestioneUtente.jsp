@@ -56,6 +56,9 @@
             <button class="btn">
                 <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
+            <button class="btn">
+                <a href="GestioneOrdini?id=${utente.id}" >Ordini Utente <i class="fa-solid fa-trash-can"></i></a>
+            </button>
             <input class="submit" type="submit" value="Modifica" onclick="modifica()"><br><br>
         </form>
     </fieldset>
