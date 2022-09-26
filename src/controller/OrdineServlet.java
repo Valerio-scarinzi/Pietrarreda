@@ -31,7 +31,7 @@ public class OrdineServlet extends HttpServlet {
       Utente usr= (Utente) req.getSession().getAttribute("utenteLoggato");
     HttpSession session  = req.getSession();
       Carrello cart = (Carrello) session.getAttribute("carrello");
-
+      CarrelloDAO carrelloDAO = new CarrelloDAO();
 
       if(!conferma.isEmpty()){
         if(cart.getProds().isEmpty())
@@ -51,7 +51,7 @@ public class OrdineServlet extends HttpServlet {
         }
         session.setAttribute("odrineAttuale",ordineAttuale);
         session.setAttribute("listaOrdiniUsr",ordiniByuUer);
-        model.CarrelloDAO.doDeleteAll(cart);
+         carrelloDAO.doDeleteAll(cart);
 
 
         RequestDispatcher dispatcher=req.getRequestDispatcher("ordineSuccesso.jsp");
