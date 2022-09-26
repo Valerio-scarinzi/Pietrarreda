@@ -41,6 +41,8 @@
 <h1 class="titolo">Carrello</h1>
 <grid class="Colonne"></grid>
         <%if (carrello.getProdotti()!=null){%>
+
+
          <%for (Carrello.ProdottoQuantita prodotto : carrello.getProdotti()) {%>
 <form class="form-cart-dett" action="${pageContext.request.contextPath}/Carrello" method="post">
 

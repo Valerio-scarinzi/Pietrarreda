@@ -7,6 +7,7 @@ import controller.ConPool;
 import controller.MyExceptionServlet;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class OrdineDAO {
@@ -36,10 +37,10 @@ public class OrdineDAO {
 
 
 
-      PreparedStatement ps2= con.prepareStatement("INSERT INTO OrderProd(Id_ordine, Id_prod, qty_ord_prod) values (?,?,?)");
+      PreparedStatement ps2= con.prepareStatement("INSERT INTO OrderProd(Id_order, Id_prod, qty_ord_prod) values (?,?,?)");
       for(Carrello.ProdottoQuantita prd:carrello.getProdotti()){
         int prodDisp =  prd.getProdotto().getDisponibilita();
-        int changeProdDisp = prodDisp -=prd.getQuantita();
+        int changeProdDisp = prodDisp -prd.getQuantita();
         System.out.println(prodDisp);
         System.out.println(changeProdDisp);
     //aggiustare img problema in complilazione
@@ -66,5 +67,53 @@ System.out.println(idord);
   }
 
 
+  private static ArrayList<Carrello.ProdottoQuantita> getProdottiOrd(Connection con, int idordine) throws SQLException {
+    PreparedStatement ps=con.prepareStatement("SELECT qty_ord_prod,Id_prodotto, nome_prod,descrizione_prod,costo_prodotto,disponibilita_prod,imgPath_prod FROM ordine,orderprod,prodotto where Id_prodotto=Id_prod and  Id_order=Id_ordine and Id_ordine=?;");
+    ps.setInt(1,idordine);
+    ResultSet rs= ps.executeQuery();
+    ArrayList<Carrello.ProdottoQuantita> list_prdqty=new ArrayList<>();
+    while (rs.next()){
+      Prodotto prodotto=new Prodotto();
+      prodotto.setIdprod((rs.getInt(2)));
+      prodotto.setNome(rs.getString(3));
+      prodotto.setDesc(rs.getString(4));
+      prodotto.setPrezzo(rs.getDouble(5));
+      prodotto.setDisponibilita(rs.getInt(6));
+      prodotto.setImgPath_prod(rs.getString(7));
+
+      Carrello.ProdottoQuantita prdqty= new Carrello.ProdottoQuantita(prodotto,rs.getInt(1));
+      list_prdqty.add(prdqty);
+    }
+    return list_prdqty;
+  }
+
+
+
+
+
+  public ArrayList<Ordine> getAllOrdersByUsr(int id_usr) {
+
+    ArrayList<Ordine> list_ord = new ArrayList<>();
+    PreparedStatement ps = null;
+    try (Connection connection = ConPool.getConnection()) {
+      ps = connection.prepareStatement("SELECT name_ordine,data_ordine,Id_ordine,stato_ordine,Id_usr,indirizzo_sped,tot_price from ordine,Utente where Id_user=Id_usr and Id_user=?;");
+      ps.setInt(1,id_usr);
+      ResultSet rs= ps.executeQuery();
+      while (rs.next()){
+        Ordine ordine= new Ordine();
+        ordine.setIdOrdine(rs.getInt(3));
+        ordine.setNomeOrdine(rs.getString(1));
+        ordine.setDataEmissione(rs.getString(2));
+        ordine.setId_usr(rs.getInt(5));
+        ordine.setIndirizzo(rs.getString(6));
+        ordine.setPrezzoTotale(rs.getDouble(7));
+        ordine.setProdotti(OrdineDAO.getProdottiOrd(connection,ordine.getIdOrdine())); //funzione privata dato che join con 4 tabella era scomoda che gestisce il recupero dal DB dei prodotti
+        list_ord.add(ordine);
+      }
+    } catch (SQLException e) {
+      throw  new RuntimeException(e);
+    }
+    return list_ord;
+  }
 
 }

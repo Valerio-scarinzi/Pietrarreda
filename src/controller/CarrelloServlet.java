@@ -24,12 +24,15 @@ public class CarrelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pathImg = req.getParameter("pathImg");
+
+
         HttpSession session=req.getSession();
         Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");
         Carrello carrello;
 
         CarrelloDAO carrelloDao=(CarrelloDAO)new CarrelloDAO();
+
+
 
         if(utenteLog!=null) {//recupero carrello dell utente
             carrello = carrelloDao.getCarrelloByUser(utenteLog.getId());

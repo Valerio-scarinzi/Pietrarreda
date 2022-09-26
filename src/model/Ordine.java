@@ -1,14 +1,20 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Ordine {
   private double prezzoTotale;
-  private ArrayList<Carrello.ProdottoQuantita> prodotti;
+  private Collection<Carrello.ProdottoQuantita> prodotti;
   private int idOrdine;
   private String nomeOrdine, statusOrdine;
   private int id_usr;
   private String indirizzo;
+
+  public Ordine(double prezzoTotale, Collection<Carrello.ProdottoQuantita> prodotti) {
+    this.prezzoTotale = prezzoTotale;
+    this.prodotti = prodotti;
+  }
 
   public int getId_usr() {
     return id_usr;
@@ -42,7 +48,7 @@ public class Ordine {
   }
 
 
-  public ArrayList<Carrello.ProdottoQuantita> getProdotti() {
+  public Collection<Carrello.ProdottoQuantita> getProdotti() {
     return prodotti;
   }
 
