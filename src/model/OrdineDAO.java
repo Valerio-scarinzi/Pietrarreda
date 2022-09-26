@@ -116,4 +116,29 @@ System.out.println(idord);
     return list_ord;
   }
 
+
+  public ArrayList<Ordine> getAllOrdini() {
+    try (Connection con = ConPool.getConnection()) {
+      ArrayList<Ordine> ordines = new ArrayList<Ordine>();
+      PreparedStatement ps = con.prepareStatement("SELECT * FROM ordine;");
+      ResultSet rs = ps.executeQuery();
+      while(rs.next()){
+        Ordine ordine= new Ordine();
+        ordine.setIdOrdine(rs.getInt(3));
+        ordine.setNomeOrdine(rs.getString(1));
+        ordine.setDataEmissione(rs.getString(2));
+        ordine.setId_usr(rs.getInt(5));
+        ordine.setIndirizzo(rs.getString(6));
+        ordine.setPrezzoTotale(rs.getDouble(7));
+        ordine.setProdotti(OrdineDAO.getProdottiOrd(con,ordine.getIdOrdine())); //funzione privata dato che join con 4 tabella era scomoda che gestisce il recupero dal DB dei prodotti
+
+        ordines.add(ordine);
+      }
+      con.close();
+      return ordines;
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
 }
