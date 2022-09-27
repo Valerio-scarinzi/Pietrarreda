@@ -23,6 +23,7 @@ public class CarrelloDAO {
         }
     }
 
+
     public static void deleteProdotto(int idCliente, int idProdotto){
         PreparedStatement ps = null;
         try(Connection con = ConPool.getConnection()){

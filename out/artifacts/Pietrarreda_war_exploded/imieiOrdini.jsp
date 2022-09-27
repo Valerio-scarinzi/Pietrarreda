@@ -1,20 +1,11 @@
 <%@ page import="model.Ordine" %>
 <%@ page import="model.Carrello" %>
-<%@ page import="java.util.ArrayList" %><%--
-  Created by IntelliJ IDEA.
-  User: VaLeRiX
-  Date: 23/09/2022
-  Time: 13:13
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Ordini</title>
 </head>
-<body>
-<%@include file="header.jsp"%>
-<%ArrayList<Ordine> list_ord = (ArrayList<Ordine>) session.getAttribute("listaOrdiniUsr");%>
 <style>
     *{
         margin: 0;
@@ -57,7 +48,6 @@
 <div id = "ConteinerOrdini">
     <p>Dettagli Ordine</p>
     <p><%=ord.getNomeOrdine()%></p>
-
     <p>Emesso il: <%=ord.getDataEmissione()%></p>
     <p>Prodotti: </p>
     <% for(Carrello.ProdottoQuantita prod: ord.getProdotti()) {%>
