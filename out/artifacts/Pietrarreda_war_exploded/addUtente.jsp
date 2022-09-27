@@ -53,8 +53,8 @@
         <input name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
         <input name="cognome" type="text" placeholder="Inserisci Cognome" required="required"><br>
         <input name="username" type="text"  placeholder="Inserisci Username" required="required"><br>
-        <input name="password" type="text" placeholder="Inserisci Password" required="required"><br>
-        <input name="email" type="text" placeholder="Inserisci Email " required="required"><br>
+        <input name="password" type="text" placeholder="Inserisci Password" required="required" minlength="5"><br>
+        <input name="email" type="email" placeholder="Inserisci Email " required="required"><br>
         Admin: <input name="admin" type="checkbox"><br>
         <input class="submit" type="submit" value="Aggiungi" onclick="aggiunta()">
     </div>
