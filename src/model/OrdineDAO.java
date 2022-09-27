@@ -40,6 +40,8 @@ public class OrdineDAO {
       PreparedStatement ps2= con.prepareStatement("INSERT INTO OrderProd(Id_order, Id_prod, qty_ord_prod) values (?,?,?)");
       for(Carrello.ProdottoQuantita prd:carrello.getProdotti()){
         int prodDisp =  prd.getProdotto().getDisponibilita();
+
+        if(prodDisp == 0){prd.setProdotto(prodttoDao.getProdById(prd.getProdotto().getIdprod())); prodDisp = prd.getProdotto().getDisponibilita();}
         int changeProdDisp = prodDisp -prd.getQuantita();
         System.out.println(prodDisp);
         System.out.println(changeProdDisp);
