@@ -51,7 +51,7 @@ public class OrdineServlet extends HttpServlet {
         }
         session.setAttribute("odrineAttuale",ordineAttuale);
         session.setAttribute("listaOrdiniUsr",ordiniByuUer);
-         carrelloDAO.doDeleteAll(cart);
+         carrelloDAO.doDeleteAll(usr.getId());
 
 
         RequestDispatcher dispatcher=req.getRequestDispatcher("ordineSuccesso.jsp");

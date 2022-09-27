@@ -11,6 +11,18 @@ import java.util.HashMap;
 
 public class CarrelloDAO {
 
+    public static void doDeleteAll(int iduser) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM carrello WHERE Id_usr=?");
+            ps.setInt(1,iduser);
+            if (ps.executeUpdate() == 0) {
+                throw new RuntimeException("DELETE error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void doDeleteAll(Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM carrello WHERE Id_usr=?");
