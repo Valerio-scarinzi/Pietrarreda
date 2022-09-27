@@ -209,9 +209,8 @@
             <li><a href="registrazione.jsp">Registrati</a> </li>
             <%}%>
             <%if(utenteLog != null){%>
-            <li><a href="pagUtente.jsp" title="UTENTE">Benvenuto: <%=utenteLog.getUsername()%>  </a></li><%}%>
-
-            <li> <a href="Carrello"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="pagUtente.jsp" title="UTENTE">Benvenuto: <%=utenteLog.getUsername()%>  </a></li>
+            <li> <a href="Carrello"><i class="fa-solid fa-cart-shopping"></i></a></li><%}%>
             <div class="SearchBar">
                 <form action="RicServ" method="get">
                     <input type="text" placeholder="Cerca qui..." name="search" onkeyup="ricerca(this.value)">

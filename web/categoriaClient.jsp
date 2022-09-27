@@ -27,12 +27,12 @@
         background-color: #e49314;
         max-width: min-content;
         height: 450px;
-        border-radius: 5%;
+        border-radius: 15px;
     }
 
     .imgProd{
         border-color: #292929;
-        border-radius: 5%;
+        border-radius: 15px;
     }
 
     .InForNegozioJSP:hover{
@@ -99,8 +99,8 @@
             <a href="ShowProdotto?id=<%=p.getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" alt="IMG_PATH_NOT_FOUND"></a>
             <%if(utenteLog!=null){%>
             <div>
-                <form action="Carrello" method="post"><i class="fa-solid fa-cart-shopping"></i>
-                    <input type="submit">
+                <form action="Carrello" method="post">
+                    <button  class="button-cart" type="submit"> <i class="fa-solid fa-cart-shopping"></i> </button>
                 </form>
             </div><%}%>
         </table>

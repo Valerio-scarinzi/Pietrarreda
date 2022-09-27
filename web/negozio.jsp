@@ -27,21 +27,13 @@
         background-color: #e49314;
         max-width: min-content;
         height: 450px;
-        border-radius: 5%;
+        border-radius: 15px;
     }
 
     .imgProd{
         border-color: #292929;
-        border-radius: 5%;
+        border-radius: 15px;
     }
-
-    .InForNegozioJSP:hover{
-
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
-    }
-
-    /*Bottone aggiungi a carrello*/
     .button-cart {
         float: right;
         appearance: none;
@@ -84,6 +76,12 @@
         transform: translateY(0);
     }
 
+    .InForNegozioJSP:hover{
+
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    }
+
 </style>
 <body>
 <%@include file="header.jsp"%>
@@ -104,13 +102,13 @@
             <a href="ShowProdotto?id=<%=p.getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" alt="IMG_PATH_NOT_FOUND"></a>
             <%if(utenteLog!=null){%>
             <div>
-                    <form action="Carrello" method="post"><i class="fa-solid fa-cart-shopping"></i>
+                    <form action="Carrello" method="post">
                         <input type="hidden" name="aggiungi-prod" value="true">
                     <input name="addNum" value="1" hidden>
                     <input name="prodId" value=<%=p.getIdprod()%> hidden>
-                    <input type="submit" >
+                        <button  class="button-cart" type="submit"> <i class="fa-solid fa-cart-shopping"></i> </button>
                 </form>
-            </>
+            </div>
 
             <%}%>
         </table>

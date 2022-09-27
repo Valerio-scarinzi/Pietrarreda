@@ -17,6 +17,12 @@ function elimina() {
     if (form.checkValidity()){
         window.alert("Rimozione avvenuta con successo!");}
 }
+//alert conferma checkout
+function conferma() {
+    var form=document.getElementById("conf");
+    if (form.checkValidity()){
+        window.alert("Ordine avvenuto  con successo!");
+}
 //alert logout
 function logout() {
     var form=document.getElementById("logOut");

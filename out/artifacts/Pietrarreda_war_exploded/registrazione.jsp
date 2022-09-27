@@ -60,7 +60,7 @@
         <input name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
         <input name="cognome" type="text" placeholder="Inserisci Cognome" required="required"><br>
         <input name="username" type="text" placeholder="Inserisci Username" required="required"><br>
-        <input name="password" type="text" placeholder="Inserisci Password" required="required"><br>
+        <input name="password" type="text" placeholder="Inserisci Password" required="required" minlength="5"><br>
         <input name="email" type="email" placeholder="Inserisci E-mail" required="required"><br>
        <div class="btn"><input class="submit" type="submit" value="Registrati"></div>
     </div>

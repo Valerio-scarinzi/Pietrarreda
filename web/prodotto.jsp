@@ -17,7 +17,8 @@
         border-color: #292929;
         padding: 50px;
         border-radius: 15px;
-        margin: 15px;
+        margin: auto;
+        max-width: max-content;
         box-shadow: rgba(41, 41, 41, 0.56) 0px 22px 70px 4px;
     }
 
@@ -30,7 +31,6 @@
     }
     /*Bottone aggiungi a carrello*/
     .button-cart {
-        float: right;
         appearance: none;
         background-color: #292929;
         border: 2px solid #1A1A1A;
@@ -98,7 +98,7 @@
         </select></td></tr>
 
             <input type="hidden" name="aggiungi-prod" value="true">
-            <td><tr><input class="acquisto-prd" type="submit" value="Acquista Prodotto"></tr></td>
+            <td><tr>   <button  class="button-cart" type="submit"> <i class="fa-solid fa-cart-shopping"></i> </button></tr></td>
           <%}%>
             </form>
 

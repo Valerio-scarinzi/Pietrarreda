@@ -10,11 +10,30 @@
 <head>
     <title>Ordine OK</title>
 </head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container{
+        background-color: #e49314;
+        border-radius: 15px;
+        margin: auto;
+        margin-bottom: 20px;
+        padding: 20px;
+        text-align: center;
+        max-width: max-content;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+</style>
 <body>
 <%@include file="header.jsp"%>
 
-
-<h3>ordine effettuato con successo</h3>
+<div class="container">
+<h3>Ordine effettuato con successo</h3>
+    <a href="index.jsp">Clicca qui per tornare alla homepage</a>
+</div>
 
 
 <%@include file="footer.jsp"%>

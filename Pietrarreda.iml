@@ -62,6 +62,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="gson-2.8.6" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.35" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.33" level="application_server_libraries" />
   </component>
 </module>
