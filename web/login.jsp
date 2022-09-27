@@ -10,17 +10,15 @@
 <style>
     /*CSS login.jsp*/
     *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
     body{
-
         justify-content: center;
         align-items: center;
         height: 700px;
     }
-
     .Log_panel{
         text-align: center;
         position: relative;
@@ -58,7 +56,7 @@
 <body>
 <%@include file="header.jsp"%>
 <div class="Log_panel">
-    <h3>LOGIN PANEL </h3>
+    <h3>LOGIN PANEL </h3><hr>
 <form method="post" action="Login" >
      <input name="email" type="email" placeholder="inserisci e-mail" required="required"><br>
      <input name="password" type="password" placeholder="inserisci password" required="required"><br>

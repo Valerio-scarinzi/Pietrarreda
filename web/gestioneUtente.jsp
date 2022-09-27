@@ -9,29 +9,101 @@
     <script src="JavaScript/alert.js"></script>
 </head>
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .title{
+        padding: 10px;
+        text-align: center;
+        color: #e49314;
+    }
+    .addUtente{
+        padding: 10px;
+        text-align: center;
+    }
+
+    .showUtenti{
+        margin: 10px;
+        padding: 25px;
+        background-color: #292929;
+        border-radius: 15px;
+        color: #e49314;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    input{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    fieldset{
+        padding: 15px;
+        border-color: #e49314;
+        margin: 20px;
+    }
+
+    .formContainer{
+        text-align: center;
+        float: right;
+
+    }
+    .btnAdd{
+        color: #FFFFFF;
+        background-color: #e49314;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    button{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    .btn{
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
+    .btn:hover{
+        color: #e79213;
+    }
+
+
     .submit{
         border-color: #e49314;
         color: #FFFFFF;
         background-color: #292929;
     }
     .submit:hover{
-        color: #e79213;
+color: #e49314;
+    }
+    i{
+        margin: 5px;
     }
 </style>
 <body>
 <%@include file="header.jsp"%>
 <%ArrayList<Utente> utenti = (ArrayList<Utente>) request.getAttribute("listUtenti");%>
-<h2>Utenti nel database.</h2>
-<div class="addUtente">
-    <button class="btn">
-        <a href="addUtente.jsp"> Aggiungi utente <i class="fa-solid fa-plus"></i></a>
-    </button>
-</div>
-<hr>
+
+
 
 <div class="showUtenti">
-
+    <h2 class="title">Utenti nel database</h2><hr>
+    <div class="addUtente">
+        <button class="btnAdd">
+            <a href="addUtente.jsp"> Aggiungi utente <i class="fa-solid fa-plus"></i></a>
+        </button>
+    </div>
     <c:forEach items="${listUtenti}" var="utente"><fieldset>
+        <p>Dettagli utente:</p>
         ID: <c:out value="${utente.id}" /><br>
         Nome:  <c:out value="${utente.nome}" /><br>
         Cognome:  <c:out value="${utente.cognome}" /><br>
@@ -39,7 +111,8 @@
         Password:  <c:out value="${utente.password}" /><br>
         E-mail:  <c:out value="${utente.email}" /><br>
         Admin:  <c:out value="${utente.admin}" /><br>
-
+<div class="formContainer">
+    <p>Modifica con:</p><hr>
         <form id="updt" method="post" action="GestioneUtenteServlet?id=${utente.id}">
             <input type="text" name="cambiaNome" id="cambiaNome" value="${utente.nome}" placeholder="modifica nome" required="required"> <br>
 
@@ -64,14 +137,15 @@
                 <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
             <button class="btn">
-                <a href="GestioneOrdini?id=${utente.id}" >Ordini Utente <i class="fa-solid fa-trash-can"></i></a>
+                <a href="GestioneOrdini?id=${utente.id}" >Ordini Utente</a>
             </button>
-            <input class="submit" type="submit" value="Modifica" onclick="modifica()"><br><br>
-        </form>
+            <button class="submit" type="submit" onclick="modifica()">Modifica<i class="fa-solid fa-wrench"></i></button>
+        </form></div>
     </fieldset>
-        <br>
+
     </c:forEach>
 
 </div>
+<%@include file="footer.jsp"%>
 </body>
 </html>

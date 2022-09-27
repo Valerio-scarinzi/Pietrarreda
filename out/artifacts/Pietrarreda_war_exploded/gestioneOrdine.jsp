@@ -1,5 +1,6 @@
 <%@ page import="model.Ordine" %>
 <%@ page import="java.util.ArrayList" %>
+<<<<<<< HEAD
 <%@ page import="model.Carrello" %><%--
   Created by IntelliJ IDEA.
   User: VaLeRiX
@@ -7,6 +8,9 @@
   Time: 18:17
   To change this template use File | Settings | File Templates.
 --%>
+=======
+<%@ page import="model.Carrello" %>
+>>>>>>> 4376b8ccef8f19982c01d73dd227b46aa06b7798
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -53,6 +57,7 @@
     <p>Totale ordine:<%=ord.getPrezzoTotale()%></p>
 </div>
 <br><br><br>
+    </div></fieldset>
 <% } %>
 <%@include file="footer.jsp"%>
 </body>

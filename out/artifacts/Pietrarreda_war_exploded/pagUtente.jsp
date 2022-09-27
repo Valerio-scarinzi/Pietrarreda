@@ -14,6 +14,9 @@
         box-sizing: border-box;
         margin: 0;
     }
+    .titolo{
+        text-align: center;
+    }
 
     .utentePanel{
         text-align: center;
@@ -24,11 +27,49 @@
         border-radius: 15px;
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     }
+    button{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+    .btn{
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
+    .btn:hover{
+        color: #e79213;
+    }
+
+
+    .submit{
+        margin: 10px;
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
+    .submit:hover{
+        color: #e79213;
+    }
+    .submitExit{
+        margin: 10px;
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
+    .submitExit:hover{
+        color: #c80009;
+    }
+    i{
+        margin: 5px;
+    }
 </style>
 <body>
 <%@include file="header.jsp"%>
 <% Utente utente = (Utente) session.getAttribute("utenteLoggato");%>
 <div class="utentePanel">
+    <h2 class="titolo">User panel</h2><hr>
     <table class="attUtente">
         <tr><td>Nome: <%=utente.getNome()%></td></tr>
         <tr><td>Cognome: <%=utente.getCognome()%></td></tr>
@@ -42,16 +83,14 @@
         <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=utente.getCognome()%>" placeholder="modifica cognome" required="required"> <br>
         <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=utente.getUsername()%>" placeholder="modifica username" required="required"> <br>
         <input type="password" name="cambiaPass" id="cambiaPass" value="<%=utente.getPassword()%>" placeholder="modifica password" required="required"> <br>
-        <input type="submit" value="Modifica" onclick="modifica()">
+        <button class="submit" type="submit" onclick="modifica()">Modifica<i class="fa-solid fa-wrench"></i></button>
     </form>
     <%}%>
     <%if(utente.isAdmin()==true){%>
-    <button style=""><a href="admin.jsp"> Admin Console </a></button><%}%>
+    <button class="btn"><a href="admin.jsp"> Admin Console </a></button><%}%>
     <form id="logOut" action="LogOut" method="post">
-        <input type="submit" value="Log-Out" style="color: red"><br><br>
+        <button class="submitExit" type="submit" value="gestisci">Log-out<i class="fa-solid fa-arrow-right-from-bracket"></i></button><br>
     </form>
-
-    <br>
     <a href="imieiOrdini.jsp">Storico Ordini</a>
     <br>
 

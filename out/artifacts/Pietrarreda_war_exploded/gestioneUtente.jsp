@@ -9,6 +9,74 @@
     <script src="JavaScript/alert.js"></script>
 </head>
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .title{
+        padding: 10px;
+        text-align: center;
+        color: #e49314;
+    }
+    .addUtente{
+        padding: 10px;
+        text-align: center;
+    }
+
+    .showUtenti{
+        margin: 10px;
+        padding: 25px;
+        background-color: #292929;
+        border-radius: 15px;
+        color: #e49314;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    input{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    fieldset{
+        padding: 15px;
+        border-color: #e49314;
+        margin: 20px;
+    }
+
+    .formContainer{
+        text-align: center;
+        float: right;
+
+    }
+    .btnAdd{
+        color: #FFFFFF;
+        background-color: #e49314;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    button{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    .btn{
+        border-color: #e49314;
+        color: #FFFFFF;
+        background-color: #292929;
+    }
+    .btn:hover{
+        color: #e79213;
+    }
+
+
     .submit{
         border-color: #e49314;
         color: #FFFFFF;
@@ -51,14 +119,7 @@
 
             <input type="text" name="cambiaEmail" id="cambiaEmail" value="${utente.email}" placeholder="modifica email" required="required"> <br>
 
-            <c:if test="${utente.admin != false}">
-            Abilita admin:<input type="checkbox" name="cambiaAdmin" value="" id="cambiaAdmin"   checked> <br>
-            </c:if>
-
-            <c:if test="${utente.admin != true}">
-                Abilita admin:<input type="checkbox" name="cambiaAdmin" value="" id="cambiaAdmin"   > <br>
-            </c:if>
-
+            Abilita admin:<input type="checkbox" name="cambiaAdmin" value="" id="cambiaAdmin"> <br>
 
             <button class="btn">
                 <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>

@@ -31,6 +31,7 @@
         margin-bottom: 20px;
     }
     .submit{
+        margin: 10px;
         border-color: #e49314;
         color: #FFFFFF;
         background-color: #292929;
@@ -38,24 +39,33 @@
     .submit:hover{
         color: #e79213;
     }
-    .admin_panel input{
-        horiz-align: center;
+    .admin_panel button{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
+    i{
+        margin: 5px;
     }
 </style>
 <body>
 <%@include file="header.jsp"%>
 
 <div class="admin_panel">
-    <h3>ADMIN CONSOLE</h3>
+    <h3>ADMIN CONSOLE</h3><hr><br>
     <div class="forms">
 <form method="post" action="ProdottoServlet">
-    <p>Gestione prodotto </p>  <input class="submit"type="submit" value="gestisci"> <br>
+    <p>Prodotti </p>
+    <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button>
 </form>
 <form method="post" action="CategorieServlet">
-    <p>Gestione categoria </p>  <input class="submit"type="submit" value="gestisci"> <br>
+    <p>Categorie </p>
+    <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button> <br>
 </form>
 <form method="post" action="UtentiServlet">
-    <p>Gestione utente </p>  <input  class="submit" type="submit" value="gestisci"> <br>
+    <p>Utenti </p>
+    <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button><br>
 </form>
 
     </div>
