@@ -24,24 +24,26 @@
     <p>Spedito Verso: <%=ord.getIndirizzo()%></p>
     <p>Stato Attuale: <%=ord.getStatusOrdine()%></p>
      <p></p>
-    <% for(Carrello.ProdottoQuantita prod: ord.getProdotti()) {%>
-    <div class="ContainerProdOrdine">
+        <div class="ContainerProdOrdine">
 
-        <input type="text" name="modificaIndirizzo" value="<%=ord.getIndirizzo()%>" placeholder="Modifica Indirizzo">
+            <input type="text" name="modificaIndirizzo" value="<%=ord.getIndirizzo()%>" placeholder="Modifica Indirizzo">
 
-        <select name="option0" >
-            <option name="option1"  >ordine in lavorazione</option>
-            <option name="option2" >ordine confermato</option>
-            <option name="option2" >ordine effettuato</option>
+            <select name="option0" >
+                <option name="option1"  >ordine in lavorazione</option>
+                <option name="option2" >ordine confermato</option>
+                <option name="option2" >ordine effettuato</option>
 
-        </select>
-        <button class="btn">
-            <a href="DeleteOrdine?idDelete=<%=ord.getIdOrdine()%>" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
-        </button>
+            </select>
+            <button class="btn">
+                <a href="DeleteOrdine?idDelete=<%=ord.getIdOrdine()%>" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
+            </button>
 
             <input class="submit" type="submit" value="modifica" onclick="modifica()"><br><br>
-      </div>
+        </div>
     </form>
+
+    <% for(Carrello.ProdottoQuantita prod: ord.getProdotti()) {%>
+
         <h5>Prodotti</h5>
         <p>nome: <%=prod.getProdotto().getNome()%></p>
         <p>prezzo: <%=prod.getProdotto().getPrezzo()%></p>
