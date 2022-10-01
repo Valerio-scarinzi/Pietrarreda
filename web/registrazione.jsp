@@ -3,6 +3,8 @@
 <head>
     <title>Registrazione</title>
     <link rel="stylesheet">
+
+
 </head>
 <style>
     /*CSS registrazione.jsp*/
@@ -51,20 +53,61 @@
 
 
 </style>
+
 <body>
 <%@include file="header.jsp"%>
-<form method="post" action="Registrazione">
+<form id="registrazione" name="registrazione" method="post" action="Registrazione" >
     <div class="Reg_panel">
         <h3>REGISTRAZIONE</h3>
 
-        <input name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
-        <input name="cognome" type="text" placeholder="Inserisci Cognome" required="required"><br>
-        <input name="username" type="text" placeholder="Inserisci Username" required="required"><br>
-        <input name="password" type="text" placeholder="Inserisci Password" required="required" minlength="5"><br>
-        <input name="email" type="email" placeholder="Inserisci E-mail" required="required"><br>
+        <input id="nome" name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
+        <input id="cognome" name="cognome" type="text" placeholder="Inserisci Cognome" required="required"><br>
+        <input id="username" name="username" type="text" placeholder="Inserisci Username" required="required" oninput="validateUsername()">
+        <br>
+        <input id="password" name="password" type="text" placeholder="Inserisci Password" required="required" minlength="5" oninput="validatePassword   ()">
+        <br>
+        <input id="email" name="email" type="email" placeholder="Inserisci E-mail" required="required" oninput="validateEmail()">
+        <br>
        <div class="btn"><input class="submit" type="submit" value="Registrati"></div>
     </div>
 </form>
+<script>
+    function validatePassword() {
+
+
+        if(document.forms['registrazione']['password'].value == "" && document.forms['registrazione']['password'].value.length <7  ){
+            document.forms['registrazione']['password'].style.borderColor = "red";
+          }if (document.forms['registrazione']['password'].value.length <7){
+        document.forms['registrazione']['password'].style.borderColor = "red";
+    }else {document.forms['registrazione']['password'].style.borderColor = "white";}
+    }
+    </script>
+    <script>
+    function validateUsername() {
+
+
+            if (document.forms['registrazione']['username'].value == ""  ) {
+                document.forms['registrazione']['username'].style.borderColor = "red";
+            }if (document.forms['registrazione']['username'].value.length <7){
+                document.forms['registrazione']['username'].style.borderColor = "red";
+            }else {document.forms['registrazione']['username'].style.borderColor = "white";}
+        }
+</script>
+    <script>
+    function validateEmail() {
+
+
+            if (document.forms['registrazione']['email'].value == "") {
+                document.forms['registrazione']['email'].style.borderColor = "red";
+            }else{document.forms['registrazione']['email'].style.borderColor = "white";}
+        }
+
+
+
+</script>
+
+
+
 <%@include file="footer.jsp"%>
 </body>
 </html>
