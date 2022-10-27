@@ -86,14 +86,13 @@
         <button class="submit" type="submit" onclick="modifica()">Modifica<i class="fa-solid fa-wrench"></i></button>
     </form>
     <%}%>
-    <%if(utente.isAdmin()==true){%>
-    <button class="btn"><a href="admin.jsp"> Admin Console </a></button><%}%>
+    <%if(utente.isAdmin()==true){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
+    <button class="btn"><a href="admin.jsp" style="text-decoration: none;color: #e49314"> Admin Console </a></button><%}%>
     <form id="logOut" action="LogOut" method="post">
         <button class="submitExit" type="submit" value="gestisci">Log-out<i class="fa-solid fa-arrow-right-from-bracket"></i></button><br>
     </form>
-    <a href="imieiOrdini.jsp">Storico Ordini</a>
+   <button class="btn"> <a href="imieiOrdini.jsp" style="text-decoration: none;color: #FFFFFF">Storico Ordini</a></button>
     <br>
-
 </div>
 <%@include file="footer.jsp"%>
 </body>

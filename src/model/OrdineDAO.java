@@ -166,20 +166,23 @@ System.out.println(idord);
 
   public void doDelete(int idOrdine) {
     try (Connection con = ConPool.getConnection()) {
-      PreparedStatement ps1 = con.prepareStatement("DELETE FROM orderprod WHERE id_order = ?;");
+      PreparedStatement ps1 = con.prepareStatement("DELETE  FROM orderprod WHERE id_order = ?;");
       ps1.setInt(1, idOrdine);
-      if (ps1.executeUpdate() != 1) {
-        throw new RuntimeException("errore nella cancellazione");
-      }
+      ps1.executeUpdate();/*
+      if (ps1.executeUpdate() <=1) {
+        throw new RuntimeException("errrrrrrrore nella cancellazione");
+      }*/
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
     try (Connection con = ConPool.getConnection()) {
-      PreparedStatement ps = con.prepareStatement("DELETE FROM ordine WHERE Id_ordine = ?;");
+      PreparedStatement ps = con.prepareStatement("DELETE   FROM ordine WHERE Id_ordine = ?;");
       ps.setInt(1, idOrdine);
-      if (ps.executeUpdate() != 1) {
+      ps.executeUpdate();
+      /*
+      if (ps.executeUpdate() <= 1) {
         throw new RuntimeException("errore nella cancellazione");
-      }
+      }*/
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

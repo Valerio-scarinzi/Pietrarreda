@@ -40,8 +40,6 @@ public class LoginServlet extends HttpServlet {
                 throw new MyExceptionServlet("Errore di login!"+"\n"+"Dati errati");
             }
 
-
-           //Fai un altro if che controlla se l utente è admin (booleano),se admin -> indirizzare a jsp admin (da creare)
            if (utente!=null) {
 
              OrdineDAO ordineDAO =new OrdineDAO();

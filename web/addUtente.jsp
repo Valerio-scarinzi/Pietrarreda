@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Aggiunta utente</title>
-    <script src="JavaScript/alert.js"></script>
+    <script src="alert.js"></script>
 </head>
 <style>
     *{

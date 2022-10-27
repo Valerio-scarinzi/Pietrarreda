@@ -11,15 +11,25 @@ function modifica() {
         if (form.checkValidity()){
             window.alert("Modifica avvenuta con successo!");}
 }
-// alert rimozione prodotto/utente/categoria
+//alert rimozione prodotto/utente/categoria
 function elimina() {
     var form=document.getElementById("updt");
     if (form.checkValidity()){
         window.alert("Rimozione avvenuta con successo!");}
 }
+
+//alert registrazione
+function registrazioneSucc() {
+    var form=document.getElementById("registrami");
+    if (form.checkValidity()){
+        window.alert("Registrazione avvenuta con successo!");}
+}
+
+
+
 //alert logout
 function logout() {
     var form=document.getElementById("logOut");
     if (form.checkValidity()){
-        window.alert("Logout!");}
+        window.alert("Ci vediamo!");}
 }

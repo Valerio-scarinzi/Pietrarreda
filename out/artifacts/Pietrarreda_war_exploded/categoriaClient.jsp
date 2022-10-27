@@ -8,11 +8,6 @@
 <head>
     <title>Categorie</title>
 </head>
-<body>
-<%@include file="header.jsp"%>
-<%  ArrayList<Prodotto> listprodFromCat = (ArrayList<Prodotto>) request.getAttribute("ProdottiFromCat");%>
-<% Categoria categoria = (Categoria) request.getAttribute("ShowCategoria");%>
-
 <style>
     *{
         padding: 0;
@@ -85,7 +80,11 @@
     }
 
 </style>
-
+<body>
+<%@include file="header.jsp"%>
+<%  ArrayList<Prodotto> listprodFromCat = (ArrayList<Prodotto>) request.getAttribute("ProdottiFromCat");%>
+<% Categoria categoria = (Categoria) request.getAttribute("ShowCategoria");%>
+<div class="container">
 
 <div class="ForNegozioJSP">
     <% for (Prodotto p: listprodFromCat) {%>
@@ -107,8 +106,7 @@
         <br><br>
 
     </div>
-    <%}%></div>
-
-
+    <%}%></div></div>
+<%@include file="footer.jsp"%>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <title>Slide Gallery</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous">
     </script>
+    <script src="slide.js"></script>
 </head>
 <style>
     * {box-sizing:border-box}
@@ -74,13 +75,16 @@
 
 </style>
 <body>
-<script src="JavaScript/slide.js"></script>
+
 
 <div class="slide-container">
     <% for (Categoria c: categorie) {%>
     <div class="slide">
         <a href="ShowCategoria?id=<%=c.getId()%>"><img class="imgCat" src="Immagini/ImgProdotti/0<%=c.getImg()%>" alt="IMG_<%=c.getCategoria_nome()%>_not_found" width="255" height="255"></a>
     </div><%}%>
+
+
+
 
     <!--Avanti e indietro-->
     <a class="prev" onclick="plusSlides(-1)"> <i class="fa-solid fa-arrow-left"></i> </a>

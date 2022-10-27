@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Aggiunta prodotto</title>
-   <script src="JavaScript/alert.js"></script>
+   <script src="alert.js"></script>
 </head>
 <style>
     *{
@@ -43,17 +43,24 @@
     .submit:hover{
         color: #e79213;
     }
+    textarea{
+        border-radius: 7px;
+        padding: 5px;
+        margin: 5px;
+        text-align: center;
+        resize: none;
+    }
 </style>
 <body>
 <%@include file="header.jsp"%>
 <form id="add" method="post" action="AddProdotto">
     <div class="AddProd_panel">
         <h3>AGGIUNTA PRODOTTO </h3>
-        <input name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
-        <input name="descrizione" type="text" placeholder="Inserisci Descrizione" required="required"><br>
-        <input name="prezzo" type="number" min="0" step="0.05" placeholder="Inserisci Prezzo" required="required"><br>
+        <input name="nome" type="text" placeholder="Inserisci nome" required="required"><br>
+        <textarea rows="5" cols="20" name="descrizione" id="cambiaDesc" placeholder="Inserisci descrizione" required="required"></textarea> <br>
+        <input name="prezzo" type="number" min="0" step="0.05" placeholder="Inserisci prezzo" required="required"><br>
         <input name="immagine" type="text" placeholder="inserisci immagine" required="required"><br>
-        <input name="disponibilita" type="number" min="0" placeholder="Inserisci Disponibilita'" required="required"><br>
+        <input name="disponibilita" type="number" min="0" placeholder="Inserisci disponibilita'" required="required"><br>
         <input class="submit" type="submit" value="Aggiungi" onclick="aggiunta()">
     </div>
 </form>

@@ -6,7 +6,7 @@
 <head>
     <title>Gestione Utente</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
-    <script src="JavaScript/alert.js"></script>
+    <script src="alert.js"></script>
 </head>
 <style>
     *{
@@ -99,7 +99,7 @@ color: #e49314;
     <h2 class="title">Utenti nel database</h2><hr>
     <div class="addUtente">
         <button class="btnAdd">
-            <a href="addUtente.jsp"> Aggiungi utente <i class="fa-solid fa-plus"></i></a>
+            <a href="addUtente.jsp" style="text-decoration: none;color: white"> Aggiungi utente <i class="fa-solid fa-plus"></i></a>
         </button>
     </div>
     <c:forEach items="${listUtenti}" var="utente"><fieldset>
@@ -114,30 +114,35 @@ color: #e49314;
 <div class="formContainer">
     <p>Modifica con:</p><hr>
         <form id="updt" method="post" action="GestioneUtenteServlet?id=${utente.id}">
-            <input type="text" name="cambiaNome" id="cambiaNome" value="${utente.nome}" placeholder="modifica nome" required="required"> <br>
-
+            <c:if test="${utente.admin != false}"> <!-- Se l utente  della session è admin allora non puoi modificare nulla-->
+            <input type="text" name="cambiaNome" id="cambiaNome" value="${utente.nome}" placeholder="modifica nome" required="required" > <br>
             <input type="text" name="cambiaCognome" id="cambiaCognome" value="${utente.cognome}" placeholder="modifica cognome" required="required"> <br>
-
             <input type="text" name="cambiaUsername" id="cambiaUsername" value="${utente.username}" placeholder="modifica username" required="required"> <br>
-
             <input type="password" name="cambiaPass" id="cambiaPass" value="${utente.password}" placeholder="modifica password" required="required"> <br>
-
             <input type="text" name="cambiaEmail" id="cambiaEmail" value="${utente.email}" placeholder="modifica email" required="required"> <br>
-
-            <c:if test="${utente.admin != false}">
-            Abilita admin:<input type="checkbox" name="cambiaAdmin" value="" id="cambiaAdmin"   checked> <br>
+            Abilita admin:<input type="checkbox" name="cambiaAdmin"  id="cambiaAdmin"   checked readonly> <br>
             </c:if>
 
             <c:if test="${utente.admin != true}">
-                Abilita admin:<input type="checkbox" name="cambiaAdmin" value="" id="cambiaAdmin"   > <br>
+                <input type="text" name="cambiaNome" id="cambiaNome" value="${utente.nome}" placeholder="modifica nome" required="required" > <br>
+
+                <input type="text" name="cambiaCognome" id="cambiaCognome" value="${utente.cognome}" placeholder="modifica cognome" required="required"> <br>
+
+                <input type="text" name="cambiaUsername" id="cambiaUsername" value="${utente.username}" placeholder="modifica username" required="required"> <br>
+
+                <input type="password" name="cambiaPass" id="cambiaPass" value="${utente.password}" placeholder="modifica password" required="required"> <br>
+
+                <input type="text" name="cambiaEmail" id="cambiaEmail" value="${utente.email}" placeholder="modifica email" required="required"> <br>
+
+                Abilita admin:<input type="checkbox" name="cambiaAdmin"  id="cambiaAdmin"   > <br>
             </c:if>
 
 
             <button class="btn">
-                <a href="DeleteUtente?id=${utente.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
+                <a href="DeleteUtente?id=${utente.id}" onclick="elimina()" style="text-decoration: none;color: #c80009">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
             <button class="btn">
-                <a href="GestioneOrdini?id=${utente.id}" >Ordini Utente</a>
+                <a href="GestioneOrdini?id=${utente.id}" style="text-decoration: none;color: #FFFFFF">Ordini Utente<i class="fa-solid fa-table-list"></i></a>
             </button>
             <button class="submit" type="submit" onclick="modifica()">Modifica<i class="fa-solid fa-wrench"></i></button>
         </form></div>

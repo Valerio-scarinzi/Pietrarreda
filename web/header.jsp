@@ -98,6 +98,12 @@
         display: block;
 
     }
+    input{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
 
     /*hamburgher menu*/
     .toggle-button{

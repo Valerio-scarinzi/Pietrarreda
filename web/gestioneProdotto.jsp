@@ -12,7 +12,7 @@
 <head>
     <title>Prodotti DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
-    <script src="JavaScript/alert.js"></script>
+    <script src="alert.js"></script>
 </head>
 <style>
 *{
@@ -77,6 +77,13 @@ input{
 .submit:hover{
     color: #e79213;
 }
+textarea{
+    border-radius: 7px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    resize: none;
+}
 i{
     margin: 5px;
 }
@@ -88,11 +95,11 @@ i{
 
 
 
-    <div class="showProdotti" style="margin-left: 1%">
-        <div class="addProdotto" style="margin-left: 1%">
+    <div class="showProdotti" >
+        <div class="addProdotto" >
         <h2 class="title">Prodotti nel database.</h2>
         <button class="btnAdd">
-            <a href="addProdotto.jsp"> Aggiungi prodotto <i class="fa-solid fa-plus"></i></a>
+            <a href="addProdotto.jsp" style="text-decoration: none;color: white"> Aggiungi prodotto <i class="fa-solid fa-plus"></i></a>
         </button> <hr><hr>
     </div>
     <c:forEach items="${listProdotti}" var="prodotto">
@@ -106,12 +113,13 @@ i{
             <div class="formContainer">
                 <p>Modifica con:</p><hr>
         <form id="updt" method="post" action="GestioneProdottoServlet?id=${prodotto.idprod}">
-    <input type="text" name="cambiaNome" id="cambiaNome" value="${prodotto.nome}" required="required"> <br>
-    <input type="text" name="cambiaDesc" id="cambiaDesc" value="${prodotto.desc}" required="required"> <br><input type="number" min="0" step="0.05" name="cambiaPrezzo" id="cambiaPrezzo" value="${prodotto.prezzo}" required="required"> <br>
+         <input type="text" name="cambiaNome" id="cambiaNome" value="${prodotto.nome}" required="required"> <br>
+            <textarea rows="5" cols="20" name="cambiaDesc" id="cambiaDesc" placeholder="${prodotto.desc}" required="required"></textarea> <br>
+            <input type="number" min="0" step="0.05" name="cambiaPrezzo" id="cambiaPrezzo" value="${prodotto.prezzo}" required="required"> <br>
     <input type="text"  name="cambiaImg" id="cambiaImg" value="${prodotto.imgPath_prod}" required="required"> <br>
     <input type="number" min="0" name="cambiaDisp" id="cambiaDisp" value="${prodotto.disponibilita}" required="required"> <br>
             <button class="btn">
-              <a href="DeleteProdotto?id=${prodotto.idprod}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
+              <a href="DeleteProdotto?id=${prodotto.idprod}" onclick="elimina()" style="text-decoration: none;color: #c80009">Elimina <i class="fa-solid fa-trash-can"></i></a>
             </button>
             <button class="submit" type="submit" onclick="modifica()">Modifica<i class="fa-solid fa-wrench"></i></button>
         </form></div>

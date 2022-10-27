@@ -32,7 +32,7 @@
 
 <div class="container">
 <h3>Ordine effettuato con successo</h3>
-    <a href="index.jsp">Clicca qui per tornare alla homepage</a>
+    <a href="index.jsp" style="text-decoration:none;color: #FFFFFF">Clicca qui per tornare alla homepage</a>
 </div>
 
 

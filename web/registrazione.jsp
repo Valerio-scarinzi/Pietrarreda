@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Registrazione</title>
-    <link rel="stylesheet">
-
-
 </head>
 <style>
     /*CSS registrazione.jsp*/
@@ -43,71 +40,39 @@
         text-align: center;
     }
     .submit{
-        border-color: #e49314;
         color: #FFFFFF;
         background-color: #292929;
     }
     .submit:hover{
         color: #e79213;
     }
+    .refLogin{
+        margin:10px;
+    }
 
 
+    #passError{
+        color: #c80009;
+        text-align: center;
+    }
 </style>
-
 <body>
 <%@include file="header.jsp"%>
+<script type="text/javascript" src="validate_registration.js"></script>
 <form id="registrazione" name="registrazione" method="post" action="Registrazione" >
     <div class="Reg_panel">
-        <h3>REGISTRAZIONE</h3>
-
-        <input id="nome" name="nome" type="text" placeholder="Inserisci Nome" required="required"><br>
-        <input id="cognome" name="cognome" type="text" placeholder="Inserisci Cognome" required="required"><br>
-        <input id="username" name="username" type="text" placeholder="Inserisci Username" required="required" oninput="validateUsername()">
-        <br>
-        <input id="password" name="password" type="text" placeholder="Inserisci Password" required="required" minlength="5" oninput="validatePassword   ()">
-        <br>
-        <input id="email" name="email" type="email" placeholder="Inserisci E-mail" required="required" oninput="validateEmail()">
-        <br>
-       <div class="btn"><input class="submit" type="submit" value="Registrati"></div>
+        <h3>REGISTRAZIONE</h3><hr>
+        <p class="refLogin">Possiedi un account? <br><a href="login.jsp" style="text-decoration: none">log-in</a></p>
+        <input id="nome" name="nome" type="text" placeholder="Inserisci Nome" required="required" oninput="validaRNome()"><br>
+        <input id="cognome" name="cognome" type="text" placeholder="Inserisci Cognome" required="required" oninput="validaRCognome()"><br>
+        <input id="username" name="username" type="text" placeholder="Inserisci Username" required="required" oninput="validaRUsername()"><br>
+        <input id="email" name="email" type="email" placeholder="Inserisci E-mail" required="required" oninput="validaREmail()"><br>
+        <input id="password" name="password" type="text" placeholder="Inserisci Password" required="required"  oninput="validacPassword()"><br>
+        <input id="cpassword" name="cpassword" type="text" placeholder="Conferma Password" required="required"  oninput="validacPassword()"><br>
+       <div class="btn"><input id="registrami" class="submit" type="submit" value="Registrati" disabled onclick="registrazioneSucc()"></div>
     </div>
 </form>
-<script>
-    function validatePassword() {
-
-
-        if(document.forms['registrazione']['password'].value == "" && document.forms['registrazione']['password'].value.length <7  ){
-            document.forms['registrazione']['password'].style.borderColor = "red";
-          }if (document.forms['registrazione']['password'].value.length <7){
-        document.forms['registrazione']['password'].style.borderColor = "red";
-    }else {document.forms['registrazione']['password'].style.borderColor = "white";}
-    }
-    </script>
-    <script>
-    function validateUsername() {
-
-
-            if (document.forms['registrazione']['username'].value == ""  ) {
-                document.forms['registrazione']['username'].style.borderColor = "red";
-            }if (document.forms['registrazione']['username'].value.length <7){
-                document.forms['registrazione']['username'].style.borderColor = "red";
-            }else {document.forms['registrazione']['username'].style.borderColor = "white";}
-        }
-</script>
-    <script>
-    function validateEmail() {
-
-
-            if (document.forms['registrazione']['email'].value == "") {
-                document.forms['registrazione']['email'].style.borderColor = "red";
-            }else{document.forms['registrazione']['email'].style.borderColor = "white";}
-        }
-
-
-
-</script>
-
-
-
 <%@include file="footer.jsp"%>
 </body>
+
 </html>

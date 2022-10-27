@@ -21,14 +21,9 @@ public class adminGestioneOrdineServlet extends HttpServlet {
 
     if(idOrdine!=null){ id = Integer.parseInt(idOrdine);}
     String option = req.getParameter("option0");
-
-
     OrdineDAO ordineDAO = new OrdineDAO();
     ordineDAO.doUpdateStatoIndirizzo(id,option,modificaIndirizzo);
-
-
-
-    resp.sendRedirect("GestioneOrdini");
+    resp.sendRedirect("UtentiServlet");
 
   }
 

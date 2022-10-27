@@ -6,7 +6,7 @@
 <head>
     <title>Categorie DB</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
-    <script src="JavaScript/alert.js"></script>
+    <script src="alert.js"></script>
 </head>
 <style>
     .title{
@@ -112,7 +112,7 @@
     <h2 class="title">Categorie nel database</h2>
     <div class="addCategoria"><hr>
         <button class="btnAdd">
-            <a href="addCategoria.jsp"> Aggiungi Categoria <i class="fa-solid fa-plus"></i></a>
+            <a href="addCategoria.jsp" style="text-decoration: none;color: white"> Aggiungi Categoria <i class="fa-solid fa-plus"></i></a>
         </button>
     </div>
     <c:forEach items="${listCategorie}" var="categoria"><fieldset>
@@ -128,7 +128,7 @@
         <input class="description" type="text" name="cambiaDesc" id="cambiaDesc" value="${categoria.descrizione}" placeholder="modifica descrizione" required="required"> <br>
         <input type="text" name="cambiaImg" id="cambiaImg" value="${categoria.img}" placeholder="modifica immagine" required="required"> <br>
         <button class="btn">
-            <a id="del" href="DeleteCategoria?id=${categoria.id}" onclick="elimina()">Elimina <i class="fa-solid fa-trash-can"></i></a>
+            <a id="del" href="DeleteCategoria?id=${categoria.id}" onclick="elimina()" style="text-decoration: none;color: #c80009">Elimina <i class="fa-solid fa-trash-can"></i></a>
         </button>
         <button class="submit" type="submit" onclick="modifica()">Modifica<i class="fa-solid fa-wrench"></i></button><br><br>
     </form></div>

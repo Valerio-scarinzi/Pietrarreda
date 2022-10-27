@@ -45,16 +45,6 @@ public class ShowCategoriaClient extends HttpServlet {
 
     req.setAttribute("ProdottiFromCat",listprodFromCat);// invio gli id dei prodotti per poi prendere i prodotti dal prodotto dao
 
-
-
-
-    /*ArrayList<Categoria> categorie = (ArrayList<Categoria>) getServletContext().getAttribute("categorie");
-    for (Categoria c :categorie) {
-      if(c.getId() == id){
-        req.setAttribute("ShowCategoria", c);
-      }
-    }*/
-
     RequestDispatcher dispatcher = req.getRequestDispatcher("categoriaClient.jsp");
     dispatcher.forward(req,resp);
   }

@@ -4,7 +4,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
     <title>login panel</title>
 </head>
 <style>
@@ -43,7 +42,6 @@
         text-align: center;
     }
     .submit{
-        border-color: #e49314;
         color: #FFFFFF;
         background-color: #292929;
     }
@@ -55,13 +53,14 @@
 </style>
 <body>
 <%@include file="header.jsp"%>
+<script src="validate_login.js"></script>
 <div class="Log_panel">
     <h3>LOGIN PANEL </h3><hr>
-<form method="post" action="Login" >
-     <input name="email" type="email" placeholder="inserisci e-mail" required="required"><br>
-     <input name="password" type="password" placeholder="inserisci password" required="required"><br>
-     <input name="username" type="text" placeholder="inserisci username" required="required"><br>
-    <input class="submit" type="submit" value="Accedi">
+<form method="post" action="Login" name="login">
+     <input id="email" name="email" type="email" placeholder="inserisci e-mail" required="required" oninput="validaLEmail()"><br>
+     <input id="username" name="username" type="text" placeholder="inserisci username" required="required" oninput="validaLUsername()"><br>
+     <input id="password" name="password" type="password" placeholder="inserisci password" required="required" oninput="validaLPassword()"><br>
+    <input id="loggami" class="submit" type="submit" value="Accedi" disabled>
 </form>
 </div>
 <%@include file="footer.jsp"%>

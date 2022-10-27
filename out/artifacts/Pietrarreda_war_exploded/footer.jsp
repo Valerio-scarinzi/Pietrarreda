@@ -92,13 +92,15 @@
         font-size: 12px;
         color: darkgray;
     }
+
+
 </style>
 <body>
 <div class="footer">
     <div class="social">
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-solid fa-map-location-dot"></i></a>
+        <a  id="facebook" href=""><i class="fa-brands fa-facebook"></i></a>
+        <a id="instagram" href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-solid fa-map-location-dot"></i></a>
     </div>
     <ul class="lista">
         <li>
