@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Pietrarreda:war exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Pietrarreda_war_exploded2</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Pietrarreda" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-8.0.27.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/tomcat-jdbc.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jstl-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/json-20210307.jar" />
+          <element id="library" level="project" name="gson-2.8.6" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Pietrarreda/web/Web" />
+    </root>
+  </artifact>
+</component>

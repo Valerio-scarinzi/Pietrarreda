@@ -80,7 +80,7 @@
 
 <div id = "ConteinerOrdini">
     <h1 class="titolo"><%=utente.getUsername()%>  ecco il tuo ordine:</h1>
-    <% for(Carrello.ProdottoQuantita prod:ord.getProdotti()) {%>
+    <% for(Carrello.ProdottoQuantita prod:ord.getProdotti()) {%> <!--Per ogni prodotto nel carrello :    -->
     <fieldset>
     <div class="ContainerProdOrdine">
         <p>Nome: <%=prod.getProdotto().getNome()%></p>
@@ -96,7 +96,7 @@
 <form id="conf" action="Ordine" method="post">
 <h2 class="titolo" style="color: #e49314"> Indirizzo di spedizione </h2><hr>
     <input type="text" name="IndirizzoSpedizione" required="required">
-    <input type="hidden" name="conferma" value="ok">
+    <input type="hidden" name="conferma" value="ok"><!--Conferma ordine hidden   -->
     <button class="submit" type="submit">Conferma<i class="fa-solid fa-check"></i></button>
 </form></div>
 <%@include file="footer.jsp"%>

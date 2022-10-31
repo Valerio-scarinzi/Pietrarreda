@@ -59,6 +59,12 @@ fieldset{
     i{
         margin: 5px;
     }
+    @media (max-width: 400px){
+        body{
+            background-color: #1A1A1A;
+        }
+
+    }
 </style>
 <body>
 <%@include file="header.jsp"%>

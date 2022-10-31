@@ -21,7 +21,7 @@ public class AdminUtenteServlet extends HttpServlet {
 
         ArrayList<Utente> listutenti = new ArrayList<Utente>();
         UtenteDAO utenteDAO = new UtenteDAO();
-        listutenti     =    utenteDAO.doRetrieveAll();
+        listutenti     =    utenteDAO.doRetrieveAll();//prendi tutti gli utenti dal DB
         HttpSession recentSession = req.getSession();
         recentSession.setAttribute("listUtenti", listutenti );
 

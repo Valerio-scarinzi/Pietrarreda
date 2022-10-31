@@ -121,6 +121,29 @@ public class UtenteDAO {
     }
   }
 
+  public Utente doRetriveByEmail(String email){ //serve per controllo lato server: vede se esiste già un utente con stessa email.
+    try (Connection con= ConPool.getConnection()){
+      PreparedStatement ps=con.prepareStatement("SELECT * FROM utente WHERE email=? ");
+      ps.setString(1,email);
+      ResultSet rs= ps.executeQuery();
+
+      if(rs.next()){
+        Utente p = new Utente();
+        p.setId(rs.getInt(1));
+        p.setNome(rs.getString(2));
+        p.setCognome(rs.getString(3));
+        p.setUsername(rs.getString(4));
+        p.setPassword(rs.getString(5));
+        p.setEmail(rs.getString(6));
+        p.setAdmin(rs.getBoolean(7));
+        return p;
+      }
+      } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
   public Utente doRetrieveByUsernameEmailPassword(String email, String username, String password) {
     try (Connection con = ConPool.getConnection()) {
       PreparedStatement ps = con.prepareStatement("SELECT * FROM  utente WHERE username=? AND passwordhash=? AND email=?");

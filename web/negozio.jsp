@@ -82,25 +82,47 @@
 
     }
 
+    @media (max-width: 400px){
+
+        body{
+            background-color: #1A1A1A;
+        }
+
+        .button-cart{
+            width: 100%;
+        }
+        table{
+            text-align: center;
+        }
+        .InForNegozioJSP{
+            border:4px solid  #292929;
+        }
+
+        .InForNegozioJSP:hover{
+            box-shadow: rgba(231, 146, 19, 0.25) 0px 54px 55px, rgba(231, 146, 19, 0.12) 0px -12px 30px, rgba(231, 146, 19, 0.12) 0px 4px 6px, rgba(231, 146, 19, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+    }
+
 </style>
 <body>
 <%@include file="header.jsp"%>
 <% ArrayList<Prodotto> prodotti= new ArrayList<Prodotto>();%>
    <%ProdottoDAO prodottoDAO = new ProdottoDAO();%>
-    <%prodotti = prodottoDAO.getAllProdotti();%>
+    <%prodotti = prodottoDAO.getAllProdotti();%><!--Prendi tutti i prodotti presenti nel DB -->
    <%session.getServletContext().setAttribute("prodotti",prodotti);%>
 
 <div class="ForNegozioJSP">
-    <% for (Prodotto p: prodotti) {%>
+    <% for (Prodotto p: prodotti) {%>   <!--Per ogni prodotto trovato nel DB : -->
     <div class="InForNegozioJSP">
-
         <table>
             <tr><td>Nome: <%=p.getNome()%></td></tr>
             <tr><td>Descrizione: <%=p.getDesc()%></td></tr>
             <tr><td>Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
-            <tr><td>Disponibilità: <%=p.getDisponibilita()%></td></tr>
+            <tr><td>Disponibilità:<%if (p.getDisponibilita()>=1){%> <%=p.getDisponibilita()%> <%}else{%> N.D <%}%></td></tr>
             <a href="ShowProdotto?id=<%=p.getIdprod()%>"><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" alt="IMG_PATH_NOT_FOUND"></a>
             <%if(utenteLog!=null){%>
+                <%if (p.getDisponibilita()>=1){%><!--Se la disponibilità è maggiore di 1 allora :   -->
             <div>
                     <form action="Carrello" method="post">
                         <input type="hidden" name="aggiungi-prod" value="true">
@@ -108,8 +130,7 @@
                     <input name="prodId" value=<%=p.getIdprod()%> hidden>
                         <button  class="button-cart" type="submit"> <i class="fa-solid fa-cart-shopping"></i> </button>
                 </form>
-            </div>
-
+            </div><%}%>
             <%}%>
         </table>
         <br><br>

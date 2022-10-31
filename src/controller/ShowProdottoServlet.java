@@ -22,12 +22,12 @@ public class ShowProdottoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String idstr = (String) req.getParameter("id");
+        String idstr = (String) req.getParameter("id"); //prendo id del prodotto da cercare
         int id = Integer.parseInt(idstr);
         ArrayList<Prodotto> prodotti=(ArrayList<Prodotto>) getServletContext().getAttribute("prodotti");
-        for (Prodotto p :prodotti) {
+        for (Prodotto p :prodotti) { //per ogni prodotto cerco quello con id interessato
             if(p.getIdprod() == id){
-                req.setAttribute("ShowProdotto", p);
+                req.setAttribute("ShowProdotto", p); //passo il prodotto
             }
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("prodotto.jsp");

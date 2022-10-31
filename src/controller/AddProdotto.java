@@ -32,7 +32,7 @@ public class AddProdotto extends HttpServlet {
         Prodotto prodotto=new Prodotto(nome,descrizione,prezzo,disponibilita,strImg);
 
         ProdottoDAO prodottoDAO=new ProdottoDAO();
-        prodottoDAO.doSave(prodotto);
+        prodottoDAO.doSave(prodotto); //salviamo nel DB il nuovo prodotto
         resp.sendRedirect("ProdottoServlet");
 
     }

@@ -70,6 +70,21 @@
         box-shadow: none;
         transform: translateY(0);
     }
+
+    @media (max-width: 403px){
+        body{
+            background-color: #1A1A1A;
+        }
+        .attProd{
+            color: #060606;
+            text-align: center;
+        }
+
+        .button-cart{
+            width: 100%;
+        }
+
+    }
 </style>
 <body>
 <%@include file="header.jsp"%>
@@ -78,19 +93,17 @@
 <%Carrello carrello=new Carrello();%>
 
 <div class="product">
-
-        <a><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
-    <a><img class="imgProd" src="Immagini/ImgProdotti/1<%=p.getImgPath_prod()%>" width="225" height="225" ></a>
+        <a><img class="imgProd" src="Immagini/ImgProdotti/0<%=p.getImgPath_prod()%>" width="225" height="225"  alt="img1"></a>
+    <a><img class="imgProd" src="Immagini/ImgProdotti/1<%=p.getImgPath_prod()%>" width="225" height="225" alt="img2"></a>
         <table class="attProd">
-            <tr><td>   Nome: <%=p.getNome()%></td></tr>
+            <tr><td>Nome: <%=p.getNome()%></td></tr>
             <tr><td>Descrizione: <%=p.getDesc()%></td></tr>
-            <tr><td>   Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
-            <tr><td> Disponibilità: <%=p.getDisponibilita()%></td></tr>
-
-            <%if(utenteLog!=null){%> <form action="Carrello" method="post">
-
+            <tr><td>Prezzo al mq: <%=p.getPrezzo()%> Euro</td></tr>
+            <tr><td>Disponibilità:<%if (p.getDisponibilita()>=1){%> <%=p.getDisponibilita()%> <%}else{%> N.D <%}%></td></tr>
+            <%if(utenteLog!=null){%> <form action="Carrello" method="post"> <!-- se l utente che visita la pag è loggato allora:-->
             <%session.setAttribute("carrello",carrello);%>
-                <input type="hidden" name="prodId" value="<%=p.getIdprod()%>">
+            <%if (p.getDisponibilita()>=1){%>
+            <input type="hidden" name="prodId" value="<%=p.getIdprod()%>">
                 <tr><td>Quantita':<select name="addNum">
             <c:forEach begin="1" end="20" varStatus="loop">
                 <option name="quantitaNum" value="${loop.index}"> ${loop.index} </option>
@@ -99,7 +112,7 @@
 
             <input type="hidden" name="aggiungi-prod" value="true">
             <td><tr>   <button  class="button-cart" type="submit"> <i class="fa-solid fa-cart-shopping"></i> </button></tr></td>
-          <%}%>
+          <%}%><%}%>
             </form>
 
     </table>

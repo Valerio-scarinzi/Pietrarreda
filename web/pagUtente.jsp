@@ -64,12 +64,19 @@
     i{
         margin: 5px;
     }
+    @media (max-width: 400px){
+        body{
+            background-color: #1A1A1A;
+            color: #e49314;
+        }
+
+    }
 </style>
 <body>
 <%@include file="header.jsp"%>
 <% Utente utente = (Utente) session.getAttribute("utenteLoggato");%>
 <div class="utentePanel">
-    <h2 class="titolo">User panel</h2><hr>
+    <h2 class="titolo">User panel</h2><hr> <!--Dati dell utente-->
     <table class="attUtente">
         <tr><td>Nome: <%=utente.getNome()%></td></tr>
         <tr><td>Cognome: <%=utente.getCognome()%></td></tr>
@@ -77,7 +84,7 @@
         <tr><td>Username: <%=utente.getUsername()%></td></tr>
         <tr><td>Password: <%=utente.getPassword()%></td></tr>
     </table>
-    <%if(utente.isAdmin()==false){%>
+    <%if(utente.isAdmin()==false){%> <!--Utente normale puo cambiare i propri dati.   -->
     <form id="updt" method="post" action="GestioneUtenteServlet?id=<%=utente.getId()%>">
         <input type="text" name="cambiaNome" id="cambiaNome" value="<%=utente.getNome()%>" placeholder="modifica nome" required="required"> <br>
         <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=utente.getCognome()%>" placeholder="modifica cognome" required="required"> <br>

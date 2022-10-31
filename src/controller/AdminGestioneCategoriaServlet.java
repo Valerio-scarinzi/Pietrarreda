@@ -20,9 +20,9 @@ public class AdminGestioneCategoriaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        String newNome = (String) req.getParameter("cambiaNome");
-        String newDesc = (String) req.getParameter("cambiaDesc");
-        String newImg =(String) req.getParameter("cambiaImg");
+        String newNome = (String) req.getParameter("cambiaNome");//prendi parametri passati dal form
+        String newDesc = (String) req.getParameter("cambiaDesc");// *****
+        String newImg =(String) req.getParameter("cambiaImg");//*******
 
 
 
@@ -32,9 +32,9 @@ public class AdminGestioneCategoriaServlet extends HttpServlet {
 
 
         CategoriaDAO categoriaDAO=new CategoriaDAO();
-        int id=Integer.parseInt(req.getParameter("id"));
+        int id=Integer.parseInt(req.getParameter("id"));// prendi l id della categoria da modificare
 
-        categoriaDAO.doUpdate(id,newNome,newDesc,newImg);
+        categoriaDAO.doUpdate(id,newNome,newDesc,newImg);//modifica nel DB la categoria passando i parametri nuovi
         
 
 

@@ -26,7 +26,7 @@ public class OrdineServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    String indirizzo= req.getParameter("IndirizzoSpedizione");
+    String indirizzo= req.getParameter("IndirizzoSpedizione");//prendi parametro dal form per l indirizzo di spedizione
      String conferma= req.getParameter("conferma");
       Utente usr= (Utente) req.getSession().getAttribute("utenteLoggato");
     HttpSession session  = req.getSession();

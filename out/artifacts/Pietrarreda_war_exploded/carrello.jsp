@@ -69,6 +69,7 @@
 <%Carrello carrello= (Carrello) session.getAttribute("carrello");%>
 <div class="carrelloContainer">
 <h2 class="titolo">Carrello</h2><hr>
+    <%if (carrello.getSize()==0){%><h4>Carrello vuoto.</h4><%}%>
 <grid class="Colonne"></grid>
         <%if (carrello.getProdotti()!=null){%>
          <%for (Carrello.ProdottoQuantita prodotto : carrello.getProdotti()) {%>
@@ -96,7 +97,7 @@
              </div>
 </form></fieldset>
                  <%}%>  <%}%></div>
-    <div class="resoconto">
+    <%if (carrello.getSize()!=0){%><div class="resoconto">
                  <div class="subtot">
                      <h2 class="titolo" style="color: #e49314">Prezzo totale:<%=carrello.getPrezzoTotCar()%></h2><hr>
                  </div>
@@ -112,7 +113,7 @@
                          <button class="submit" type="submit">Checkout<i class="fa-solid fa-arrow-right-to-bracket"></i></button>
                      </form>
                  </div>
-    </div>
+    </div><%}%>
 
 <%@include file="footer.jsp"%>
 </body>

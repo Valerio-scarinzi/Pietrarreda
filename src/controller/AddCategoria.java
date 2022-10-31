@@ -30,9 +30,9 @@ public class AddCategoria extends HttpServlet { //aggiunta categoria al DB
         String nome = (String) req.getParameter("nome");
         String descrizione= (String) req.getParameter("descrizione");
         String immagine= (String) req.getParameter("immagine");//N.B "Str" sta per stringa, che poi convertiremo nella forma di variabile desiderata
-        Categoria categoria=new Categoria(nome,descrizione,immagine);
+        Categoria categoria=new Categoria(nome,descrizione,immagine); //crea nuovo bean categoria
         CategoriaDAO categoriaDAO=new CategoriaDAO();
-        categoriaDAO.doSave(categoria);
+        categoriaDAO.doSave(categoria);//salvo categoria nuova nel DB attraverso il DAO
         resp.sendRedirect("CategorieServlet");
 
     }

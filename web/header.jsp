@@ -10,6 +10,15 @@
     <link rel="stylesheet">
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous">
     </script>
+    <script>
+        function opHBar() {
+            const toggleButton=document.getElementsByClassName('toggle-button')[0];
+            const navBarLinks=document.getElementsByClassName('navBar-links')[0];
+            toggleButton.addEventListener('click', () => {
+                navBarLinks.classList.toggle('active')
+            });
+        }
+    </script>
     <title>Header responsive</title>
 
 <style>
@@ -124,7 +133,7 @@
         border-radius: 10px;
     }
 
-    @media (max-width: 590px) { /* RESPONSIVE if schermo 500px o meno allora:*/
+    @media (max-width: 590px) { /* RESPONSIVE if schermo 590px o meno allora:*/
 
         .toggle-button{
             display: flex;
@@ -171,55 +180,45 @@
         .toggle-button .bar{
             background-color: #292929;
         }
-
-
     }
 </style>
 
-    <%Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");%>
-    <%ArrayList<Categoria> categorie=new ArrayList<Categoria>();%>
-    <%CategoriaDAO catetegoriaDAO=new CategoriaDAO();%>
-    <%categorie=catetegoriaDAO.doRetrieveAllCategory();%>
+    <%Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");%> <!-- Vede dalla session se l utente è loggato-->
+    <%ArrayList<Categoria> categorie=new ArrayList<Categoria>();%><!--Istanzia l oggetto categorie-->
+    <%CategoriaDAO catetegoriaDAO=new CategoriaDAO();%><!-- Istanzia oggetto CategoriaDAO-->
+    <%categorie=catetegoriaDAO.doRetrieveAllCategory();%><!--L'oggetto categorie viene aggiornato dalla query del DAO-->
     <%session.getServletContext().setAttribute("categorie",categorie);%>
-
-            <nav class="navBar">
-    <div class="brand-img" title="HOMEPAGE"><a href="index.jsp"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
+    <nav class="navBar">
+    <div class="brand-img" title="HOMEPAGE"><a href="index.jsp"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.apg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
-        <a href="#" class="toggle-button">
+        <a class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </a>
-    <script>
-        function opHBar() {const toggleButton=document.getElementsByClassName('toggle-button')[0];
-            const navBarLinks=document.getElementsByClassName('navBar-links')[0];
-            toggleButton.addEventListener('click', () => {
-                navBarLinks.classList.toggle('active')
-            });
-        }
-    </script></div>
+    </div>
     <div class="navBar-links">
         <ul>
             <li>
                 <div class="catDropdown">
-                <a href="negozio.jsp" class="dropBtn">Negozio</a>
+                <a href="negozio.jsp" class="dropBtn">Negozio</a> <!--href alla jsp negozio-->
                     <div class="dropdown-content">
                         <a href="negozio.jsp">Negozio</a>
-                        <%for (Categoria c:categorie){%>
+                        <%for (Categoria c:categorie){%><!-- Crea href per ogni categoria -->
                        <a href="ShowCategoria?id=<%=c.getId()%>"> <%=c.getCategoria_nome()%></a><%}%>
                     </div>
             </div>
             </li>
-            <%if(utenteLog == null){%>
+            <%if(utenteLog == null){%> <!--Se dalla session l utente non è loggato-->
             <li><a href="login.jsp" title="LOGIN"> <i class="fa-regular fa-user"></i></a></li>
             <li><a href="registrazione.jsp">Registrati</a> </li>
             <%}%>
-            <%if(utenteLog != null){%>
+            <%if(utenteLog != null){%><!--Se dalla session l utente  è loggato-->
             <li><a href="pagUtente.jsp" title="UTENTE">Benvenuto: <%=utenteLog.getUsername()%>  </a></li>
             <li> <a href="Carrello"><i class="fa-solid fa-cart-shopping"></i></a></li><%}%>
             <div class="SearchBar">
-                <form action="RicServ" method="get">
-                    <input type="text" placeholder="Cerca qui..." name="search" onkeyup="ricerca(this.value)">
+                <form action="RicServ" method="get"><!--Usa la servlet di ricerca passando l input search-->
+                    <input type="text" placeholder="Cerca qui..." name="search">
                 </form>
             </div>
         </ul>

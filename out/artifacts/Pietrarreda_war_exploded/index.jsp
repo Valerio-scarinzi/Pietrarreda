@@ -20,6 +20,13 @@
     margin: 20px;
     padding: 20px;
   }
+  @media (max-width: 400px){
+    body{
+      background-color: #1A1A1A;
+      color: #e49314;
+    }
+
+  }
 
 </style>
 <body>

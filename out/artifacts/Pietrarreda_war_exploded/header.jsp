@@ -10,6 +10,15 @@
     <link rel="stylesheet">
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous">
     </script>
+    <script>
+        function opHBar() {
+            const toggleButton=document.getElementsByClassName('toggle-button')[0];
+            const navBarLinks=document.getElementsByClassName('navBar-links')[0];
+            toggleButton.addEventListener('click', () => {
+                navBarLinks.classList.toggle('active')
+            });
+        }
+    </script>
     <title>Header responsive</title>
 
 <style>
@@ -98,6 +107,12 @@
         display: block;
 
     }
+    input{
+        padding: 5px;
+        margin: 5px;
+        border-radius: 7px;
+        text-align: center;
+    }
 
     /*hamburgher menu*/
     .toggle-button{
@@ -118,7 +133,7 @@
         border-radius: 10px;
     }
 
-    @media (max-width: 590px) { /* RESPONSIVE if schermo 500px o meno allora:*/
+    @media (max-width: 590px) { /* RESPONSIVE if schermo 590px o meno allora:*/
 
         .toggle-button{
             display: flex;
@@ -177,21 +192,14 @@
     <%session.getServletContext().setAttribute("categorie",categorie);%>
 
             <nav class="navBar">
-    <div class="brand-img" title="HOMEPAGE"><a href="index.jsp"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.aapg"> </a></div>
+    <div class="brand-img" title="HOMEPAGE"><a href="index.jsp"><img src="Immagini/Logo-Pietrarreda%20(1).jpg" alt="Logo.apg"> </a></div>
     <div class="hamburgher" onclick="opHBar()">
-        <a href="#" class="toggle-button">
+        <a class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </a>
-    <script>
-        function opHBar() {const toggleButton=document.getElementsByClassName('toggle-button')[0];
-            const navBarLinks=document.getElementsByClassName('navBar-links')[0];
-            toggleButton.addEventListener('click', () => {
-                navBarLinks.classList.toggle('active')
-            });
-        }
-    </script></div>
+    </div>
     <div class="navBar-links">
         <ul>
             <li>
@@ -213,7 +221,7 @@
             <li> <a href="Carrello"><i class="fa-solid fa-cart-shopping"></i></a></li><%}%>
             <div class="SearchBar">
                 <form action="RicServ" method="get">
-                    <input type="text" placeholder="Cerca qui..." name="search" onkeyup="ricerca(this.value)">
+                    <input type="text" placeholder="Cerca qui..." name="search">
                 </form>
             </div>
         </ul>

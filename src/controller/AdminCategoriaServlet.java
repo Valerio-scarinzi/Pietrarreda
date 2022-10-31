@@ -22,9 +22,9 @@ public class AdminCategoriaServlet extends HttpServlet {
 
     ArrayList<Categoria> listCategorie = new ArrayList<Categoria>();
     CategoriaDAO categoriaDAO = new CategoriaDAO();
-    listCategorie = categoriaDAO.doRetrieveAllCategory();
+    listCategorie = categoriaDAO.doRetrieveAllCategory();//prendi tutte le categorie presenti nel DB
     HttpSession recentSession = req.getSession();
-    recentSession.setAttribute("listCategorie", listCategorie);
+    recentSession.setAttribute("listCategorie", listCategorie); //setta attributo categorie
 
     RequestDispatcher dispatcher = req.getRequestDispatcher("gestioneCategoria.jsp");
     dispatcher.forward(req,resp);

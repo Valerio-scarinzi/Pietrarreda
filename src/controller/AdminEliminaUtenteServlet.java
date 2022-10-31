@@ -22,9 +22,9 @@ public class AdminEliminaUtenteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int id=Integer.parseInt(req.getParameter("id"));
+        int id=Integer.parseInt(req.getParameter("id"));//prendiamo l id
         UtenteDAO utenteDAO=new UtenteDAO();
-        utenteDAO.doDelete(id);
+        utenteDAO.doDelete(id);//eliminiamo l utente dal DB attraverso l id passato
 
         resp.sendRedirect("UtentiServlet"); //rindirizzare al pannello admin degli utenti dopo ogni operazione
     }

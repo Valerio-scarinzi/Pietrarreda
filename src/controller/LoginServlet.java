@@ -32,39 +32,27 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession oldSession = req.getSession();
         if (oldSession != null) {
-            oldSession.invalidate();}
+            oldSession.invalidate();} //invalida la vecchia session
         HttpSession recentSession = req.getSession();
         UtenteDAO utenteDAO = new UtenteDAO();
            Utente utente = utenteDAO.doRetrieveByUsernameEmailPassword(email, username, password);// controlla del DB se esiste un utente con questi parametri.Se non esiste "utente"=null
             if(utente==null){ //utente non trovato nel db
                 throw new MyExceptionServlet("Errore di login!"+"\n"+"Dati errati");
             }
-
            if (utente!=null) {
-
              OrdineDAO ordineDAO =new OrdineDAO();
              ArrayList<Ordine> ordiniByuUer = ordineDAO.getAllOrdersByUsr(utente.getId());
              recentSession.setAttribute("listaOrdiniUsr",ordiniByuUer);
-
-
-
-
-                   recentSession.setAttribute("utenteLoggato", utente);
-
-
-               if (utente.isAdmin() == false) {
+             recentSession.setAttribute("utenteLoggato", utente);
+               if (utente.isAdmin() == false) {//utente normale stampa benvenuto
                    RequestDispatcher dispatcher = req.getRequestDispatcher("stampa.jsp");
                    dispatcher.forward(req, resp);
-               } else {
+               } else {//se l utente è admin portalo alla console
                    recentSession.setAttribute("AdminLoggeto",utente);
                    RequestDispatcher dispatcher = req.getRequestDispatcher("admin.jsp");
                    dispatcher.forward(req, resp);
                }
-
-
            }
-
-
     }
 
     @Override

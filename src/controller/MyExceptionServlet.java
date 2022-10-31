@@ -22,13 +22,4 @@ public class MyExceptionServlet extends ServletException {
         super(msg);
     }
 
-
-
-    public static void checkAdmin(HttpServletRequest request) throws MyExceptionServlet {
-        Utente utente = (Utente) request.getSession().getAttribute("usrLog");
-        if (utente == null ) {
-            throw new MyExceptionServlet("Utente non autorizzato");
-
-        }
-    }
 }

@@ -20,10 +20,20 @@
     margin: 20px;
     padding: 20px;
   }
+  @media (max-width: 400px){
+    body{
+      background-color: #1A1A1A;
+      color: #e49314;
+    }
+
+  }
 
 </style>
 <body>
-<%@include file="header.jsp"%><% ArrayList<Prodotto> prodotti= new ArrayList<Prodotto>();%>  <%ProdottoDAO prodottoDAO = new ProdottoDAO();%>  <%prodotti = prodottoDAO.getAllProdotti();%>  <%session.getServletContext().setAttribute("prodotti",prodotti);%><div class="homepage">
+<%@include file="header.jsp"%><% ArrayList<Prodotto> prodotti= new ArrayList<Prodotto>();%>
+<%ProdottoDAO prodottoDAO = new ProdottoDAO();%>
+<%prodotti = prodottoDAO.getAllProdotti();%>  <%session.getServletContext().setAttribute("prodotti",prodotti);%>
+<div class="homepage">
   <h1 style="color: #e49314">Bevenuto su Pietrarreda.com</h1>
   <P>Pietrarreda è un'azienda che fornisce minerali naturali per pavimentazioni e rivestimenti per dare un tocco in più alla tua casa o anche ad infrastrutture pubbliche.</P>
   <br>

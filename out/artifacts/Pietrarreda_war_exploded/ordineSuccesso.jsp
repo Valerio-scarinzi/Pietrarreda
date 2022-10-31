@@ -26,13 +26,21 @@
         max-width: max-content;
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     }
+
+    @media (max-width: 400px){
+        body{
+            background-color: #1A1A1A;
+            color: #e49314;
+        }
+
+    }
 </style>
 <body>
 <%@include file="header.jsp"%>
 
 <div class="container">
 <h3>Ordine effettuato con successo</h3>
-    <a href="index.jsp">Clicca qui per tornare alla homepage</a>
+    <a href="index.jsp" style="text-decoration:none;color: #FFFFFF">Clicca qui per tornare alla homepage</a>
 </div>
 
 

@@ -66,11 +66,11 @@
 <body>
 <%@include file="header.jsp"%>
 <% CarrelloDAO carrelloDao=new CarrelloDAO();%>
-<%Carrello carrello= (Carrello) session.getAttribute("carrello");%>
+<%Carrello carrello= (Carrello) session.getAttribute("carrello");%> <!--Dalla session prendi l attributo carrello   -->
 <div class="carrelloContainer">
 <h2 class="titolo">Carrello</h2><hr>
-    <%if (carrello.getSize()==0){%><h4>Carrello vuoto.</h4><%}%>
-<grid class="Colonne"></grid>
+    <%if (carrello.getSize()==0){%><h4>Carrello vuoto.</h4><%}%><!--Se il carrello ha 0 elementi:   -->
+<grid class="Colonne"></grid><!--Se il carrello ha almeno un elemento    -->
         <%if (carrello.getProdotti()!=null){%>
          <%for (Carrello.ProdottoQuantita prodotto : carrello.getProdotti()) {%>
     <fieldset>
@@ -81,7 +81,7 @@
             </div>
             <div col="2/3">
                 <p><%=prodotto.getProdotto().getNome()%></p>
-                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;, Prezzo tot.:<%=prodotto.getPrezzoTotProd()%>;  &euro;</h5>
+                <h5>Quantità: <%=prodotto.getQuantita()%>, Prezzo unit.: <%=prodotto.getProdotto().getPrezzo()%> &euro;, Prezzo tot.:<%=prodotto.getPrezzoTot()%>;  &euro;</h5>
                 <select name="numero-rimossi">
                     <c:forEach begin="1" end="10" varStatus="loop">
                         <option value="${loop.index}"> ${loop.index} </option>

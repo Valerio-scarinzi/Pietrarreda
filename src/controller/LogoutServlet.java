@@ -15,10 +15,10 @@ public class LogoutServlet extends HttpServlet {
         String address=request.getHeader("referer");
         HttpSession session= request.getSession();
         synchronized (session){
-            session.invalidate();
+            session.invalidate(); //invalida la sessione quindi butta fuori l utente loggato
         }
             address="index.jsp";
-            response.sendRedirect(address);
+            response.sendRedirect(address);   //riporta alla homepage dopo aver invalidato la sessione
 
 
 

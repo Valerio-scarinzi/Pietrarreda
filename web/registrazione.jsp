@@ -49,12 +49,18 @@
     .refLogin{
         margin:10px;
     }
-
-
-    #passError{
-        color: #c80009;
-        text-align: center;
+    @media (max-width: 400px){
+        body{
+            background-color: #1A1A1A;
+        }
+        input{
+            width: 100%;
+            height: auto;
+            background-color: #e49314;
+        }
     }
+
+
 </style>
 <body>
 <%@include file="header.jsp"%>
@@ -69,6 +75,7 @@
         <input id="email" name="email" type="email" placeholder="Inserisci E-mail" required="required" oninput="validaREmail()"><br>
         <input id="password" name="password" type="text" placeholder="Inserisci Password" required="required"  oninput="validacPassword()"><br>
         <input id="cpassword" name="cpassword" type="text" placeholder="Conferma Password" required="required"  oninput="validacPassword()"><br>
+        <h6 id="helpPass">La Password deve contenere una lettera maiuscola e minuscola,un numero ed essere di lunghezza di almeno 8</h6>
        <div class="btn"><input id="registrami" class="submit" type="submit" value="Registrati" disabled onclick="registrazioneSucc()"></div>
     </div>
 </form>

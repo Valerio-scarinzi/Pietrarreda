@@ -22,6 +22,8 @@ public class RegistrazioneServlet extends HttpServlet {
         String password= (String) req.getParameter("password");
         String email= (String) req.getParameter("email");
 
+
+
         Utente utente=new Utente(nome,cognome,username,password,email);
         utente.setPassword(password);
 
@@ -29,7 +31,12 @@ public class RegistrazioneServlet extends HttpServlet {
 
         UtenteDAO utenteDAO=new UtenteDAO();
         utente.setAdmin(false);
-        utenteDAO.doSave(utente);
+        Utente utenteverify=utenteDAO.doRetriveByEmail(email); // controllo nel DB se un utente ha già la stessa mail
+        if(utenteverify!=null){ //Se la query ha un riscontro allora manda questa exception
+            throw new MyExceptionServlet("Errore di registrazione! : Email già presente nel database");
+        }utenteverify=null; //setta la variabile di controllo a null.
+        utenteDAO.doSave(utente); //altrimenti aggiungi l utente mai registrato al DB
+
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
         dispatcher.forward(req,resp);

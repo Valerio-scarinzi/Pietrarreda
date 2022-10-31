@@ -49,7 +49,6 @@ function validaRUsername() {
 function validaREmail(){
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     var email=document.getElementById("email").value;
-
     if(reg.test(email)===false){
         document.forms['registrazione']['email'].style.border=borderNO;
         emailOK=false;

@@ -49,6 +49,17 @@
         color: #e79213;
     }
 
+    @media (max-width: 400px){
+        body{
+            background-color: #1A1A1A;
+        }
+        input{
+            width: 100%;
+            height: auto;
+            background-color: #e49314;
+        }
+    }
+
 
 </style>
 <body>

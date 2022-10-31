@@ -9,7 +9,7 @@ public class Carrello {
     private int idutente;
     private int idcarrello;
     private int idprodotto;
-    private double prezzoTotCar;
+    private double prezzoTotCar = 0;
     private  HashMap<Integer, ProdottoQuantita> prodotti = new HashMap<>();
 
 
@@ -17,6 +17,7 @@ public class Carrello {
     public static class ProdottoQuantita {
         private Prodotto prodotto;
         private int quantita;
+        private double prezzoTot = 0;
 
         public ProdottoQuantita(Prodotto prodotto, int quantita) {
             this.prodotto = prodotto;
@@ -43,12 +44,22 @@ public class Carrello {
         public void setProdotto(Prodotto prodotto) {
             this.prodotto = prodotto;
         }
+
+        public double getPrezzoTot() {
+            this.prezzoTot = quantita * prodotto.getPrezzo();
+            return  this.prezzoTot ;
+        }
+        public void setPrezzoTot(Double prezzoTot) {
+            this.prezzoTot = prezzoTot;
+        }
+
+
     }
 
     public Carrello() {
 
     }
-//getters e setters della classe carrello
+
     public Double getPrezzoTotCar() {
         return prezzoTotCar;
     }
@@ -87,16 +98,15 @@ public class Carrello {
 
 
     //Metodi carrello
-    public void addProdotto(Prodotto prod,int quant){// aggiungiamo un prodotto al carrello in quantita' >=1
-
-        if (prodotti.containsKey(prod.getIdprod())) { //se tra la lista di prodotti c'è il prodotto con  la key  allora->
-            /*prodotti.get(prod.getIdprod()).setQuantita( prodotti.get(prod.getIdprod()).getQuantita()+quant);
-            prodotti.get(prod.getIdprod()).getPrezzoTotProd();*/
+    public void addProdotto(Prodotto prod,int quant){//
+        if (prodotti.containsKey((prod.getIdprod()))) {
+            prodotti.get(prod.getIdprod()).setQuantita( prodotti.get(prod.getIdprod()).getQuantita()+quant);
+            prodotti.get(prod.getIdprod()).getPrezzoTot();
             this.prezzoTotCar += (prod.getPrezzo() * quant);}
-    else {
+        else {
             prodotti.put((prod.getIdprod()),new ProdottoQuantita(prod,quant));
             this.prezzoTotCar+=(prod.getPrezzo()*quant);
-            //prodotti.get(prod.getIdprod()).getPrezzoTotProd();
+            prodotti.get(prod.getIdprod()).getPrezzoTot();
         }
 
     }
@@ -104,8 +114,7 @@ public class Carrello {
     public void removeAll(ProdottoQuantita prodottoQuantita) {
         if ( prodotti.containsValue(prodottoQuantita)) {
             prodotti.remove(prodottoQuantita.getProdotto().getIdprod());
-
-           // this.prezzoTotCar = 0.0;
+            this.prezzoTotCar = 0.0;
         }
     }
 
@@ -161,5 +170,3 @@ public class Carrello {
         return prodotti.values();
     }
 }
-
-

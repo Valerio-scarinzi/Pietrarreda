@@ -26,16 +26,16 @@ public class CarrelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        HttpSession session=req.getSession();
-        Utente utenteLog = (Utente) session.getAttribute("utenteLoggato");
+        HttpSession session=req.getSession(); //prendi la session
+        Utente utenteLog = (Utente) session.getAttribute("utenteLoggato"); //
         Carrello carrello;
 
         CarrelloDAO carrelloDao=(CarrelloDAO)new CarrelloDAO();
 
 
 
-        if(utenteLog!=null) {//recupero carrello dell utente
-            carrello = carrelloDao.getCarrelloByUser(utenteLog.getId());
+        if(utenteLog!=null) {//se l utente è loggato allora
+            carrello = carrelloDao.getCarrelloByUser(utenteLog.getId());//recupero carrello dell utente singolo
             int n = carrello.getSize();
             if (carrello == null) { // se l'utente loggato non ha mai messo nulla devo creare il carrello.
                 carrello = new Carrello();
@@ -48,8 +48,8 @@ public class CarrelloServlet extends HttpServlet {
 
 
         String addProd= req.getParameter("aggiungi-prod");
-        if(addProd!=null) {                        // utente vuole aggiungere prodotto al carrello
-            String idprod=req.getParameter("prodId");
+        if(addProd!=null) {                        //utente vuole aggiungere prodotto al carrello
+            String idprod=req.getParameter("prodId"); // prendi id del prodotto da aggiungere al carrello
             int id;
             try {
                 id =Integer.parseInt(idprod);
@@ -57,7 +57,7 @@ public class CarrelloServlet extends HttpServlet {
             catch (NumberFormatException e) {
                 throw new MyExceptionServlet("formato id sbagliato");
             }
-            String numAggiunte= req.getParameter("addNum");
+            String numAggiunte= req.getParameter("addNum"); //quantità stesso prodotto da aggiungere
             int numProd;
             try {
                 numProd=Integer.parseInt(numAggiunte);
@@ -68,14 +68,11 @@ public class CarrelloServlet extends HttpServlet {
 
             if(!idprod.isEmpty() && !numAggiunte.isEmpty()){
                 Carrello.ProdottoQuantita prodottoQuantita=carrello.getProdQuant(id);
-
                 if(prodottoQuantita!=null) {
                    //prodottoQuantita.setQuantita(numProd);
                    carrello.addProdotto(prodottoQuantita.getProdotto(),numProd); // fa aggiornamento dell ProdQty dentro addProd
-
                     model.CarrelloDAO.deleteProdotto(utenteLog.getId(),prodottoQuantita.getProdotto().getIdprod());
                     model.CarrelloDAO.doSave(utenteLog.getId(),id,carrello.getProdQuant(id).getQuantita(),carrello);
-
                   /*  CarrelloDAO.setQuantita(carrello,carrello.getProdQuant(id).getQuantita(),id);
                     CarrelloDAO.setPrezzo(carrello,carrello.getPrezzoTotCar(),id);*/
                     session.setAttribute("carrello", carrello);

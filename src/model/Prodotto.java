@@ -8,12 +8,10 @@ public class Prodotto {
     private double prezzo; // prezzo del prodotto
     private int disponibilita; //disponibilità del prodotto
     private String imgPath_prod; // path dell immagine
-
     //inizio costruttori
     public Prodotto(String name){
         this.nome=name;
     }
-
 
     public Prodotto(String name, int disponibilita, int id) {
         this.idprod = id;
@@ -23,7 +21,7 @@ public class Prodotto {
 
     public Prodotto() {
     }
-//costruttore con agiunta imgpath
+    //costruttore con agiunta imgpath
     public Prodotto(int idprod, String nome, String desc, double prezzo, int disponibilita, String imgPath_prod) {
         this.idprod = idprod;
         this.nome = nome;

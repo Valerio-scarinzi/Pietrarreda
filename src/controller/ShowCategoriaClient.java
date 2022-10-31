@@ -22,13 +22,13 @@ public class ShowCategoriaClient extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    String idstr = (String) req.getParameter("id");
+    String idstr = (String) req.getParameter("id"); //prende id della categoria
     int id = Integer.parseInt(idstr);
 
     // gestione prodottoCategoria creo l'array list poi faccio la selzione per l'id della categoria
     ArrayList<ProdottoCategoria> listprodottoCategoria = new ArrayList<ProdottoCategoria>();
     ProdottoCategoriaDAO prodottoCategoriaDAO = new ProdottoCategoriaDAO();
-    listprodottoCategoria = prodottoCategoriaDAO.getProdByCatId(id);// prendo tutti gli id dei prodotti legati all id della catgoria scelta dla client
+    listprodottoCategoria = prodottoCategoriaDAO.getProdByCatId(id);// prendo tutti gli id dei prodotti legati all id della catgoria scelta dal client
     ArrayList<Prodotto> listprodFromCat = new ArrayList<Prodotto>();
     ProdottoDAO prodottoDAO = new ProdottoDAO();
 
@@ -44,7 +44,6 @@ public class ShowCategoriaClient extends HttpServlet {
     }
 
     req.setAttribute("ProdottiFromCat",listprodFromCat);// invio gli id dei prodotti per poi prendere i prodotti dal prodotto dao
-
     RequestDispatcher dispatcher = req.getRequestDispatcher("categoriaClient.jsp");
     dispatcher.forward(req,resp);
   }

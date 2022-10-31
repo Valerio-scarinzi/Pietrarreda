@@ -22,9 +22,9 @@ public class AdminEliminaCatServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int id=Integer.parseInt(req.getParameter("id"));
+        int id=Integer.parseInt(req.getParameter("id"));// prendi id passato
         CategoriaDAO categoriaDAO=new CategoriaDAO();
-        categoriaDAO.doDelete(id);
+        categoriaDAO.doDelete(id);//elimina dal DB la categoria attraverso l id
 
         resp.sendRedirect("CategorieServlet"); //rindirizzare al pannello admin delle categorie dopo ogni operazione
     }
